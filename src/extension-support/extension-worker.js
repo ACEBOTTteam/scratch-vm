@@ -17,7 +17,11 @@ class ExtensionWorker {
                 this.workerId = id;
 
                 try {
-                    importScripts(extension);
+                    try {
+                        importScripts(extension);
+                    } catch (error) {
+                        console.log(error)
+                    }
 
                     const initialRegistrations = this.initialRegistrations;
                     this.initialRegistrations = null;
