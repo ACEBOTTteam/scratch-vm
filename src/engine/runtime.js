@@ -224,6 +224,12 @@ class Runtime extends EventEmitter {
         this._editingTarget = null;
 
         /**
+         * Currently program mode.
+         * @type {bool}
+         */
+        this._isRealtimeMode = true;
+
+        /**
          * Map to look up a block primitive's implementation function by its opcode.
          * This is a two-step lookup: package name first, then primitive name.
          * @type {Object.<string, Function>}
@@ -2289,6 +2295,25 @@ class Runtime extends EventEmitter {
         if (index > -1) {
             this._scriptGlowsPreviousFrame.splice(index, 1);
         }
+    }
+
+    /**
+     * Set whether the current program mode is realtime mode.
+     * @param {string} sta state of current program mode to set.
+     */
+    setRealtimeMode (sta) {
+        if (this._isRealtimeMode !== sta){
+            this._isRealtimeMode = sta;
+            this.emit(Runtime.PROGRAM_MODE_UPDATE, {isRealtimeMode: this._isRealtimeMode});
+        }
+    }
+
+    /**
+     * Get whether the current program mode is realtime mode.
+     * @return {boolean} whether the current program mode is realtime mode.
+     */
+    isRealtimeMode () {
+        return this._isRealtimeMode;
     }
 
     /**
