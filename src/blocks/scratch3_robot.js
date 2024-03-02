@@ -1,4 +1,4 @@
-const readAnalogPin  = require('../util/read-analog-pin.js')
+const readAnalogPin = require('../util/read-analog-pin.js')
 
 class Scratch3RobotBlocks {
     constructor(runtime) {
@@ -20,6 +20,7 @@ class Scratch3RobotBlocks {
     getPrimitives() {
         return {
             homochromyLED: this.homochromyLED,
+            LED_luminance:this.LED_luminance,
             Ultrasonic_Sensor: this.Ultrasonic_Sensor,
             DHT11_Humidity_Temperature_Sensor: this.DHT11_Humidity_Temperature_Sensor,
             DC_Motor_Module: this.DC_Motor_Module,
@@ -39,6 +40,8 @@ class Scratch3RobotBlocks {
             Touch_Sensor: this.Touch_Sensor,
             Flame_Sensor: this.Flame_Sensor,
             RGB_Moudule: this.RGB_Moudule,
+            set_tape_lights: this.set_tape_lights,
+            tape_lights: this.tape_lights,
             Humidifier_Moudule: this.Humidifier_Moudule,
             Water_Sensor: this.Water_Sensor,
             Digit_Tube_Display_Module_Number: this.Digit_Tube_Display_Module_Number,
@@ -46,8 +49,22 @@ class Scratch3RobotBlocks {
             Color_Sensor_light: this.Color_Sensor_light,
             Color_Sensor_Colors: this.Color_Sensor_Colors,
             RFID_RC522_I2C_Module: this.RFID_RC522_I2C_Module,
-            BLDC: this.BLDC,
-
+            I2C_1602_LCD_String: this.I2C_1602_LCD_String,
+            I2C_1602_LCD_Number: this.I2C_1602_LCD_Number,
+            I2C_1602_LCD_Clear: this.I2C_1602_LCD_Clear,
+            I2C_1602_LCD_Model: this.I2C_1602_LCD_Model,
+            I2C_1602_LCD_flash_mode: this.I2C_1602_LCD_flash_mode,
+            MP3_Module: this.MP3_Module,
+            MP3_Module_Play: this.MP3_Module_Play,
+            MP3_Module_Volume: this.MP3_Module_Volume,
+            MP3_Module_Set: this.MP3_Module_Set,
+            MP3_Module_Playover: this.MP3_Module_Playover,
+            Voice_Recognition_Module: this.Voice_Recognition_Module,
+            Relay_Module: this.Relay_Module,
+            OLED_Set: this.OLED_Set,
+            OLED_String: this.OLED_String,
+            OLED_Number: this.OLED_Number,
+            OLED_Clear: this.OLED_Clear,
         }
     }
 
@@ -56,7 +73,7 @@ class Scratch3RobotBlocks {
     }
 
     //单色LED
-    homochromyLED(args, util) {
+    async homochromyLED(args) {
         let num = null
         if ('open' === args.PIN_TYPE) {
             num = 1
@@ -64,212 +81,311 @@ class Scratch3RobotBlocks {
             num = 0
         }
         let code = `A2 ${args.PIN_LIST} ${num}\r\n`
-        window.electronAPI.clientSend('send', code).then(() => {
-        })
+        await window.electronAPI.clientSend('send', code)
+    }
 
+    async LED_luminance(args) {
+        let code = `A4 ${args.PIN_LIST} ${args.LUMINANCE}\r\n`
+        await window.electronAPI.clientSend('send',code)
     }
 
     //超声波传感器
-    Ultrasonic_Sensor(args, util) {
+    Ultrasonic_Sensor(args) {
         let code = `A6 ${args.PIN_LIST_1} ${args.PIN_LIST_2}`
-        let variable = readAnalogPin(code,'number')
-        window.electronAPI.clientSend('send', code+'\r\n')
+        let variable = readAnalogPin(code, 'number')
+        window.electronAPI.clientSend('send', code + '\r\n')
         return variable
     }
 
     //DHT11温湿度传感器
-    DHT11_Humidity_Temperature_Sensor(args, util) {
+    DHT11_Humidity_Temperature_Sensor(args) {
         let code = `A7 ${args.PIN_LIST_1} T`
         if ('相对湿度' === args.TYPE) {
             code = `A7 ${args.PIN_LIST_1} H`
         }
-        let variable = readAnalogPin(code,'number')
-        window.electronAPI.clientSend('send', code+'\r\n')
+        let variable = readAnalogPin(code, 'number')
+        window.electronAPI.clientSend('send', code + '\r\n')
         return variable
     }
 
     //130 电机模块
-    DC_Motor_Module(args, util) {
+    async DC_Motor_Module(args) {
+        console.log(123)
         let code = `A5 ${args.PIN_LIST_1} ${args.PIN_LIST_2} ${args.SPEED}\r\n`
-        window.electronAPI.clientSend('send', code)
+        await window.electronAPI.clientSend('send', code)
     }
 
     //按键模块
-    Button_Module(args, util) {
+    Button_Module(args) {
         let code = `A1 ${args.PIN_LIST}`
-        let variable = readAnalogPin(code,'boolean')
-        window.electronAPI.clientSend('send', code+'\r\n')
+        let variable = readAnalogPin(code, 'boolean')
+        window.electronAPI.clientSend('send', code + '\r\n')
         return variable
     }
 
     //光敏传感器
-    Photoresistor_Sensor(args, util) {
+    Photoresistor_Sensor(args) {
         let code = `A3 ${args.PIN_LIST}`
-        let variable = readAnalogPin(code,'number')
-        window.electronAPI.clientSend('send', code+'\r\n')
+        let variable = readAnalogPin(code, 'number')
+        window.electronAPI.clientSend('send', code + '\r\n')
         return variable
     }
 
     //声音传感器
-    Sound_Sensor(args, util) {
+    Sound_Sensor(args) {
         let code = `A3 ${args.PIN_LIST}`
-        let variable = readAnalogPin(code,'number')
-        window.electronAPI.clientSend('send', code+'\r\n')
+        let variable = readAnalogPin(code, 'number')
+        window.electronAPI.clientSend('send', code + '\r\n')
         return variable
     }
 
     //人体红外传感器
-    PIR_Motion_Sensor(args, util) {
+    PIR_Motion_Sensor(args) {
         let code = `A1 ${args.PIN_LIST}`
-        let variable = readAnalogPin(code,'number')
-        window.electronAPI.clientSend('send', code+'\r\n')
+        let variable = readAnalogPin(code, 'number')
+        window.electronAPI.clientSend('send', code + '\r\n')
         return variable
     }
 
     //土壤湿度传感器
-    Moisture_Sensor(args, util) {
+    Moisture_Sensor(args) {
         let code = `A3 ${args.PIN_LIST}`
-        let variable = readAnalogPin(code,'number')
-        window.electronAPI.clientSend('send', code+'\r\n')
+        let variable = readAnalogPin(code, 'number')
+        window.electronAPI.clientSend('send', code + '\r\n')
         return variable
     }
 
     //雨滴传感器
-    Raindrop_Sensor(args, util) {
+    Raindrop_Sensor(args) {
         let code = `A3 ${args.PIN_LIST}`
-        let variable = readAnalogPin(code,'number')
-        window.electronAPI.clientSend('send', code+'\r\n')
+        let variable = readAnalogPin(code, 'number')
+        window.electronAPI.clientSend('send', code + '\r\n')
         return variable
     }
 
     //SG90舵机模块
-    SG90_Module(args, util) {
+    async SG90_Module(args) {
         let code = `A8 ${args.PIN_LIST} ${args.ANGLE}\r\n`
-        window.electronAPI.clientSend('send', code)
+        await window.electronAPI.clientSend('send', code)
     }
 
     //激光模块
-    Laser_Module(args, util) {
+    async Laser_Module(args) {
         let code = `A2 ${args.PIN_LIST} 1\r\n`
         if ('close' === args.PIN_TYPE) {
             code = `A2 ${args.PIN_LIST} 0\r\n`
         }
-        window.electronAPI.clientSend('send', code)
+        await window.electronAPI.clientSend('send', code)
     }
 
     //无源蜂鸣器模块
-    P_Buzzer_Module(args, util) {
+    async P_Buzzer_Module(args) {
         let code = `A9 ${args.PIN_LIST} ${args.FREQUENCY} ${args.TIME}\r\n`
-        window.electronAPI.clientSend('send', code)
+        await window.electronAPI.clientSend('send', code)
     }
 
     //MQ-4气体传感器
-    MQ4_Gas_Sensor(args, util) {
+    MQ4_Gas_Sensor(args) {
         let code = `A3 ${args.PIN_LIST}`
-        let variable = readAnalogPin(code,'number')
-        window.electronAPI.clientSend('send', code+'\r\n')
+        let variable = readAnalogPin(code, 'number')
+        window.electronAPI.clientSend('send', code + '\r\n')
         return variable
     }
 
     //三路巡线传感器
-    Trace_Sensor_Set(args, util) {
+    async Trace_Sensor_Set(args) {
         let code = `A16 ${args.PIN_LIST_1} ${args.PIN_LIST_2} ${args.PIN_LIST_3}\r\n`
-        window.electronAPI.clientSend('send', code)
+        await window.electronAPI.clientSend('send', code)
     }
 
-    Trace_Sensor_Get(args, util) {
+    Trace_Sensor_Get(args) {
         let code = `A17 ${args.SELECT}`
-        let variable = readAnalogPin(code,'number')
-        window.electronAPI.clientSend('send', code+'\r\n')
+        let variable = readAnalogPin(code, 'number')
+        window.electronAPI.clientSend('send', code + '\r\n')
         return variable
     }
 
     //电位器模块
-    Potentiometer_Module(args, util) {
+    Potentiometer_Module(args) {
         let code = `A3 ${args.PIN_LIST}`
-        let variable = readAnalogPin(code,'number')
-        window.electronAPI.clientSend('send', code+'\r\n')
+        let variable = readAnalogPin(code, 'number')
+        window.electronAPI.clientSend('send', code + '\r\n')
         return variable
     }
 
     //触摸传感器
-    Touch_Sensor(args, util) {
+    Touch_Sensor(args) {
         let code = `A1 ${args.PIN_LIST}`
-        let variable = readAnalogPin(code,'boolean')
-        window.electronAPI.clientSend('send', code+'\r\n')
+        let variable = readAnalogPin(code, 'boolean')
+        window.electronAPI.clientSend('send', code + '\r\n')
         return variable
     }
 
     //火焰传感器
-    Flame_Sensor(args, util) {
+    Flame_Sensor(args) {
         let code = `A1 ${args.PIN_LIST}`
-        let variable = readAnalogPin(code,'number')
-        window.electronAPI.clientSend('send', code+'\r\n')
+        let variable = readAnalogPin(code, 'number')
+        window.electronAPI.clientSend('send', code + '\r\n')
         return variable
     }
 
     //RGB模块
-    RGB_Moudule(args, util) {
-        let code = `A15 ${args.PIN_LIST_1} ${args.PIN_LIST_2} ${args.PIN_LIST_3} ${args.RED} ${args.GREEN} ${args.BLUE}\r\nA1 \r\n`
-        window.electronAPI.clientSend('send', code)
+    async RGB_Moudule(args) {
+        let code = `A15 ${args.PIN_LIST_1} ${args.PIN_LIST_2} ${args.PIN_LIST_3} ${args.RED} ${args.GREEN} ${args.BLUE}\r\n`
+        await window.electronAPI.clientSend('send', code)
+    }
+
+    //灯带
+    async set_tape_lights(args) {
+        let code = `A18 ${args.PIN_LIST} ${args.COLOR}\r\n`
+        await window.electronAPI.clientSend('send', code)
+    }
+
+    async tape_lights(args) {
+        let code = `A18 ${args.PIN_LIST} ${args.RED} ${args.GREEN} ${args.BLUE}\r\n`
+        await window.electronAPI.clientSend('send', code)
     }
 
     //加湿器模块
-    Humidifier_Moudule(args, util) {
+    async Humidifier_Moudule(args) {
         let code = `A10 ${args.PIN_LIST} 1\r\n`
         if ('close' === args.TYPE) {
             code = `A10 ${args.PIN_LIST} 0\r\n`
         }
-        window.electronAPI.clientSend('send', code)
+        await window.electronAPI.clientSend('send', code)
     }
 
     //水位传感器
-    Water_Sensor(args, util) {
+    Water_Sensor(args) {
         let code = `A3 ${args.PIN_LIST}`
-        let variable = readAnalogPin(code,'number')
-        window.electronAPI.clientSend('send', code+'\r\n')
+        let variable = readAnalogPin(code, 'number')
+        window.electronAPI.clientSend('send', code + '\r\n')
         return variable
     }
 
     //四位数码管模块
-    Digit_Tube_Display_Module_Number(args, util) {
+    async Digit_Tube_Display_Module_Number(args) {
         let code = `A11 ${args.NUMBER}\r\n`
-        window.electronAPI.clientSend('send', code)
+        await window.electronAPI.clientSend('send', code)
     }
 
-    Digit_Tube_Display_Module_String(args, util) {
+    async Digit_Tube_Display_Module_String(args) {
         let code = `A11 ${args.STRING}\r\n`
-        window.electronAPI.clientSend('send', code)
+        await window.electronAPI.clientSend('send', code)
     }
 
     //颜色传感器
-    Color_Sensor_light(args, util) {
+    async Color_Sensor_light(args) {
         let code = `A2 ${args.PIN_LIST} 1\r\n`
         if ('close' === args.TYPE) {
             code = `A2 ${args.PIN_LIST} 0\r\n`
         }
-        window.electronAPI.clientSend('send', code)
+        await window.electronAPI.clientSend('send', code)
     }
 
-    Color_Sensor_Colors(args, util) {
+    Color_Sensor_Colors(args) {
         let code = `A12 ${args.TYPE}`
-        let variable = readAnalogPin(code,'number')
-        window.electronAPI.clientSend('send', code+'\r\n')
+        let variable = readAnalogPin(code, 'number')
+        window.electronAPI.clientSend('send', code + '\r\n')
         return variable
     }
 
     //RFID模块
-    RFID_RC522_I2C_Module(args, util) {
+    RFID_RC522_I2C_Module() {
         let code = `A13`
-        let variable = readAnalogPin(code,'string')
-        window.electronAPI.clientSend('send', code+'\r\n')
+        let variable = readAnalogPin(code, 'string')
+        window.electronAPI.clientSend('send', code + '\r\n')
         return variable
     }
 
     //BLDC
-    BLDC(args, util) {
+    async BLDC(args) {
         let code = `A14 ${args.PIN_LIST} ${args.SPEED}\r\n`
-        window.electronAPI.clientSend('send', code)
+        await window.electronAPI.clientSend('send', code)
+    }
+
+    //I2C 1602 LCD模块
+    async I2C_1602_LCD_String(args) {
+        let code = `A23 ${args.X} ${args.Y} ${args.STRING}\r\n`
+        await window.electronAPI.clientSend('send', code)
+    }
+
+    async I2C_1602_LCD_Number(args) {
+        let code = `A23 ${args.X} ${args.Y} ${args.NUMBER}\r\n`
+        await window.electronAPI.clientSend('send', code)
+    }
+
+    async I2C_1602_LCD_Clear(args) {
+        let code = `A26 0\r\n`
+        await window.electronAPI.clientSend('send', code)
+    }
+
+    I2C_1602_LCD_Model(args) {
+
+    }
+
+    async I2C_1602_LCD_flash_mode(args) {
+        let code = `A25 1\r\n`
+        if (args.MODEL === 'close') {
+            code = `A25 0\r\n`
+        }
+        await window.electronAPI.clientSend('send', code)
+    }
+
+    //MP3
+    MP3_Module(args) {
+
+    }
+
+    MP3_Module_Play(args) {
+
+    }
+
+    MP3_Module_Volume(args) {
+
+    }
+
+    MP3_Module_Set(args) {
+
+    }
+
+    MP3_Module_Playover(args) {
+
+    }
+
+    //语音识别模块
+    Voice_Recognition_Module(args) {
+
+    }
+
+    //继电器
+    async Relay_Module(args) {
+        let code = `A2 ${args.PIN_LIST} 1\r\n`
+        if ('close' === args.TYPE) {
+            code = `A2 ${args.PIN_LIST} 0\r\n`
+        }
+        await window.electronAPI.clientSend('send', code)
+    }
+
+    //OLED
+    async OLED_Set(args) {
+        let code = `A20 ${args.SIZE}\r\n`
+        await window.electronAPI.clientSend('send', code)
+    }
+
+    async OLED_String(args) {
+        let code = `A21 ${args.X} ${args.X} ${args.STRING}\r\n`
+        await window.electronAPI.clientSend('send', code)
+    }
+
+    async OLED_Number(args) {
+        let code = `A21 ${args.X} ${args.X} ${args.NUMBER}\r\n`
+        await window.electronAPI.clientSend('send', code)
+    }
+
+    async OLED_Clear() {
+        let code = `A22 0\r\n`
+        await window.electronAPI.clientSend('send', code)
     }
 }
 

@@ -406,6 +406,15 @@ class VirtualMachine extends EventEmitter {
         });
     }
 
+    saveProject () {
+        const soundDescs = serializeSounds(this.runtime);
+        const costumeDescs = serializeCostumes(this.runtime);
+        const projectJson = this.toJSON();
+        return {
+            soundDescs,costumeDescs,projectJson
+        }
+    }
+
     /*
      * @type {Array<object>} Array of all costumes and sounds currently in the runtime
      */

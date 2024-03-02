@@ -6,7 +6,6 @@ const readAnalogPin = (command, type) => {
             const decoder = new TextDecoder();
             data = decoder.decode(data);
             item.push(data)
-            console.log(data, data.endsWith('\r\n'), 'data')
             //以\r\n为结尾，视为一段语句
             if (data.endsWith('\r\n')) {
                 item = item.join(' ')
@@ -21,11 +20,9 @@ const readAnalogPin = (command, type) => {
                     }
                 });
                 item[0] = item[0].trim()
-                console.log(item, 'item')
                 //判断第一句是否与发送的命令一致
                 if (item[0] === command) {
                     const returnValue = item[item.length - 2].trim()
-                    console.log(returnValue, 'returnValue')
                     switch (type) {
                         case 'number':
                             resolve(Number(returnValue))
