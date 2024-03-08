@@ -20,7 +20,8 @@ class Scratch3RobotBlocks {
     getPrimitives() {
         return {
             homochromyLED: this.homochromyLED,
-            LED_luminance:this.LED_luminance,
+            IR_Receiver_Module:this.IR_Receiver_Module,
+            LED_luminance: this.LED_luminance,
             Ultrasonic_Sensor: this.Ultrasonic_Sensor,
             DHT11_Humidity_Temperature_Sensor: this.DHT11_Humidity_Temperature_Sensor,
             DC_Motor_Module: this.DC_Motor_Module,
@@ -57,7 +58,6 @@ class Scratch3RobotBlocks {
             MP3_Module: this.MP3_Module,
             MP3_Module_Play: this.MP3_Module_Play,
             MP3_Module_Volume: this.MP3_Module_Volume,
-            MP3_Module_Set: this.MP3_Module_Set,
             MP3_Module_Playover: this.MP3_Module_Playover,
             Voice_Recognition_Module: this.Voice_Recognition_Module,
             Relay_Module: this.Relay_Module,
@@ -70,6 +70,14 @@ class Scratch3RobotBlocks {
 
     clearCounter() {
         this._counter = 0;
+    }
+
+    //红外接收模块
+    IR_Receiver_Module(args){
+        let code = `A30 ${args.PIN_LIST} ${args.PIN_TYPE}`
+        let variable = readAnalogPin(code, 'boolean')
+        window.electronAPI.clientSend('send', code + '\r\n')
+        return variable
     }
 
     //单色LED
@@ -86,7 +94,7 @@ class Scratch3RobotBlocks {
 
     async LED_luminance(args) {
         let code = `A4 ${args.PIN_LIST} ${args.LUMINANCE}\r\n`
-        await window.electronAPI.clientSend('send',code)
+        await window.electronAPI.clientSend('send', code)
     }
 
     //超声波传感器
@@ -110,7 +118,6 @@ class Scratch3RobotBlocks {
 
     //130 电机模块
     async DC_Motor_Module(args) {
-        console.log(123)
         let code = `A5 ${args.PIN_LIST_1} ${args.PIN_LIST_2} ${args.SPEED}\r\n`
         await window.electronAPI.clientSend('send', code)
     }
@@ -237,12 +244,14 @@ class Scratch3RobotBlocks {
 
     //灯带
     async set_tape_lights(args) {
-        let code = `A18 ${args.PIN_LIST} ${args.COLOR}\r\n`
+        let color = args.COLOR.replace(/#/g, "");  
+        color = parseInt(color, 16)
+        let code = `A18 ${args.PIN_LIST} ${args.COUNT} ${color}\r\n`
         await window.electronAPI.clientSend('send', code)
     }
 
     async tape_lights(args) {
-        let code = `A18 ${args.PIN_LIST} ${args.RED} ${args.GREEN} ${args.BLUE}\r\n`
+        let code = `A19 ${args.PIN_LIST} ${args.COUNT} ${args.RED} ${args.GREEN} ${args.BLUE}\r\n`
         await window.electronAPI.clientSend('send', code)
     }
 
@@ -320,8 +329,9 @@ class Scratch3RobotBlocks {
         await window.electronAPI.clientSend('send', code)
     }
 
-    I2C_1602_LCD_Model(args) {
-
+    async I2C_1602_LCD_Model(args) {
+        let code = `A24 ${args.LEFT} ${args.RIGHT} ${args.NUMBER*1000} ${args.STRING}\r\n`
+        await window.electronAPI.clientSend('send', code)
     }
 
     async I2C_1602_LCD_flash_mode(args) {
@@ -333,29 +343,49 @@ class Scratch3RobotBlocks {
     }
 
     //MP3
-    MP3_Module(args) {
-
+    async MP3_Module(args) {
+        let num = 0
+        switch (args.TYPE) {
+            case "start":
+                num = 1
+                break;
+            case "pause":
+                num = 2
+                break;
+            case "before":
+                num = 3
+                break;
+            default:
+                num = 4
+                break;
+        }
+        let code = `A27 ${args.PIN_LIST_1} ${args.PIN_LIST_2} ${num}\r\n`
+        await window.electronAPI.clientSend('send', code)
     }
 
-    MP3_Module_Play(args) {
-
+    async MP3_Module_Play(args) {
+        let code = `A28 ${args.PIN_LIST_1} ${args.PIN_LIST_2} ${args.NUM}\r\n`
+        await window.electronAPI.clientSend('send', code)
     }
 
-    MP3_Module_Volume(args) {
-
-    }
-
-    MP3_Module_Set(args) {
-
+    async MP3_Module_Volume(args) {
+        let code = `A29 ${args.PIN_LIST_1} ${args.PIN_LIST_2} ${args.NUM}\r\n`
+        await window.electronAPI.clientSend('send', code)
     }
 
     MP3_Module_Playover(args) {
-
+        let code = `A32 ${args.PIN_LIST_1} ${args.PIN_LIST_2}`
+        let variable = readAnalogPin(code, 'boolean')
+        window.electronAPI.clientSend('send', code + '\r\n')
+        return variable
     }
 
     //语音识别模块
     Voice_Recognition_Module(args) {
-
+        let code = `A31 ${args.PIN_LIST_1} ${args.PIN_LIST_2} ${args.TYPE}`
+        let variable = readAnalogPin(code, 'boolean')
+        window.electronAPI.clientSend('send', code + '\r\n')
+        return variable
     }
 
     //继电器

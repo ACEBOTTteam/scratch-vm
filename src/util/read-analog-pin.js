@@ -5,7 +5,7 @@ const readAnalogPin = (command, type) => {
             let data = args.data
             const decoder = new TextDecoder();
             data = decoder.decode(data);
-            item.push(data)
+            item.push(data.trim())
             //以\r\n为结尾，视为一段语句
             if (data.endsWith('\r\n')) {
                 item = item.join(' ')
@@ -30,6 +30,7 @@ const readAnalogPin = (command, type) => {
                         case 'boolean':
                             let boolean = '0' === returnValue ? true : false
                             resolve(boolean)
+                            break;
                         default:
                             resolve(returnValue)
                             break;
