@@ -47,6 +47,7 @@ class Scratch3RobotBlocks {
             Water_Sensor: this.Water_Sensor,
             Digit_Tube_Display_Module_Number: this.Digit_Tube_Display_Module_Number,
             Digit_Tube_Display_Module_String: this.Digit_Tube_Display_Module_String,
+            BLDC:this.BLDC,
             Color_Sensor_light: this.Color_Sensor_light,
             Color_Sensor_Colors: this.Color_Sensor_Colors,
             RFID_RC522_I2C_Module: this.RFID_RC522_I2C_Module,
@@ -309,6 +310,7 @@ class Scratch3RobotBlocks {
 
     //BLDC
     async BLDC(args) {
+        console.log(args.PIN_LIST,args.SPEED,'args.SPEED')
         let code = `A14 ${args.PIN_LIST} ${args.SPEED}\r\n`
         await window.electronAPI.clientSend('send', code)
     }
