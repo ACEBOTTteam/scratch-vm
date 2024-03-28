@@ -66,6 +66,7 @@ class Scratch3RobotBlocks {
             OLED_String: this.OLED_String,
             OLED_Number: this.OLED_Number,
             OLED_Clear: this.OLED_Clear,
+            open_camera:this.open_camera,
         }
     }
 
@@ -119,7 +120,7 @@ class Scratch3RobotBlocks {
 
     //130 电机模块
     async DC_Motor_Module(args) {
-        let code = `A5 ${args.PIN_LIST_1} ${args.PIN_LIST_2} ${args.SPEED}\r\n`
+        let code = `A5 ${args.PIN_LIST_2} ${args.PIN_LIST_1} ${args.SPEED}\r\n`
         await window.electronAPI.clientSend('send', code)
     }
 
@@ -361,22 +362,22 @@ class Scratch3RobotBlocks {
                 num = 4
                 break;
         }
-        let code = `A27 ${args.PIN_LIST_1} ${args.PIN_LIST_2} ${num}\r\n`
+        let code = `A27 ${args.PIN_LIST_2} ${args.PIN_LIST_1} ${num}\r\n`
         await window.electronAPI.clientSend('send', code)
     }
 
     async MP3_Module_Play(args) {
-        let code = `A28 ${args.PIN_LIST_1} ${args.PIN_LIST_2} ${args.NUM}\r\n`
+        let code = `A28 ${args.PIN_LIST_2} ${args.PIN_LIST_1} ${args.NUM}\r\n`
         await window.electronAPI.clientSend('send', code)
     }
 
     async MP3_Module_Volume(args) {
-        let code = `A29 ${args.PIN_LIST_1} ${args.PIN_LIST_2} ${args.NUM}\r\n`
+        let code = `A29 ${args.PIN_LIST_2} ${args.PIN_LIST_1} ${args.NUM}\r\n`
         await window.electronAPI.clientSend('send', code)
     }
 
     MP3_Module_Playover(args) {
-        let code = `A32 ${args.PIN_LIST_1} ${args.PIN_LIST_2}`
+        let code = `A32 ${args.PIN_LIST_2} ${args.PIN_LIST_1}`
         let variable = readAnalogPin(code, 'boolean')
         window.electronAPI.clientSend('send', code + '\r\n')
         return variable
@@ -418,6 +419,14 @@ class Scratch3RobotBlocks {
     async OLED_Clear() {
         let code = `A22 0\r\n`
         await window.electronAPI.clientSend('send', code)
+    }
+
+    open_camera(args){
+        if('open'===args.TYPE){
+            this.runtime.vm.emit('opendCamera')
+        }else{
+            this.runtime.vm.emit('closeCamera')
+        }
     }
 }
 
