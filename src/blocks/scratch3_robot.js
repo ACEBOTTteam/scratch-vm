@@ -65,8 +65,7 @@ class Scratch3RobotBlocks {
             OLED_Set: this.OLED_Set,
             OLED_String: this.OLED_String,
             OLED_Number: this.OLED_Number,
-            OLED_Clear: this.OLED_Clear,
-            open_camera:this.open_camera,
+            OLED_Clear: this.OLED_Clear
         }
     }
 
@@ -419,14 +418,6 @@ class Scratch3RobotBlocks {
     async OLED_Clear() {
         let code = `A22 0\r\n`
         await window.electronAPI.clientSend('send', code)
-    }
-
-    open_camera(args){
-        if('open'===args.TYPE){
-            this.runtime.vm.emit('opendCamera')
-        }else{
-            this.runtime.vm.emit('closeCamera')
-        }
     }
 }
 
