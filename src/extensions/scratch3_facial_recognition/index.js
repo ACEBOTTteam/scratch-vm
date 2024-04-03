@@ -1,13 +1,9 @@
+const formatMessage = require('format-message');
 const ArgumentType = require('../../extension-support/argument-type');
 const BlockType = require('../../extension-support/block-type');
 
 
 const iconURI = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAMAAAC5zwKfAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAACpQTFRF////fIel5ufolZ62/2YavsPS+YZOkJmy9/j53+Hk6+zs6N/b6dfO////tDhMHAAAAA50Uk5T/////////////////wBFwNzIAAAA6ElEQVR42uzX2w6DIBAEUGDVtlr//3dLaLwgiwUd2z7MJPJg5EQWiGhGcAxBggQJEiT436CIfqXJPTn3MKNYYMSDFpoAmp24OaYgvwKnFgL2zvVTCwHrMoMi+nUQLFthaNCCa0iwclLkDgYVsQp0mzxuqXgK1MRzoCLWgkPXNN2wI/q6Kvt7u/cX0HtejN8x2sXpnpb8J8D3b0Keuhh3X975M+i0xNVbg3s1TIasgK21bQyGO+s2PykaGMYbge8KrNrssvkOWDXkErB8UuBHETjoYLkKBA8ZfuDkbwVBggQJEiR4MC8BBgDTtMZLx2nFCQAAAABJRU5ErkJggg==';
-
-const TypeData = {
-    "OPEND": "打开",
-    "CLOSE": "关闭"
-}
 
 class Scratch3FacialRecognitionBlocks {
     constructor(runtime) {
@@ -17,13 +13,13 @@ class Scratch3FacialRecognitionBlocks {
     getInfo() {
         return {
             id: "facialRecognition",
-            name: "人脸识别",
+            name: formatMessage({id:'facialRecognition'}),
             blockIconURL: iconURI,
             showStatusButton: false,
             blocks: [
                 {
                     opcode: "openCamera",
-                    text: "以弹窗形式[ONE]摄像头",
+                    text: formatMessage({id:'facial_recognition.camera'}),
                     blockType: BlockType.COMMAND,
                     arguments: {
                         ONE: {
@@ -35,7 +31,7 @@ class Scratch3FacialRecognitionBlocks {
                 },
                 {
                     opcode: "collectFaceData",
-                    text: "从摄像头采集人脸数据标记为[ONE]",
+                    text: formatMessage({id:'facial_recognition.gather'}),
                     blockType: BlockType.COMMAND,
                     arguments: {
                         ONE: {
@@ -46,22 +42,22 @@ class Scratch3FacialRecognitionBlocks {
                 },
                 {
                     opcode: "recognizeFaces",
-                    text: "识别一次摄像头的人脸",
+                    text: formatMessage({id:'facial_recognition'}),
                     blockType: BlockType.COMMAND
                 },
                 {
                     opcode: "getFaceResult",
-                    text: "人脸识别结果",
+                    text: formatMessage({id:'facial_recognition.getFaceResult'}),
                     blockType: BlockType.REPORTER,
                 },
                 {
                     opcode: "getFaceReliability",
-                    text: "人脸识别结果可信度",
+                    text: formatMessage({id:'facial_recognition.getFaceReliability'}),
                     blockType: BlockType.REPORTER,
                 },
                 {
                     opcode: "faceTracking",
-                    text: "[ONE]人脸追踪",
+                    text: formatMessage({id:'facial_recognition.faceTracking'}),
                     blockType: BlockType.COMMAND,
                     arguments: {
                         ONE: {
@@ -73,12 +69,12 @@ class Scratch3FacialRecognitionBlocks {
                 },
                 {
                     opcode: "initFaceGender",
-                    text: "初始化性别识别",
+                    text: formatMessage({id:'facial_recognition.initFaceGender'}),
                     blockType: BlockType.COMMAND
                 },
                 {
                     opcode: "faceGender",
-                    text: "[ONE]识别性别",
+                    text: formatMessage({id:'facial_recognition.faceGender'}),
                     blockType: BlockType.COMMAND,
                     arguments: {
                         ONE: {
@@ -94,11 +90,11 @@ class Scratch3FacialRecognitionBlocks {
                     acceptReporters: true,
                     items: [
                         {
-                            text: "打开",
+                            text: formatMessage({id:'open'}),
                             value: "OPEN"
                         },
                         {
-                            text: "关闭",
+                            text: formatMessage({id:'close'}),
                             value: "CLOSE"
                         },
                     ]
