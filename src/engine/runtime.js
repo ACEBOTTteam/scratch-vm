@@ -414,6 +414,8 @@ class Runtime extends EventEmitter {
         this._initScratchLink();
 
         this.resetRunId();
+
+        this.videoEl = null
     }
 
     /**
@@ -2700,6 +2702,21 @@ class Runtime extends EventEmitter {
      */
     updateCurrentMSecs () {
         this.currentMSecs = Date.now();
+    }
+    /**
+     * 保存摄像头dom
+     * @param {Element} element 
+     */
+    keepVideoEl(element) {
+        this.videoEl = element
+    }
+
+    /**
+     * 获取摄像头dom
+     * @returns 摄像头dom
+     */
+    getVideoEl() {
+        return this.videoEl
     }
 }
 
