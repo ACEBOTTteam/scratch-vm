@@ -17,7 +17,7 @@ class scratch3GestureRecognition {
     getInfo() {
         return {
             id: "gestureRecognition",
-            name: '手势识别',
+            name: formatMessage({ id: "gestureRecognition" }),
             blockIconURL: iconURI,
             showStatusButton: false,
             blocks: [
@@ -35,7 +35,7 @@ class scratch3GestureRecognition {
                 },
                 {
                     opcode: "init",
-                    text: '手势识别服务器初始化 API Key[ONE]API Secret[TWO]',
+                    text: formatMessage({ id: "gestureRecognition.init" }),
                     blockType: BlockType.COMMAND,
                     arguments:{
                         ONE:{
@@ -50,12 +50,12 @@ class scratch3GestureRecognition {
                 },
                 {
                     opcode: "getGestureInfo",
-                    text: "识别手势",
+                    text: formatMessage({ id: "gestureRecognition.gesture.recognition" }),
                     blockType: BlockType.COMMAND,
                 },
                 {
                     opcode: "getProbability",
-                    text: "手势识别结果为[ONE]的概率",
+                    text: formatMessage({ id: "gestureRecognition.result" }),
                     blockType: BlockType.REPORTER,
                     arguments: {
                         ONE: {
@@ -71,79 +71,79 @@ class scratch3GestureRecognition {
                     acceptReporters: true,
                     items: [
                         {
-                            text: '比心 A',
+                            text: formatMessage({ id: "gestureRecognition.heart_a" }),
                             value: "heart_a"
                         },
                         {
-                            text: '比心 B',
+                            text: formatMessage({ id: "gestureRecognition.heart_b" }),
                             value: "heart_b"
                         },
                         {
-                            text: '比心 C',
+                            text: formatMessage({ id: "gestureRecognition.heart_c" }),
                             value: "heart_c"
                         },
                         {
-                            text: '比心 D',
+                            text: formatMessage({ id: "gestureRecognition.heart_d" }),
                             value: "heart_d"
                         },
                         {
-                            text: 'OK',
+                            text: formatMessage({ id: "gestureRecognition.OK" }),
                             value: "ok"
                         },
                         {
-                            text: '手张开',
+                            text: formatMessage({ id: "gestureRecognition.hand_open" }),
                             value: "hand_open"
                         },
                         {
-                            text: '点赞',
+                            text: formatMessage({ id: "gestureRecognition.thumb_up" }),
                             value: "thumb_up"
                         },
                         {
-                            text: '差评',
+                            text: formatMessage({ id: "gestureRecognition.thumb_down" }),
                             value: "thumb_down"
                         },
                         {
-                            text: 'ROCK',
+                            text: formatMessage({ id: "gestureRecognition.rock" }),
                             value: "rock"
                         },
                         {
-                            text: '合十',
+                            text: formatMessage({ id: "gestureRecognition.namaste" }),
                             value: "namaste"
                         },
                         {
-                            text: '手心向上',
+                            text: formatMessage({ id: "gestureRecognition.palm_up" }),
                             value: "palm_up"
                         },
                         {
-                            text: '握拳',
+                            text: formatMessage({ id: "gestureRecognition.fist" }),
                             value: "fist"
                         },
                         {
-                            text: '食指朝上',
+                            text: formatMessage({ id: "gestureRecognition.index_finger_up" }),
                             value: "index_finger_up"
                         },
                         {
-                            text: '双指朝上',
+                            text: formatMessage({ id: "gestureRecognition.double_finger_up" }),
                             value: "double_finger_up"
                         },
                         {
-                            text: '胜利',
+                            text: formatMessage({ id: "gestureRecognition.victory" }),
                             value: "victory"
                         },
                         {
-                            text: '大V',
+                            text: formatMessage({ id: "gestureRecognition.big_v" }),
                             value: "big_v"
                         },
                         {
-                            text: '打电话',
+                            text: formatMessage({ id: "gestureRecognition.phonecall" }),
                             value: "phonecall"
                         },
                         {
-                            text: '作揖',
+                            text: formatMessage({ id: "gestureRecognition.beg" }),
                             value: "beg"
                         },
                         {
-                            text: '感谢',
+                            text: formatMessage({ id: "gestureRecognition.thanks" }),
                             value: "thanks"
                         }
                     ]
