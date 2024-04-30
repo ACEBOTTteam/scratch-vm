@@ -15,18 +15,30 @@ class Scratch3KnnClassifier {
     getInfo() {
         return {
             id: "knnClassifier",
-            name: "机器学习",
+            name: formatMessage({ id: "knn.machine.learning" }),
             blockIconURL: iconURI,
             showStatusButton: false,
             blocks: [
                 {
+                    opcode: "openCamera",
+                    text: formatMessage({ id: 'facial_recognition.camera' }),
+                    blockType: BlockType.COMMAND,
+                    arguments: {
+                        ONE: {
+                            type: ArgumentType.STRING,
+                            menu: 'OPEN_CLOSE',
+                            defaultValue: 'OPEN'
+                        }
+                    }
+                },
+                {
                     opcode: "init",
-                    text: "初始化KNN分类器",
+                    text: formatMessage({ id: "knn.init" }),
                     blockType: BlockType.COMMAND,
                 },
                 {
                     opcode: "classify",
-                    text: "KNN将摄像头画面分类为[ONE]",
+                    text: formatMessage({ id: "knn.classify" }),
                     blockType: BlockType.COMMAND,
                     arguments: {
                         ONE: {
@@ -37,17 +49,17 @@ class Scratch3KnnClassifier {
                 },
                 {
                     opcode: "forecast",
-                    text: "KNN识别摄像头画面分类",
+                    text: formatMessage({ id: "knn.forecast" }),
                     blockType: BlockType.COMMAND,
                 },
                 {
                     opcode: "getResult",
-                    text: "KNN识别分类结果",
+                    text: formatMessage({ id: "knn.getResult" }),
                     blockType: BlockType.REPORTER,
                 },
                 {
                     opcode: "clearTag",
-                    text: "KNN清除分类标签[ONE]",
+                    text: formatMessage({ id: "knn.clearTag" }),
                     blockType: BlockType.COMMAND,
                     arguments: {
                         ONE: {
@@ -58,25 +70,49 @@ class Scratch3KnnClassifier {
                 },
                 {
                     opcode: "keepClasses",
-                    text: "KNN保存分类模型",
+                    text: formatMessage({ id: "knn.keepClasses" }),
                     blockType: BlockType.COMMAND,
                 },
                 {
                     opcode: "loadClasses",
-                    text: "KNN加载分类模型",
+                    text: formatMessage({ id: "knn.loadClasses" }),
                     blockType: BlockType.COMMAND,
                 },
                 {
                     opcode: "clearAll",
-                    text: "KNN清除分类模型数据",
+                    text: formatMessage({ id: "knn.clearAll" }),
                     blockType: BlockType.COMMAND,
                 },
                 {
                     opcode: "clearClassifier",
-                    text: "释放knn分类器",
+                    text: formatMessage({ id: "knn.clearClassifier" }),
                     blockType: BlockType.COMMAND,
                 },
-            ]
+            ],
+            menus: {
+                OPEN_CLOSE: {
+                    acceptReporters: true,
+                    items: [
+                        {
+                            text: formatMessage({ id: 'open' }),
+                            value: "OPEN"
+                        },
+                        {
+                            text: formatMessage({ id: 'close' }),
+                            value: "CLOSE"
+                        },
+                    ]
+                }
+            }
+        }
+    }
+
+    openCamera(args) {
+        console.log(args)
+        if ('OPEN' === args.ONE) {
+            this.runtime.vm.emit('openCamera')
+        } else {
+            this.runtime.vm.emit('closeCamera')
         }
     }
 

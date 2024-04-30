@@ -416,6 +416,8 @@ class Runtime extends EventEmitter {
         this.resetRunId();
 
         this.videoEl = null
+
+        this.currentLocale = null
     }
 
     /**
@@ -2717,6 +2719,30 @@ class Runtime extends EventEmitter {
      */
     getVideoEl() {
         return this.videoEl
+    }
+    
+    /**
+     * 设置当前语言环境
+     * @param {*} locale 
+     */
+    setCurrentLocale(locale) {
+        console.log(locale,'locale')
+        let language = locale
+        if(locale === 'zh-cn'){
+            language = 'zh_cn'
+        }else if(locale === 'zh-tw'){
+            language = 'zh_tw'
+        }
+        console.log(language,'language')
+        this.currentLocale = language
+    }
+
+    /**
+     * 获取当前语言环境
+     * @returns 
+     */
+    getCurrentLocale() {
+        return this.currentLocale
     }
 }
 

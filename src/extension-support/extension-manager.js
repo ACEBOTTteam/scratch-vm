@@ -3,8 +3,6 @@ const log = require('../util/log');
 const maybeFormatMessage = require('../util/maybe-format-message');
 
 const BlockType = require('./block-type');
-const Scratch3FacialRecognitionBlocks = require('../extensions/scratch3_facial_recognition')
-const Scratch3KnnClassifier = require('../extensions/scratch3_knn_classifier')
 
 // These extensions are currently built into the VM repository but should not be loaded at startup.
 // TODO: move these out into a separate repository?
@@ -27,7 +25,9 @@ const builtinExtensions = {
     boost: () => require('../extensions/scratch3_boost'),
     gdxfor: () => require('../extensions/scratch3_gdx_for'),
     facialRecognition: ()=>require('../extensions/scratch3_facial_recognition'),
-    knnClassifier: ()=>require('../extensions/scratch3_knn_classifier')
+    knnClassifier: ()=>require('../extensions/scratch3_knn_classifier'),
+    getWeather: ()=>require('../extensions/scratch3_get_weather'),
+    gestureRecognition: () => require('../extensions/scratch3_gesture_recognition')
 };
 
 /**

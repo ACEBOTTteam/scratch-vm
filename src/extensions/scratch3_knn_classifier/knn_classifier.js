@@ -12,10 +12,11 @@ class KnnClassifiers {
     }
 
     async knnInit() {
-        await this.runtime.vm.emit('getIsOpenCamera')
         tf.setBackend('webgl')
         this.classifier = knnClassifier.create();
+        console.log(this.classifier,'classifier')
         this.mobilenet = await mobilenetModule.load();
+        console.log(this.mobilenet,'this.mobilenet')
         console.log('初始化完成')
     }
 
@@ -54,16 +55,18 @@ class KnnClassifiers {
         this.classifier.dispose()
     }
 
-    keepClasses() {
-        const data = this.classifier.getClassifierDataset()
-        console.log(data, 'data')
-        const url = window.URL || window.webkitURL || window;
-        const blob = new Blob([JSON.stringify(data)]);
-        const saveLink = document.createElementNS('http://www.w3.org/1999/xhtml', 'a');
-        saveLink.href = url.createObjectURL(blob);
-        // 设置 download 属性
-        saveLink.download = 'dataset.json';
-        saveLink.click();
+    async keepClasses() {
+        // const data = this.classifier.getClassifierDataset()
+        // console.log(data, 'data')
+        // const url = window.URL || window.webkitURL || window;
+        // const blob = new Blob([JSON.stringify(data)]);
+        // const saveLink = document.createElementNS('http://www.w3.org/1999/xhtml', 'a');
+        // saveLink.href = url.createObjectURL(blob);
+        // // 设置 download 属性
+        // saveLink.download = 'dataset.json';
+        // saveLink.click();
+         const data =await this.mobilenet.model.save('downloads://my-model');
+         console.log(data,'data')
     }
 
     loadClasses() {
