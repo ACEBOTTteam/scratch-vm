@@ -20,7 +20,7 @@ class Scratch3RobotBlocks {
     getPrimitives() {
         return {
             homochromyLED: this.homochromyLED,
-            IR_Receiver_Module:this.IR_Receiver_Module,
+            IR_Receiver_Module: this.IR_Receiver_Module,
             LED_luminance: this.LED_luminance,
             Ultrasonic_Sensor: this.Ultrasonic_Sensor,
             DHT11_Humidity_Temperature_Sensor: this.DHT11_Humidity_Temperature_Sensor,
@@ -47,7 +47,7 @@ class Scratch3RobotBlocks {
             Water_Sensor: this.Water_Sensor,
             Digit_Tube_Display_Module_Number: this.Digit_Tube_Display_Module_Number,
             Digit_Tube_Display_Module_String: this.Digit_Tube_Display_Module_String,
-            BLDC:this.BLDC,
+            BLDC: this.BLDC,
             Color_Sensor_light: this.Color_Sensor_light,
             Color_Sensor_Colors: this.Color_Sensor_Colors,
             RFID_RC522_I2C_Module: this.RFID_RC522_I2C_Module,
@@ -60,12 +60,15 @@ class Scratch3RobotBlocks {
             MP3_Module_Play: this.MP3_Module_Play,
             MP3_Module_Volume: this.MP3_Module_Volume,
             MP3_Module_Playover: this.MP3_Module_Playover,
+            Voice_Recognition_Module_Init: this.Voice_Recognition_Module_Init,
             Voice_Recognition_Module: this.Voice_Recognition_Module,
             Relay_Module: this.Relay_Module,
             OLED_Set: this.OLED_Set,
             OLED_String: this.OLED_String,
             OLED_Number: this.OLED_Number,
-            OLED_Clear: this.OLED_Clear
+            OLED_Clear: this.OLED_Clear,
+            KEY_BOARD: this.KEY_BOARD,
+            Vibration: this.Vibration
         }
     }
 
@@ -74,7 +77,7 @@ class Scratch3RobotBlocks {
     }
 
     //红外接收模块
-    IR_Receiver_Module(args){
+    IR_Receiver_Module(args) {
         let code = `A30 ${args.PIN_LIST} ${args.PIN_TYPE}`
         let variable = readAnalogPin(code, 'boolean')
         window.electronAPI.clientSend('send', code + '\r\n')
@@ -245,7 +248,7 @@ class Scratch3RobotBlocks {
 
     //灯带
     async set_tape_lights(args) {
-        let color = args.COLOR.replace(/#/g, "");  
+        let color = args.COLOR.replace(/#/g, "");
         color = parseInt(color, 16)
         let code = `A18 ${args.PIN_LIST} ${args.COUNT} ${color}\r\n`
         await window.electronAPI.clientSend('send', code)
@@ -310,7 +313,7 @@ class Scratch3RobotBlocks {
 
     //BLDC
     async BLDC(args) {
-        console.log(args.PIN_LIST,args.SPEED,'args.SPEED')
+        console.log(args.PIN_LIST, args.SPEED, 'args.SPEED')
         let code = `A14 ${args.PIN_LIST} ${args.SPEED}\r\n`
         await window.electronAPI.clientSend('send', code)
     }
@@ -332,7 +335,7 @@ class Scratch3RobotBlocks {
     }
 
     async I2C_1602_LCD_Model(args) {
-        let code = `A24 ${args.LEFT} ${args.RIGHT} ${args.NUMBER*1000} ${args.STRING}\r\n`
+        let code = `A24 ${args.LEFT} ${args.RIGHT} ${args.NUMBER * 1000} ${args.STRING}\r\n`
         await window.electronAPI.clientSend('send', code)
     }
 
@@ -383,9 +386,14 @@ class Scratch3RobotBlocks {
     }
 
     //语音识别模块
+    async Voice_Recognition_Module_Init(args) {
+        let code = `A35 ${args.PIN_LIST_2}\r\n`
+        await window.electronAPI.clientSend('send', code)
+    }
+
     Voice_Recognition_Module(args) {
-        let code = `A31 ${args.PIN_LIST_1} ${args.PIN_LIST_2} ${args.TYPE}`
-        let variable = readAnalogPin(code, 'boolean')
+        let code = `A36 ${args.PIN_LIST_2}`
+        let variable = readAnalogPin(code, 'number')
         window.electronAPI.clientSend('send', code + '\r\n')
         return variable
     }
@@ -418,6 +426,20 @@ class Scratch3RobotBlocks {
     async OLED_Clear() {
         let code = `A22 0\r\n`
         await window.electronAPI.clientSend('send', code)
+    }
+
+    async KEY_BOARD(args) {
+        let code = `A33 ${args.PIN_LIST_1} ${args.PIN_LIST_2} ${args.PIN_LIST_3} ${args.PIN_LIST_4} ${args.PIN_LIST_5} ${args.PIN_LIST_6} ${args.PIN_LIST_7} ${args.PIN_LIST_8}`
+        let variable = readAnalogPin(code, 'string')
+        window.electronAPI.clientSend('send', code + '\r\n')
+        return variable
+    }
+
+    async Vibration(args) {
+        const code = `A34 ${args.PIN_LIST}`
+        let variable = readAnalogPin(code, 'boolean')
+        window.electronAPI.clientSend('send', code + '\r\n')
+        return variable
     }
 }
 

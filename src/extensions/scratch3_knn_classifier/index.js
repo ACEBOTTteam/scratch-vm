@@ -10,6 +10,7 @@ class Scratch3KnnClassifier {
         this.runtime = runtime
         this.knn = new KnnClassifiers(runtime, runtime.getVideoEl())
         this.name = null
+        this.resultPossibility = null
     }
 
     getInfo() {
@@ -55,6 +56,11 @@ class Scratch3KnnClassifier {
                 {
                     opcode: "getResult",
                     text: formatMessage({ id: "knn.getResult" }),
+                    blockType: BlockType.REPORTER,
+                },
+                {
+                    opcode: "getPossibility",
+                    text: '识别结果的可能性',
                     blockType: BlockType.REPORTER,
                 },
                 {
@@ -128,6 +134,7 @@ class Scratch3KnnClassifier {
     async forecast() {
         const data = await this.knn.knnForecast()
         this.name = data.label
+        this.resultPossibility = data.confidences[data.label]
         return 'success'
     }
 
@@ -147,6 +154,10 @@ class Scratch3KnnClassifier {
 
     getResult() {
         return this.name
+    }
+
+    getPossibility() {
+        return this.resultPossibility
     }
 
     keepClasses() {

@@ -166,7 +166,6 @@ class scratch3GestureRecognition {
     }
 
     openCamera(args) {
-        console.log(args)
         if ('OPEN' === args.ONE) {
             this.runtime.vm.emit('openCamera')
         } else {
@@ -176,8 +175,8 @@ class scratch3GestureRecognition {
 
 
     init(args) {
-        this.Key = args[ONE]
-        this.Secret = args[TOW]
+        this.Key = args.ONE
+        this.Secret = args.TWO
     }
 
     async getGestureInfo() {
@@ -188,7 +187,6 @@ class scratch3GestureRecognition {
         if(!isOpen){
             return
         }
-        console.log('打开视频')
         let base64 = ''
         //获取当前摄像头画面
         const canvas = await html2canvas(this.video)

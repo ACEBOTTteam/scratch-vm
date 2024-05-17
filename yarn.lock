@@ -1703,17 +1703,7 @@
   resolved "https://registry.npmmirror.com/@sindresorhus/is/-/is-0.7.0.tgz#9a06f4f137ee84d7df0460c1fdb1135ffa6c50fd"
   integrity sha512-ONhaKPIufzzrlNbqtWFFd+jlnemX6lJAgq9ZeiZtS7I1PIf/la7CW4m83rTXRnVnsMbW2k56pGYu7AUFJD9Pow==
 
-"@tensorflow-models/knn-classifier@^1.2.6":
-  version "1.2.6"
-  resolved "https://registry.npmmirror.com/@tensorflow-models/knn-classifier/-/knn-classifier-1.2.6.tgz#fd6ab7c396bfdf27794b8ee213b8dde834c2f99a"
-  integrity sha512-68RG9y70bFF0qYFpF+4bGaalAiEqz54v1qBmiSo3XODJq8Bow9EcDeAQBGPz6Bxiz6VQlZOdg29xiYm8N/a2Tw==
-
-"@tensorflow-models/mobilenet@^2.1.1":
-  version "2.1.1"
-  resolved "https://registry.npmmirror.com/@tensorflow-models/mobilenet/-/mobilenet-2.1.1.tgz#5b02c3e99a19534e3b303f57dccf31f85fec7683"
-  integrity sha512-tv4s4UFzG74PkIwl4gT64AyRnCcNUq+s8wSzge+LN/Puc1VUuInZghrobvpNlWjZtVi1x1d1NsBD//TfOr2ssA==
-
-"@tensorflow/tfjs-backend-cpu@4.17.0", "@tensorflow/tfjs-backend-cpu@^4.17.0":
+"@tensorflow/tfjs-backend-cpu@4.17.0":
   version "4.17.0"
   resolved "https://registry.npmmirror.com/@tensorflow/tfjs-backend-cpu/-/tfjs-backend-cpu-4.17.0.tgz#b0c495de686cf700f2ae1f6d8bc2eb6f1964d250"
   integrity sha512-2VSCHnX9qhYTjw9HiVwTBSnRVlntKXeBlK7aSVsmZfHGwWE2faErTtO7bWmqNqw0U7gyznJbVAjlow/p+0RNGw==
@@ -1731,12 +1721,12 @@
     "@types/seedrandom" "^2.4.28"
     seedrandom "^3.0.5"
 
-"@tensorflow/tfjs-converter@4.17.0", "@tensorflow/tfjs-converter@^4.17.0":
+"@tensorflow/tfjs-converter@4.17.0":
   version "4.17.0"
   resolved "https://registry.npmmirror.com/@tensorflow/tfjs-converter/-/tfjs-converter-4.17.0.tgz#f4407bd53d5e300b05ed0b0f068506bc50c956b0"
   integrity sha512-qFxIjPfomCuTrYxsFjtKbi3QfdmTTCWo+RvqD64oCMS0sjp7sUDNhJyKDoLx6LZhXlwXpHIVDJctLMRMwet0Zw==
 
-"@tensorflow/tfjs-core@4.17.0", "@tensorflow/tfjs-core@^4.17.0":
+"@tensorflow/tfjs-core@4.17.0":
   version "4.17.0"
   resolved "https://registry.npmmirror.com/@tensorflow/tfjs-core/-/tfjs-core-4.17.0.tgz#1ea128555a4d197aed417d70461fcbc7eaec635f"
   integrity sha512-v9Q5430EnRpyhWNd9LVgXadciKvxLiq+sTrLKRowh26BHyAsams4tZIgX3lFKjB7b90p+FYifVMcqLTTHgjGpQ==

@@ -5,37 +5,35 @@ const readAnalogPin = (command, type) => {
             let data = args.data
             const decoder = new TextDecoder();
             data = decoder.decode(data);
-            item.push(data.trim())
+            if(data.trim()){
+                item.push(data.trim())
+            }
             //以\r\n为结尾，视为一段语句
             if (data.endsWith('\r\n')) {
                 item = item.join(' ')
-                let arr = item.split(' ')
-                item = ['']
-                //拆分为三段
-                arr.forEach((element, index) => {
-                    if (index < arr.length - 2) {
-                        item[0] += element + ' '
-                    } else {
-                        item.push(element)
-                    }
-                });
-                item[0] = item[0].trim()
-                //判断第一句是否与发送的命令一致
-                if (item[0] === command) {
-                    const returnValue = item[item.length - 2].trim()
+                //查找命令位置
+                let startIndex = item.indexOf(command)
+                //查找'OK'位置
+                let endIndex = item.indexOf('OK')
+                //判断是否存在
+                if(-1!==startIndex&&-1!==endIndex){
+                    //截取命令和OK之前的字符
+                    let subStr = item.substring(startIndex + command.length, endIndex);
+                    //清除两边空格
+                    subStr = subStr.trim()
                     switch (type) {
                         case 'number':
-                            resolve(Number(returnValue))
+                            resolve(Number(subStr))
                             break;
                         case 'boolean':
-                            let boolean = '0' === returnValue ? true : false
+                            let boolean = '0' === subStr ? true : false
                             resolve(boolean)
                             break;
                         default:
-                            resolve(returnValue)
+                            resolve(subStr)
                             break;
                     }
-                } else {
+                }else{
                     resolve()
                 }
                 window.electronAPI.closeUpdateGetDate()
