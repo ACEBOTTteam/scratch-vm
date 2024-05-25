@@ -16,7 +16,7 @@ const readAnalogPin = (command, type) => {
                 //查找'OK'位置
                 let endIndex = item.indexOf('OK')
                 //判断是否存在
-                if(-1!==startIndex&&-1!==endIndex){
+                if(-1!==startIndex&&-1!==endIndex&&startIndex<endIndex){
                     //截取命令和OK之前的字符
                     let subStr = item.substring(startIndex + command.length, endIndex);
                     //清除两边空格

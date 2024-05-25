@@ -68,7 +68,9 @@ class Scratch3RobotBlocks {
             OLED_Number: this.OLED_Number,
             OLED_Clear: this.OLED_Clear,
             KEY_BOARD: this.KEY_BOARD,
-            Vibration: this.Vibration
+            Vibration: this.Vibration,
+            InfraredProximity:this.InfraredProximity,
+            TrafficLight:this.TrafficLight
         }
     }
 
@@ -414,12 +416,12 @@ class Scratch3RobotBlocks {
     }
 
     async OLED_String(args) {
-        let code = `A21 ${args.X} ${args.X} ${args.STRING}\r\n`
+        let code = `A21 ${args.X} ${args.Y} ${args.STRING}\r\n`
         await window.electronAPI.clientSend('send', code)
     }
 
     async OLED_Number(args) {
-        let code = `A21 ${args.X} ${args.X} ${args.NUMBER}\r\n`
+        let code = `A21 ${args.X} ${args.Y} ${args.NUMBER}\r\n`
         await window.electronAPI.clientSend('send', code)
     }
 
@@ -428,6 +430,7 @@ class Scratch3RobotBlocks {
         await window.electronAPI.clientSend('send', code)
     }
 
+    //矩阵键盘
     async KEY_BOARD(args) {
         let code = `A33 ${args.PIN_LIST_1} ${args.PIN_LIST_2} ${args.PIN_LIST_3} ${args.PIN_LIST_4} ${args.PIN_LIST_5} ${args.PIN_LIST_6} ${args.PIN_LIST_7} ${args.PIN_LIST_8}`
         let variable = readAnalogPin(code, 'string')
@@ -435,11 +438,25 @@ class Scratch3RobotBlocks {
         return variable
     }
 
+    //震动传感器
     async Vibration(args) {
         const code = `A34 ${args.PIN_LIST}`
         let variable = readAnalogPin(code, 'boolean')
         window.electronAPI.clientSend('send', code + '\r\n')
         return variable
+    }
+
+    //红外避障
+    async InfraredProximity(args) {
+        let code = `A1 ${args.PIN}`
+        let variable = readAnalogPin(code, 'boolean')
+        window.electronAPI.clientSend('send', code + '\r\n')
+        return variable
+    }
+
+    async TrafficLight(args) {
+        let code = `A37 ${args.PIN1} ${args.PIN2} ${args.PIN3} ${'open'===args.RED_SWITCH?1:0} ${'open'===args.YELLOW_SWITCH?1:0} ${'open'===args.GREEN_SWITCH?1:0}\r\n`
+        await window.electronAPI.clientSend('send', code)
     }
 }
 
