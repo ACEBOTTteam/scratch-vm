@@ -66,11 +66,15 @@ class Scratch3RobotBlocks {
             OLED_Set: this.OLED_Set,
             OLED_String: this.OLED_String,
             OLED_Number: this.OLED_Number,
+            OLED_INIT:this.OLED_INIT,
+            OLED_SHOW:this.OLED_SHOW,
             OLED_Clear: this.OLED_Clear,
             KEY_BOARD: this.KEY_BOARD,
             Vibration: this.Vibration,
             InfraredProximity:this.InfraredProximity,
-            TrafficLight:this.TrafficLight
+            TrafficLight:this.TrafficLight,
+            TOUCH_BOARD:this.TOUCH_BOARD,
+            GET_NOW_TIME:this.GET_NOW_TIME
         }
     }
 
@@ -425,14 +429,32 @@ class Scratch3RobotBlocks {
         await window.electronAPI.clientSend('send', code)
     }
 
+    async OLED_INIT() {
+        let code = `A40\r\n`
+        await window.electronAPI.clientSend('send', code)
+    }
+
+    async OLED_SHOW() {
+        let code = `A39\r\n`
+        await window.electronAPI.clientSend('send', code)
+    }
+
     async OLED_Clear() {
-        let code = `A22 0\r\n`
+        let code = `A22\r\n`
         await window.electronAPI.clientSend('send', code)
     }
 
     //矩阵键盘
     async KEY_BOARD(args) {
         let code = `A33 ${args.PIN_LIST_1} ${args.PIN_LIST_2} ${args.PIN_LIST_3} ${args.PIN_LIST_4} ${args.PIN_LIST_5} ${args.PIN_LIST_6} ${args.PIN_LIST_7} ${args.PIN_LIST_8}`
+        let variable = readAnalogPin(code, 'string')
+        window.electronAPI.clientSend('send', code + '\r\n')
+        return variable
+    }
+
+    //触摸键盘
+    TOUCH_BOARD(){
+        let code = `A38`
         let variable = readAnalogPin(code, 'string')
         window.electronAPI.clientSend('send', code + '\r\n')
         return variable
@@ -454,9 +476,18 @@ class Scratch3RobotBlocks {
         return variable
     }
 
+    //交通信号灯
     async TrafficLight(args) {
         let code = `A37 ${args.PIN1} ${args.PIN2} ${args.PIN3} ${'open'===args.RED_SWITCH?1:0} ${'open'===args.YELLOW_SWITCH?1:0} ${'open'===args.GREEN_SWITCH?1:0}\r\n`
         await window.electronAPI.clientSend('send', code)
+    }
+
+    //获取主板时间
+    async GET_NOW_TIME(){
+        let code = `A41`
+        let variable = readAnalogPin(code, 'number')
+        window.electronAPI.clientSend('send', code + '\r\n')
+        return variable
     }
 }
 

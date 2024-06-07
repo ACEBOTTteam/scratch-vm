@@ -27,7 +27,9 @@ const builtinExtensions = {
     facialRecognition: ()=>require('../extensions/scratch3_facial_recognition'),
     knnClassifier: ()=>require('../extensions/scratch3_knn_classifier'),
     getWeather: ()=>require('../extensions/scratch3_get_weather'),
-    gestureRecognition: () => require('../extensions/scratch3_gesture_recognition')
+    gestureRecognition: () => require('../extensions/scratch3_gesture_recognition'),
+    fourLeggedBionicSpider: () => require('../extensions/scratch3_spider_robot'),
+    carMotor: () => require('../extensions/scratch_car_motor'),
 };
 
 /**
