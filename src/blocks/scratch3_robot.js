@@ -182,8 +182,11 @@ class Scratch3RobotBlocks {
 
     //SG90舵机模块
     async SG90_Module(args) {
-        let code = `A8 ${args.PIN_LIST} ${args.ANGLE}\r\n`
-        await window.electronAPI.clientSend('send', code)
+        let code = `A8 ${args.PIN_LIST} ${args.ANGLE}`
+
+        let variable = readAnalogPin(code, 'string')
+        window.electronAPI.clientSend('send', code + '\r\n')
+        return variable
     }
 
     //激光模块

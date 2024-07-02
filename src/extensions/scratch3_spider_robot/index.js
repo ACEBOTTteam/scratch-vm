@@ -13,13 +13,13 @@ class Scratch3SpiderRobot {
     getInfo() {
         return {
             id: "fourLeggedBionicSpider",
-            name: '四足仿生蜘蛛',
+            name: formatMessage({ id: 'fourLeggedBionicSpider.categoryName' }),
             blockIconURL: iconURI,
             showStatusButton: false,
             blocks: [
                 {
                     opcode: "spiderInit",
-                    text: '蜘蛛[ONE]初始化',
+                    text: formatMessage({ id: 'fourLeggedBionicSpider.init' }),
                     blockType: BlockType.COMMAND,
                     arguments: {
                         ONE: {
@@ -31,7 +31,7 @@ class Scratch3SpiderRobot {
                 },
                 {
                     opcode: "spiderMove",
-                    text: '向[ONE]运动',
+                    text: formatMessage({ id: 'fourLeggedBionicSpider.spiderMove' }),
                     blockType: BlockType.COMMAND,
                     arguments: {
                         ONE: {
@@ -43,7 +43,7 @@ class Scratch3SpiderRobot {
                 },
                 {
                     opcode: "spiderMode",
-                    text: '启动[ONE]模式',
+                    text: formatMessage({ id: 'fourLeggedBionicSpider.spiderMode' }),
                     blockType: BlockType.COMMAND,
                     arguments: {
                         ONE: {
@@ -55,7 +55,7 @@ class Scratch3SpiderRobot {
                 },
                 {
                     opcode: "spiderExecute",
-                    text: '蜘蛛运动',
+                    text: formatMessage({ id: 'fourLeggedBionicSpider.spiderExecute' }),
                     blockType: BlockType.CONDITIONAL,
                     arguments: {
                         ONE: {
@@ -66,47 +66,54 @@ class Scratch3SpiderRobot {
                 },
                 {
                     opcode: "spiderGetInstruct",
-                    text: '蜘蛛获取指令',
-                    blockType: BlockType.REPORTER
+                    text: formatMessage({ id: 'fourLeggedBionicSpider.spiderGetInstruct' }),
+                    blockType: BlockType.BOOLEAN,
+                    arguments: {
+                        ONE: {
+                            type: ArgumentType.STRING,
+                            menu: 'MODE_ITEM',
+                            defaultValue: 'front'
+                        }
+                    }
                 }
             ],
             menus: {
                 DIRECTION: {
                     items: [
                         {
-                            text: '前',
+                            text: formatMessage({ id: 'carMotor.front' }),
                             value: "front"
                         },
                         {
-                            text: '后',
+                            text: formatMessage({ id: 'carMotor.back' }),
                             value: "back"
                         },
                         {
-                            text: '左',
+                            text: formatMessage({ id: 'carMotor.left' }),
                             value: "left"
                         },
                         {
-                            text: '右',
+                            text: formatMessage({ id: 'carMotor.right' }),
                             value: "right"
                         },
                         {
-                            text: '顺时针',
+                            text: formatMessage({ id: 'carMotor.clockwise' }),
                             value: "clockwise"
                         },
                         {
-                            text: '逆时针',
+                            text: formatMessage({ id: 'carMotor.anticlockwise' }),
                             value: "anticlockwise"
                         }
-                    ]
+                    ],
                 },
                 INITSELECT: {
                     items: [
                         {
-                            text: "网络",
+                            text: formatMessage({ id: 'fourLeggedBionicSpider.tcp' }),
                             value: "tcp"
                         },
                         {
-                            text: "串口",
+                            text: formatMessage({ id: 'fourLeggedBionicSpider.uart' }),
                             value: "uart"
                         },
                     ]
@@ -114,43 +121,107 @@ class Scratch3SpiderRobot {
                 MODE: {
                     items: [
                         {
-                            text: '待机',
+                            text: formatMessage({ id: 'fourLeggedBionicSpider.standby' }),
                             value: "standby"
                         },
                         {
-                            text: '趴地',
+                            text: formatMessage({ id: 'fourLeggedBionicSpider.lying' }),
                             value: "lying"
                         },
                         {
-                            text: '睡眠',
+                            text: formatMessage({ id: 'fourLeggedBionicSpider.sleep' }),
                             value: "sleep"
                         },
                         {
-                            text: '打招呼',
+                            text: formatMessage({ id: 'fourLeggedBionicSpider.greet' }),
                             value: "greet"
                         },
                         {
-                            text: '俯卧撑',
+                            text: formatMessage({ id: 'fourLeggedBionicSpider.pushup' }),
                             value: "pushup"
                         },
                         {
-                            text: '战斗',
+                            text: formatMessage({ id: 'fourLeggedBionicSpider.fighting' }),
                             value: "fighting"
                         },
                         {
-                            text: '跳舞',
+                            text: formatMessage({ id: 'fourLeggedBionicSpider.dancing' }),
                             value: "dancing"
                         },
                         {
-                            text: '摇摆',
+                            text: formatMessage({ id: 'fourLeggedBionicSpider.swing' }),
                             value: "swing"
                         },
                         {
-                            text: '耍帅',
+                            text: formatMessage({ id: 'fourLeggedBionicSpider.handsome' }),
                             value: "handsome"
                         },
                     ]
                 },
+                MODE_ITEM: {
+                    items: [
+                        {
+                            text: formatMessage({ id: 'carMotor.front' }),
+                            value: "front"
+                        },
+                        {
+                            text: formatMessage({ id: 'carMotor.back' }),
+                            value: "back"
+                        },
+                        {
+                            text: formatMessage({ id: 'carMotor.left' }),
+                            value: "left"
+                        },
+                        {
+                            text: formatMessage({ id: 'carMotor.right' }),
+                            value: "right"
+                        },
+                        {
+                            text: formatMessage({ id: 'carMotor.clockwise' }),
+                            value: "clockwise"
+                        },
+                        {
+                            text: formatMessage({ id: 'carMotor.anticlockwise' }),
+                            value: "anticlockwise"
+                        },
+                        {
+                            text: formatMessage({ id: 'fourLeggedBionicSpider.standby' }),
+                            value: "standby"
+                        },
+                        {
+                            text: formatMessage({ id: 'fourLeggedBionicSpider.lying' }),
+                            value: "lying"
+                        },
+                        {
+                            text: formatMessage({ id: 'fourLeggedBionicSpider.sleep' }),
+                            value: "sleep"
+                        },
+                        {
+                            text: formatMessage({ id: 'fourLeggedBionicSpider.greet' }),
+                            value: "greet"
+                        },
+                        {
+                            text: formatMessage({ id: 'fourLeggedBionicSpider.pushup' }),
+                            value: "pushup"
+                        },
+                        {
+                            text: formatMessage({ id: 'fourLeggedBionicSpider.fighting' }),
+                            value: "fighting"
+                        },
+                        {
+                            text: formatMessage({ id: 'fourLeggedBionicSpider.dancing' }),
+                            value: "dancing"
+                        },
+                        {
+                            text: formatMessage({ id: 'fourLeggedBionicSpider.swing' }),
+                            value: "swing"
+                        },
+                        {
+                            text: formatMessage({ id: 'fourLeggedBionicSpider.handsome' }),
+                            value: "handsome"
+                        }
+                    ]
+                }
             }
         }
     }
