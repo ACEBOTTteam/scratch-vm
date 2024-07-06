@@ -161,19 +161,19 @@ class Scratch3SpiderRobot {
                 MODE_ITEM: {
                     items: [
                         {
-                            text: formatMessage({ id: 'carMotor.front' }),
+                            text: formatMessage({ id: 'carMotor.forward' }),
                             value: "front"
                         },
                         {
-                            text: formatMessage({ id: 'carMotor.back' }),
+                            text: formatMessage({ id: 'carMotor.backward' }),
                             value: "back"
                         },
                         {
-                            text: formatMessage({ id: 'carMotor.left' }),
+                            text: formatMessage({ id: 'carMotor.leftMove' }),
                             value: "left"
                         },
                         {
-                            text: formatMessage({ id: 'carMotor.right' }),
+                            text: formatMessage({ id: 'carMotor.rightMove' }),
                             value: "right"
                         },
                         {

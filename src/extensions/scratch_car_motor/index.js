@@ -4,81 +4,6 @@ const BlockType = require('../../extension-support/block-type');
 
 const iconURI = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAMAAAC5zwKfAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAACpQTFRF////fIel5ufolZ62/2YavsPS+YZOkJmy9/j53+Hk6+zs6N/b6dfO////tDhMHAAAAA50Uk5T/////////////////wBFwNzIAAAA6ElEQVR42uzX2w6DIBAEUGDVtlr//3dLaLwgiwUd2z7MJPJg5EQWiGhGcAxBggQJEiT436CIfqXJPTn3MKNYYMSDFpoAmp24OaYgvwKnFgL2zvVTCwHrMoMi+nUQLFthaNCCa0iwclLkDgYVsQp0mzxuqXgK1MRzoCLWgkPXNN2wI/q6Kvt7u/cX0HtejN8x2sXpnpb8J8D3b0Keuhh3X975M+i0xNVbg3s1TIasgK21bQyGO+s2PykaGMYbge8KrNrssvkOWDXkErB8UuBHETjoYLkKBA8ZfuDkbwVBggQJEiR4MC8BBgDTtMZLx2nFCQAAAABJRU5ErkJggg==';
 
-const msg = {
-    DIRECTION: [
-        {
-            text: formatMessage({ id: 'carMotor.front' }),
-            value: "forward"
-        },
-        {
-            text: formatMessage({ id: 'carMotor.back' }),
-            value: "backward"
-        },
-        {
-            text: formatMessage({ id: 'carMotor.left' }),
-            value: "left"
-        },
-        {
-            text: formatMessage({ id: 'carMotor.right' }),
-            value: "right"
-        },
-        // {
-        //     text: formatMessage({ id: 'carMotor.lf' }),
-        //     value: "leftUp"
-        // },
-        // {
-        //     text: formatMessage({ id: 'carMotor.lr' }),
-        //     value: "leftDown"
-        // },
-        // {
-        //     text: formatMessage({ id: 'carMotor.rf' }),
-        //     value: "rightUp"
-        // },
-        // {
-        //     text: formatMessage({ id: 'carMotor.rr' }),
-        //     value: "rightDown"
-        // },
-        {
-            text: formatMessage({ id: 'carMotor.clockwise' }),
-            value: "clockwise"
-        },
-        {
-            text: formatMessage({ id: 'carMotor.anticlockwise' }),
-            value: "anticlockwise"
-        }
-    ],
-    CARMODE: [
-        {
-            text: formatMessage({ id: 'carMotor.move' }),
-            value: "move"
-        },
-        {
-            text: 'LED',
-            value: "led"
-        },
-        {
-            text: formatMessage({ id: 'carMotor.buzzer' }),
-            value: "buzzer"
-        },
-        {
-            text: formatMessage({ id: 'carMotor.roundTrack' }),
-            value: "roundTrack"
-        },
-        {
-            text: formatMessage({ id: 'carMotor.8track' }),
-            value: "8track"
-        },
-        {
-            text: formatMessage({ id: 'carMotor.avoidance' }),
-            value: "avoidance"
-        },
-        {
-            text: formatMessage({ id: 'carMotor.follow' }),
-            value: "follow"
-        }
-    ]
-}
-
 class Scratch3CarMotor {
     constructor(runtime) {
         this.runtime = runtime
@@ -173,20 +98,113 @@ class Scratch3CarMotor {
             ],
             menus: {
                 DIRECTION: {
-                    items: msg.DIRECTION
+                    items: [
+                        {
+                            text: formatMessage({ id: 'carMotor.front' }),
+                            value: "forward"
+                        },
+                        {
+                            text: formatMessage({ id: 'carMotor.back' }),
+                            value: "backward"
+                        },
+                        {
+                            text: formatMessage({ id: 'carMotor.left' }),
+                            value: "left"
+                        },
+                        {
+                            text: formatMessage({ id: 'carMotor.right' }),
+                            value: "right"
+                        },
+                        // {
+                        //     text: formatMessage({ id: 'carMotor.lf' }),
+                        //     value: "leftUp"
+                        // },
+                        // {
+                        //     text: formatMessage({ id: 'carMotor.lr' }),
+                        //     value: "leftDown"
+                        // },
+                        // {
+                        //     text: formatMessage({ id: 'carMotor.rf' }),
+                        //     value: "rightUp"
+                        // },
+                        // {
+                        //     text: formatMessage({ id: 'carMotor.rr' }),
+                        //     value: "rightDown"
+                        // },
+                        {
+                            text: formatMessage({ id: 'carMotor.clockwise' }),
+                            value: "clockwise"
+                        },
+                        {
+                            text: formatMessage({ id: 'carMotor.anticlockwise' }),
+                            value: "anticlockwise"
+                        }
+                    ]
                 },
                 CARMODE: {
-                    items: msg.CARMODE
+                    items: [
+                        {
+                            text: formatMessage({ id: 'carMotor.move.value' }),
+                            value: "move"
+                        },
+                        {
+                            text: 'LED',
+                            value: "led"
+                        },
+                        {
+                            text: formatMessage({ id: 'carMotor.buzzer' }),
+                            value: "buzzer"
+                        },
+                        {
+                            text: formatMessage({ id: 'carMotor.roundTrack' }),
+                            value: "roundTrack"
+                        },
+                        {
+                            text: formatMessage({ id: 'carMotor.8track' }),
+                            value: "8track"
+                        },
+                        {
+                            text: formatMessage({ id: 'carMotor.avoidance' }),
+                            value: "avoidance"
+                        },
+                        {
+                            text: formatMessage({ id: 'carMotor.follow' }),
+                            value: "follow"
+                        }
+                    ]
                 },
                 CARTYPE: {
                     items: [
-                        ...msg.DIRECTION,
+                        {
+                            text: formatMessage({ id: 'carMotor.forward' }),
+                            value: "forward"
+                        },
+                        {
+                            text: formatMessage({ id: 'carMotor.backward' }),
+                            value: "backward"
+                        },
+                        {
+                            text: formatMessage({ id: 'carMotor.leftMove' }),
+                            value: "left"
+                        },
+                        {
+                            text: formatMessage({ id: 'carMotor.rightMove' }),
+                            value: "right"
+                        },
+                        {
+                            text: formatMessage({ id: 'carMotor.clockwise' }),
+                            value: "clockwise"
+                        },
+                        {
+                            text: formatMessage({ id: 'carMotor.anticlockwise' }),
+                            value: "anticlockwise"
+                        },
                         {
                             text: formatMessage({ id: 'carMotor.speed' }),
                             value: "speed"
                         },
                         {
-                            text: formatMessage({ id: 'carMotor.stop' }),
+                            text: formatMessage({ id: 'carMotor.move.stop' }),
                             value: "stop"
                         },
                         {
