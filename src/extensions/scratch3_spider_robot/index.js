@@ -54,17 +54,6 @@ class Scratch3SpiderRobot {
                     }
                 },
                 {
-                    opcode: "spiderExecute",
-                    text: formatMessage({ id: 'fourLeggedBionicSpider.spiderExecute' }),
-                    blockType: BlockType.CONDITIONAL,
-                    arguments: {
-                        ONE: {
-                            type: ArgumentType.STRING,
-                            defaultValue: 'callback'
-                        },
-                    }
-                },
-                {
                     opcode: "spiderGetInstruct",
                     text: formatMessage({ id: 'fourLeggedBionicSpider.spiderGetInstruct' }),
                     blockType: BlockType.BOOLEAN,
@@ -75,7 +64,18 @@ class Scratch3SpiderRobot {
                             defaultValue: 'front'
                         }
                     }
-                }
+                },
+                {
+                    opcode: "spiderExecute",
+                    text: formatMessage({ id: 'fourLeggedBionicSpider.spiderExecute' }),
+                    blockType: BlockType.CONDITIONAL,
+                    arguments: {
+                        ONE: {
+                            type: ArgumentType.STRING,
+                            defaultValue: 'callback'
+                        },
+                    }
+                },
             ],
             menus: {
                 DIRECTION: {

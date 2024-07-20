@@ -68,17 +68,6 @@ class Scratch3CarMotor {
                     blockType: BlockType.COMMAND,
                 },
                 {
-                    opcode: "spiderExecute",
-                    text: formatMessage({ id: 'carMotor.run' }),
-                    blockType: BlockType.CONDITIONAL,
-                    arguments: {
-                        ONE: {
-                            type: ArgumentType.STRING,
-                            defaultValue: 'callback'
-                        },
-                    }
-                },
-                {
                     opcode: "carGetInstruct",
                     text: formatMessage({ id: 'carMotor.carGetInstruct' }),
                     blockType: BlockType.BOOLEAN,
@@ -88,6 +77,17 @@ class Scratch3CarMotor {
                             menu: 'CARTYPE',
                             defaultValue: 'forward'
                         }
+                    }
+                },
+                {
+                    opcode: "spiderExecute",
+                    text: formatMessage({ id: 'carMotor.run' }),
+                    blockType: BlockType.CONDITIONAL,
+                    arguments: {
+                        ONE: {
+                            type: ArgumentType.STRING,
+                            defaultValue: 'callback'
+                        },
                     }
                 },
                 {
