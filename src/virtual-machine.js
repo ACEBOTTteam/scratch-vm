@@ -321,6 +321,34 @@ class VirtualMachine extends EventEmitter {
             // input should be parsed/validated as an entire project (and not a single sprite)
             validate(input, false, (error, res) => {
                 if (error) return reject(error);
+                console.log(res,'llllll')
+                let mainBoard = "ESP32"
+                let scratchMode = "realTime"
+                let programLanguage = "arduino"
+                if(typeof input === 'string'){
+                    mainBoard = this.runtime.getMainboard()
+                    scratchMode = this.runtime.isRealtimeMode()
+                    programLanguage = this.runtime.getProgramLanguage()
+                }else{
+                    if(res[0].mainboard){
+                        if('esp32'===res[0].mainboard){
+                            mainBoard = 'ESP32'
+                        }else if('esp8266'===res[0].mainboard){
+                            mainBoard = 'ESP8266'
+                        }else{
+                            mainBoard = res[0].mainboard
+                        }
+                    }
+
+                    if(res[0].scratchMode){
+                        scratchMode = res[0].scratchMode
+                    }
+                    
+                    if(res[0].programLanguage){
+                        programLanguage = res[0].programLanguage
+                    }
+                }
+                this.emit('SETMAINBOARD',{mainBoard,scratchMode,programLanguage} );
                 resolve(res);
             });
         })
@@ -1159,9 +1187,10 @@ class VirtualMachine extends EventEmitter {
      *     updated for a new locale (or empty if locale hasn't changed.)
      */
     setLocale (locale, messages) {
-        if (locale !== formatMessage.setup().locale) {
+        console.log(locale,formatMessage.setup().locale,'语言环境对比')
+        // if (locale !== formatMessage.setup().locale) {
             formatMessage.setup({locale: locale, translations: {[locale]: messages}});
-        }
+        // }
         return this.extensionManager.refreshBlocks();
     }
 

@@ -39,13 +39,13 @@ class Scratch3MechanicalArm {
     getInfo() {
         return {
             id: "mechanicalArm",
-            name: "机械臂",
+            name: formatMessage({ id: 'ROBOT_ARM'}),
             blockIconURL: iconURI,
             showStatusButton: false,
             blocks: [
                 {
                     opcode: "openArmWebServer",
-                    text: "启动机械臂[ONE]服务",
+                    text: formatMessage({ id: 'ROBOT_ARM_START_SERVE'}),
                     blockType: BlockType.COMMAND,
                     arguments: {
                         ONE: {
@@ -57,34 +57,46 @@ class Scratch3MechanicalArm {
                 },
                 {
                     opcode: "armInit",
-                    text: "机械臂初始化 chassis[ONE]shoulder[TWO]elbow[THREE]claws[FOUR]",
+                    text: formatMessage({ id: 'ROBOT_ARM_INIT'}),
                     blockType: BlockType.COMMAND,
                     arguments: {
                         ONE: {
                             type: ArgumentType.STRING,
                             menu: "SERVO_PIN",
-                            defaultValue: "4"
+                            defaultValue: "5"
                         },
                         TWO: {
                             type: ArgumentType.STRING,
                             menu: "SERVO_PIN",
-                            defaultValue: "4"
+                            defaultValue: "16"
                         },
                         THREE: {
                             type: ArgumentType.STRING,
                             menu: "SERVO_PIN",
-                            defaultValue: "4"
+                            defaultValue: "17"
                         },
                         FOUR: {
                             type: ArgumentType.STRING,
                             menu: "SERVO_PIN",
-                            defaultValue: "4"
+                            defaultValue: "18"
                         },
                     }
                 },
                 {
+                    opcode: "armAction",
+                    text: formatMessage({ id: 'ROBOT_ARM_ACTION'}),
+                    blockType: BlockType.COMMAND,
+                    arguments: {
+                        ONE: {
+                            type: ArgumentType.STRING,
+                            menu: "ACTION",
+                            defaultValue: "1"
+                        }
+                    }
+                },
+                {
                     opcode: "joystick",
-                    text: "摇杆[ONE]角度[TWO]",
+                    text: formatMessage({ id: 'ROBOT_ARM_JOYSTICK'}),
                     blockType: BlockType.COMMAND,
                     arguments: {
                         ONE: {
@@ -99,57 +111,99 @@ class Scratch3MechanicalArm {
                     }
                 },
                 // {
-                //     opcode: "setJoystickPin",
-                //     text: "摇杆引脚设置[ONE][TWO][THREE]",
+                //     opcode: "setArthrosis",
+                //     text: "设置[ONE]角度[TWO]速度[THREE]",
                 //     blockType: BlockType.COMMAND,
                 //     arguments: {
                 //         ONE: {
                 //             type: ArgumentType.STRING,
-                //             menu: "JOYSTICK_PIN",
-                //             defaultValue: "32"
+                //             menu: "JOYSTICK",
+                //             defaultValue: "chassis"
                 //         },
                 //         TWO: {
-                //             type: ArgumentType.STRING,
-                //             menu: "JOYSTICK_PIN",
-                //             defaultValue: "32"
+                //             type: ArgumentType.NUMBER,
+                //             defaultValue: 0
                 //         },
                 //         THREE: {
-                //             type: ArgumentType.STRING,
-                //             menu: "JOYSTICK_PIN",
-                //             defaultValue: "32"
-                //         },
-                //     }
-                // },
-                // {
-                //     opcode: "getJoystickData",
-                //     text: "摇杆[ONE]",
-                //     blockType: BlockType.REPORTER,
-                //     arguments: {
-                //         ONE: {
-                //             type: ArgumentType.STRING,
-                //             menu: "JOYSTICK_TYPE",
-                //             defaultValue: "x"
+                //             type: ArgumentType.NUMBER,
+                //             defaultValue: 0
                 //         }
                 //     }
                 // },
                 {
-                    opcode: "armMemory",
-                    text: "机械臂摇杆记忆模式[ONE][TWO]",
+                    opcode: "getArmAngle",
+                    text: formatMessage({ id: 'ROBOT_ARM_GET_ARM_ANGLE'}),
+                    blockType: BlockType.REPORTER,
+                    arguments: {
+                        ONE: {
+                            type: ArgumentType.STRING,
+                            menu: "JOYSTICK",
+                            defaultValue: "chassis"
+                        }
+                    }
+                },
+                {
+                    opcode: "armRocker",
+                    text: formatMessage({ id: 'ROBOT_ARM_ROCKER'}),
                     blockType: BlockType.COMMAND,
                     arguments: {
                         ONE: {
-                            type: ArgumentType.NUMBER,
-                            defaultValue: 100
+                            type: ArgumentType.STRING,
+                            menu: "JOYSTICK_PIN",
+                            defaultValue: "32"
                         },
                         TWO: {
-                            type: ArgumentType.NUMBER,
-                            defaultValue: 100
+                            type: ArgumentType.STRING,
+                            menu: "JOYSTICK_PIN",
+                            defaultValue: "33"
+                        },
+                        THREE: {
+                            type: ArgumentType.STRING,
+                            menu: "JOYSTICK_PIN",
+                            defaultValue: "34"
+                        },
+                        FOUR:{
+                            type: ArgumentType.STRING,
+                            menu: "ROCKER",
+                            defaultValue: "left"
+                        }
+                        // FOUR: {
+                        //     type: ArgumentType.STRING,
+                        //     menu: "JOYSTICK_PIN",
+                        //     defaultValue: "35"
+                        // },
+                        // FIVE: {
+                        //     type: ArgumentType.STRING,
+                        //     menu: "JOYSTICK_PIN",
+                        //     defaultValue: "36"
+                        // },
+                        // SIX: {
+                        //     type: ArgumentType.STRING,
+                        //     menu: "JOYSTICK_PIN",
+                        //     defaultValue: "39"
+                        // }
+                    }
+                },
+                {
+                    opcode: "armMemory",
+                    text: formatMessage({ id: 'ROBOT_ARM_OPEN_MEMORY'}),
+                    blockType: BlockType.COMMAND, 
+                },
+                {
+                    opcode: "armMotion",
+                    text: formatMessage({ id: 'ROBOT_ARM_MOTION'}),
+                    blockType: BlockType.COMMAND,
+                    arguments: {
+                        ONE: {
+                            type: ArgumentType.STRING,
+                            menu: "ARM_MOTION",
+                            defaultValue: "keep"
                         }
                     }
                 },
                 {
                     opcode: "armCoord",
-                    text: "机械臂坐标控制 x[ONE]y[TWO]z[THREE]",
+                    text: formatMessage({ id: 'ROBOT_ARM_COORD'}),
                     blockType: BlockType.COMMAND,
                     arguments: {
                         ONE: {
@@ -168,7 +222,7 @@ class Scratch3MechanicalArm {
                 },
                 {
                     opcode: "getJoystickCoord",
-                    text: "3轴坐标[ONE]获取",
+                    text: formatMessage({ id: 'ROBOT_ARM_GET_JOYSTICK_COORD'}),
                     blockType: BlockType.REPORTER,
                     arguments: {
                         ONE: {
@@ -180,7 +234,7 @@ class Scratch3MechanicalArm {
                 },
                 {
                     opcode: "armError",
-                    text: "机械臂基座误差调整[ONE][TWO][THREE]",
+                    text: formatMessage({ id: 'ROBOT_ARM_ERROR'}),
                     blockType: BlockType.COMMAND,
                     arguments: {
                         ONE: {
@@ -198,50 +252,18 @@ class Scratch3MechanicalArm {
                     }
                 },
                 {
-                    opcode: "setArthrosis",
-                    text: "关节[ONE]角度[TWO]速度[THREE]",
-                    blockType: BlockType.COMMAND,
-                    arguments: {
-                        ONE: {
-                            type: ArgumentType.STRING,
-                            menu: "JOYSTICK",
-                            defaultValue: "chassis"
-                        },
-                        TWO: {
-                            type: ArgumentType.NUMBER,
-                            defaultValue: 0
-                        },
-                        THREE: {
-                            type: ArgumentType.NUMBER,
-                            defaultValue: 0
-                        }
-                    }
-                },
-                {
-                    opcode: "armMotion",
-                    text: "机械臂动作[ONE]",
-                    blockType: BlockType.COMMAND,
-                    arguments: {
-                        ONE: {
-                            type: ArgumentType.STRING,
-                            menu: "ARM_MOTION",
-                            defaultValue: "keep"
-                        }
-                    }
-                },
-                {
                     opcode: "armReset",
-                    text: "机械臂复位",
+                    text: formatMessage({ id: 'ROBOT_ARM_RESET'}),
                     blockType: BlockType.COMMAND,
                 },
-                {
-                    opcode: "armNetInit",
-                    text: "机械臂串口初始化",
-                    blockType: BlockType.COMMAND,
-                },
+                // {
+                //     opcode: "armNetInit",
+                //     text: formatMessage({ id: 'ROBOT_ARM_NET_INIT'}),
+                //     blockType: BlockType.COMMAND,
+                // },
                 {
                     opcode: "getAppCommand",
-                    text: "获取[ONE]信号",
+                    text: formatMessage({ id: 'ROBOT_ARM_GET_COMMAND'}),
                     blockType: BlockType.BOOLEAN,
                     arguments: {
                         ONE: {
@@ -253,14 +275,9 @@ class Scratch3MechanicalArm {
                 },
                 {
                     opcode: "getAppCommandData",
-                    text: "[ONE]指令[TWO]值",
+                    text: formatMessage({ id: 'ROBOT_ARM_GET_COMMAND_DATA'}),
                     blockType: BlockType.REPORTER,
                     arguments: {
-                        ONE:{
-                            type:ArgumentType.STRING,
-                            menu:"SERVER",
-                            defaultValue: "app"
-                        },
                         TWO: {
                             type: ArgumentType.STRING,
                             menu: "SIGNALDATA",
@@ -268,23 +285,18 @@ class Scratch3MechanicalArm {
                         }
                     }
                 },
-                // {
-                //     opcode: "armRunAction",
-                //     text: "机械臂执行动作",
-                //     blockType: BlockType.CONDITIONAL,
-                //     arguments: {
-                //         ONE: {
-                //             type: ArgumentType.STRING,
-                //             defaultValue: 'callback'
-                //         },
-                //     }
-                // }
             ],
             menus: {
-                SERVER:{
+                ROCKER:{
                     items:[
+                        {text:formatMessage({ id: 'ROBOT_ARM_LEFT_ROCKER'}),value:'left'},
+                        {text:formatMessage({ id: 'ROBOT_ARM_RIGHT_ROCKER'}),value:'right'}
+                    ]
+                },
+                SERVER: {
+                    items: [
                         { text: 'app', value: 'app' },
-                        { text: '网页', value: 'web' }
+                        { text: formatMessage({ id: 'ROBOT_ARM_WEB_SERVER'}), value: 'web' }
                     ]
                 },
                 SERVO_PIN: {
@@ -298,16 +310,9 @@ class Scratch3MechanicalArm {
                         { text: 'claws', value: 'claws' }
                     ]
                 },
-                // JOYSTICK_PIN: {
-                //     items: ASSIGN_pin
-                // },
-                // JOYSTICK_TYPE: {
-                //     items: [
-                //         { text: "x", value: "x" },
-                //         { text: "y", value: "y" },
-                //         { text: "sw", value: "sw" }
-                //     ]
-                // },
+                JOYSTICK_PIN: {
+                    items: ASSIGN_pin
+                },
                 COORD: {
                     items: [
                         { text: "x", value: "x" },
@@ -317,92 +322,73 @@ class Scratch3MechanicalArm {
                 },
                 ARM_MOTION: {
                     items: [
-                        { text: "保存", value: "keep" },
-                        { text: "运行", value: "run" },
-                        { text: "清除", value: "clear" }
+                        { text: formatMessage({ id: 'ROBOT_ARM_MODE1'}), value: "1" },
+                        { text: formatMessage({ id: 'ROBOT_ARM_MODE2'}), value: "2" },
+                        { text: formatMessage({ id: 'ROBOT_ARM_MODE3'}), value: "3" },
+                        { text: formatMessage({ id: 'ROBOT_ARM_MODE4'}), value: "4" },
+                        { text: formatMessage({ id: 'ROBOT_ARM_MODE5'}), value: "5" },
+                        { text: formatMessage({ id: 'ROBOT_ARM_MODE6'}), value: "6" },
+                        { text: formatMessage({ id: 'ROBOT_ARM_KEEP'}), value: "keep" },
+                        { text: formatMessage({ id: 'ROBOT_ARM_RUN'}), value: "run" },
+                        { text: formatMessage({ id: 'ROBOT_ARM_CLEAR'}), value: "clear" }
                     ]
                 },
-                SIGNAL:{
-                    // items:[
-                    //     {text:"爪子打开",value:"Claws_open"},
-                    //     {text:"爪子关闭",value:"Claws_close"},
-                    //     {text:"底盘向左",value:"Chassis_left"},
-                    //     {text:"底盘向右",value:"Chassis_right"},
-                    //     {text:"肩部向上",value:"Shoulder_up"},
-                    //     {text:"肩部向下",value:"Shoulder_down"},
-                    //     {text:"肘部向上",value:"Elbow_Silde"},
-                    //     {text:"肘部向下",value:"Elbow_Silde"},
-                    //     {text:"爪子",value:"Claws_Silde"},
-                    //     {text:"肘部",value:"Elbow_Silde"},
-                    //     {text:"肩部",value:"Shoulder_Silde"},
-                    //     {text:"底盘",value:"Chassis_Silde"},
-                    //     {text:"速度",value:"Speed_Silde"},
-                    //     {text:"模式",value:"Mode"},
-                    //     {text:"空间坐标",value:"PTP"},
-                    //     {text:"复位",value:"Zero"},
-                    //     {text:"保存状态",value:"keepType"},
-                    //     {text:"结束",value:"end"},
-                    //     {text:"开始",value:"start"},
-                    //     {text:"运行",value:"run"},
-                    //     {text:"模式1",value:"model1"},
-                    //     {text:"模式2",value:"model2"},
-                    //     {text:"模式3",value:"model3"},
-                    //     {text:"模式4",value:"model4"},
-                    //     {text:"模式5",value:"model5"},
-                    //     {text:"模式6",value:"model6"},
-                    //     {text:"x赋值",value:"x"},
-                    //     {text:"y赋值",value:"y"},
-                    //     {text:"z赋值",value:"z"},
-                    //     {text:"xyz传入执行",value:"xyz"},
-                    //     {text:"归零",value:"zero"}
-                    // ]
-                    items:[
-                        {text:"爪子打开",value:"1"},
-                        {text:"爪子关闭",value:"2"},
-                        {text:"底盘向左",value:"4"},
-                        {text:"底盘向右",value:"5"},
-                        {text:"肩部向上",value:"6"},
-                        {text:"肩部向下",value:"7"},
-                        {text:"肘部向上",value:"9"},
-                        {text:"肘部向下",value:"8"},
-                        {text:"爪子",value:"28"},
-                        {text:"肘部",value:"27"},
-                        {text:"肩部",value:"26"},
-                        {text:"底盘",value:"25"},
-                        {text:"速度",value:"20"},
-                        // {text:"模式",value:"Mode"},
-                        // {text:"空间坐标",value:"PTP"},
-                        {text:"复位",value:"35"},
-                        {text:"保存状态",value:"31"},
-                        {text:"结束",value:"32"},
-                        {text:"开始",value:"33"},
-                        {text:"运行",value:"34"},
-                        {text:"模式1",value:"41"},
-                        {text:"模式2",value:"42"},
-                        {text:"模式3",value:"43"},
-                        {text:"模式4",value:"44"},
-                        {text:"模式5",value:"45"},
-                        {text:"模式6",value:"46"},
-                        // {text:"x赋值",value:"51"},
-                        // {text:"y赋值",value:"52"},
-                        // {text:"z赋值",value:"53"},
-                        {text:"xyz传入执行",value:"54"},
-                        {text:"归零",value:"60"}
+                SIGNAL: {
+                    items: [
+                        { text: formatMessage({ id: 'ROBOT_ARM_OPEN_CLAWS'}), value: "1" },
+                        { text: formatMessage({ id: 'ROBOT_ARM_CLOSE_CLAWS'}), value: "2" },
+                        { text: formatMessage({ id: 'ROBOT_ARM_LEFT_CHASSIS'}), value: "4" },
+                        { text: formatMessage({ id: 'ROBOT_ARM_RIGHT_CHASSIS'}), value: "5" },
+                        { text: formatMessage({ id: 'ROBOT_ARM_UP_SHOULDER'}), value: "6" },
+                        { text: formatMessage({ id: 'ROBOT_ARM_DOWN_SHOULDER'}), value: "7" },
+                        { text: formatMessage({ id: 'ROBOT_ARM_UP_ELBOW'}), value: "9" },
+                        { text: formatMessage({ id: 'ROBOT_ARM_DOWN_ELBOW'}), value: "8" },
+                        { text: formatMessage({ id: 'ROBOT_ARM_CLAWS_SLIDE'}), value: "28" },
+                        { text: formatMessage({ id: 'ROBOT_ARM_ELBOW_SLIDE'}), value: "27" },
+                        { text: formatMessage({ id: 'ROBOT_ARM_SHOULDER_SLIDE'}), value: "26" },
+                        { text: formatMessage({ id: 'ROBOT_ARM_CHASSIS_SLIDE'}), value: "25" },
+                        { text: formatMessage({ id: 'ROBOT_ARM_CLAWS_INPUT'}), value: "24" },
+                        { text: formatMessage({ id: 'ROBOT_ARM_ELBOW_INPUT'}), value: "23" },
+                        { text: formatMessage({ id: 'ROBOT_ARM_SHOULDER_INPUT'}), value: "22" },
+                        { text: formatMessage({ id: 'ROBOT_ARM_CHASSIS_INPUT'}), value: "21" },
+                        { text: formatMessage({ id: 'ROBOT_ARM_DATA_RESRE'}), value: "35" },
+                        { text: formatMessage({ id: 'ROBOT_ARM_KEEP_STATE'}), value: "31" },
+                        { text: formatMessage({ id: 'ROBOT_ARM_STOP'}), value: "33" },
+                        { text: formatMessage({ id: 'ROBOT_ARM_START'}), value: "32" },
+                        { text: formatMessage({ id: 'ROBOT_ARM_RUN'}), value: "34" },
+                        { text: formatMessage({ id: 'ROBOT_ARM_MODE1'}), value: "41" },
+                        { text: formatMessage({ id: 'ROBOT_ARM_MODE2'}), value: "42" },
+                        { text: formatMessage({ id: 'ROBOT_ARM_MODE3'}), value: "43" },
+                        { text: formatMessage({ id: 'ROBOT_ARM_MODE4'}), value: "44" },
+                        { text: formatMessage({ id: 'ROBOT_ARM_MODE5'}), value: "45" },
+                        { text: formatMessage({ id: 'ROBOT_ARM_MODE6'}), value: "46" },
+                        { text: formatMessage({ id: 'ROBOT_ARM_XYZ'}), value: "54" },
+                        { text: formatMessage({ id: 'ROBOT_ARM_ZERO'}), value: "60" }
                     ]
                 },
-                SIGNALDATA:{
-                    items:[
-                        {text:"爪子",value:"Claws_Silde_Angle"},
-                        {text:"肘部",value:"Elbow_Silde_Angle"},
-                        {text:"肩部",value:"Shoulder_Silde_Angle"},
-                        {text:"底盘",value:"Chassis_Silde_Angle"},
-                        {text:"速度",value:"Speeds"},
-                        // {text:"模式",value:"mode"},
-                        {text:"空间坐标x",value:"PTP_X"},
-                        {text:"空间坐标y",value:"PTP_Y"},
-                        {text:"空间坐标z",value:"PTP_Z"}
+                SIGNALDATA: {
+                    items: [
+                        { text: formatMessage({ id: 'ROBOT_ARM_CLAWS'}), value: "Claws_Silde_Angle" },
+                        { text: formatMessage({ id: 'ROBOT_ARM_ELBOW'}), value: "Elbow_Silde_Angle" },
+                        { text: formatMessage({ id: 'ROBOT_ARM_SHOULDER'}), value: "Shoulder_Silde_Angle" },
+                        { text: formatMessage({ id: 'ROBOT_ARM_CHASSIS'}), value: "Chassis_Silde_Angle" },
+                        { text: formatMessage({ id: 'ROBOT_ARM_X'}), value: "PTP_X" },
+                        { text: formatMessage({ id: 'ROBOT_ARM_Y'}), value: "PTP_Y" },
+                        { text: formatMessage({ id: 'ROBOT_ARM_Z'}), value: "PTP_Z" }
                     ]
                 },
+                ACTION: {
+                    items: [
+                        { text: formatMessage({ id: 'ROBOT_ARM_OPEN_CLAWS'}), value: "1" },
+                        { text: formatMessage({ id: 'ROBOT_ARM_CLOSE_CLAWS'}), value: "2" },
+                        { text: formatMessage({ id: 'ROBOT_ARM_LEFT_CHASSIS'}), value: "4" },
+                        { text: formatMessage({ id: 'ROBOT_ARM_RIGHT_CHASSIS'}), value: "5" },
+                        { text: formatMessage({ id: 'ROBOT_ARM_UP_SHOULDER'}), value: "6" },
+                        { text: formatMessage({ id: 'ROBOT_ARM_DOWN_SHOULDER'}), value: "7" },
+                        { text: formatMessage({ id: 'ROBOT_ARM_UP_ELBOW'}), value: "9" },
+                        { text: formatMessage({ id: 'ROBOT_ARM_DOWN_ELBOW'}), value: "8" },
+                    ]
+                }
             }
         }
     }
@@ -420,6 +406,8 @@ class Scratch3MechanicalArm {
     armReset = () => { }
     openArmWebServer = () => { }
     armRunAction = () => { }
+    armAction = () => { }
+    getArmAngle = () => { }
 }
 
 module.exports = Scratch3MechanicalArm

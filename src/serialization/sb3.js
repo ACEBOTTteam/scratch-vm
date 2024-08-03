@@ -589,6 +589,9 @@ const serialize = function (runtime, targetId) {
 
     // Assemble payload and return
     obj.meta = meta;
+    obj.mainboard = runtime.getMainboard()
+    obj.scratchMode = runtime.isRealtimeMode()
+    obj.programLanguage = runtime.getProgramLanguage()
     return obj;
 };
 

@@ -34,6 +34,11 @@ class Scratch3CarMotor {
                     }
                 },
                 {
+                    opcode: "carStop",
+                    text: formatMessage({ id: 'carMotor.stop' }),
+                    blockType: BlockType.COMMAND,
+                },
+                {
                     opcode: "carMode",
                     text: formatMessage({ id: 'carMotor.mode.fun' }),
                     blockType: BlockType.HAT,
@@ -56,11 +61,6 @@ class Scratch3CarMotor {
                             defaultValue: 'roundTrack'
                         }
                     }
-                },
-                {
-                    opcode: "carStop",
-                    text: formatMessage({ id: 'carMotor.stop' }),
-                    blockType: BlockType.COMMAND,
                 },
                 {
                     opcode: "carInit",
@@ -226,6 +226,10 @@ class Scratch3CarMotor {
                         {
                             text: formatMessage({ id: 'carMotor.follow' }),
                             value: "follow"
+                        },
+                        {
+                            text: formatMessage({ id: 'carMotor.slider' }),
+                            value: "servo"
                         }
                     ]
                 }

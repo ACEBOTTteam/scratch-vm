@@ -310,7 +310,7 @@ class Blocks {
 
         // UI event: clicked scripts toggle in the runtime.
         if (e.element === 'stackclick') {
-            if (this.runtime.isRealtimeMode()){
+            if ("realTime"===this.runtime.isRealtimeMode()){
                 this.runtime.toggleScript(e.blockId, {stackClick: true});
             }
             return;

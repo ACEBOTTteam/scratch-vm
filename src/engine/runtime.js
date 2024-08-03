@@ -229,7 +229,17 @@ class Runtime extends EventEmitter {
          * Currently program mode.
          * @type {bool}
          */
-        this._isRealtimeMode = true;
+        this._isRealtimeMode = "realTime";
+
+        /**
+         * 主板名称
+         */
+        this._mainboard = "ESP32"
+
+        /**
+         * 编程语言
+         */
+        this._programLanguage = "arduino"
 
         /**
          * Map to look up a block primitive's implementation function by its opcode.
@@ -2305,12 +2315,12 @@ class Runtime extends EventEmitter {
 
     /**
      * Set whether the current program mode is realtime mode.
-     * @param {string} sta state of current program mode to set.
+     * @param {boolean} sta state of current program mode to set.
      */
     setRealtimeMode (sta) {
         if (this._isRealtimeMode !== sta){
             this._isRealtimeMode = sta;
-            this.emit(Runtime.PROGRAM_MODE_UPDATE, {isRealtimeMode: this._isRealtimeMode});
+            this.emit(Runtime.PROGRAM_MODE_UPDATE, {isRealtimeMode: "realTime"===this._isRealtimeMode});
         }
     }
 
@@ -2320,6 +2330,40 @@ class Runtime extends EventEmitter {
      */
     isRealtimeMode () {
         return this._isRealtimeMode;
+    }
+
+    /**
+     * 设置当前的主板
+     * @param {string} mainboard 
+     */
+    setMainboard (mainboard) {
+        if(this._mainboard !== mainboard){
+            this._mainboard = mainboard
+        }
+    }
+
+    /**
+     * 获取当前主板
+     * @returns 主板名称
+     */
+    getMainboard () {
+        return this._mainboard
+    }
+     /**
+      * 设置编程语言
+      */
+    setProgramLanguage (programLanguage) {
+        if(this._programLanguage !== programLanguage){
+            this._programLanguage = programLanguage
+        }
+    }
+
+    /**
+     * 获取编程语言
+     * @returns 编程语言
+     */
+    getProgramLanguage () {
+        return this._programLanguage
     }
 
     /**
