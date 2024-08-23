@@ -104,6 +104,12 @@ const ArgumentTypeMap = (() => {
         // They are more analagous to the label on a block.
         fieldType: 'field_image'
     };
+    map[ArgumentType.FIELD_VARIABLE] = {
+        shadow: {
+            type: 'field_variable',
+            fieldName: 'FIELD_VARIABLE'
+        }
+    };
     return map;
 })();
 
@@ -911,6 +917,7 @@ class Runtime extends EventEmitter {
      * @private
      */
     _fillExtensionCategory (categoryInfo, extensionInfo) {
+        console.log(categoryInfo,extensionInfo,extensionInfo.customFieldTypes,'extensionInfo')
         categoryInfo.blocks = [];
         categoryInfo.customFieldTypes = {};
         categoryInfo.menus = [];

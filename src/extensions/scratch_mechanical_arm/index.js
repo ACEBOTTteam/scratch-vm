@@ -106,7 +106,7 @@ class Scratch3MechanicalArm {
                         },
                         TWO: {
                             type: ArgumentType.NUMBER,
-                            defaultValue: 100
+                            defaultValue: 90
                         }
                     }
                 },
@@ -167,21 +167,6 @@ class Scratch3MechanicalArm {
                             menu: "ROCKER",
                             defaultValue: "left"
                         }
-                        // FOUR: {
-                        //     type: ArgumentType.STRING,
-                        //     menu: "JOYSTICK_PIN",
-                        //     defaultValue: "35"
-                        // },
-                        // FIVE: {
-                        //     type: ArgumentType.STRING,
-                        //     menu: "JOYSTICK_PIN",
-                        //     defaultValue: "36"
-                        // },
-                        // SIX: {
-                        //     type: ArgumentType.STRING,
-                        //     menu: "JOYSTICK_PIN",
-                        //     defaultValue: "39"
-                        // }
                     }
                 },
                 {

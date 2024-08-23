@@ -47,6 +47,8 @@ class Scratch3RobotBlocks {
             Water_Sensor: this.Water_Sensor,
             Digit_Tube_Display_Module_Number: this.Digit_Tube_Display_Module_Number,
             Digit_Tube_Display_Module_String: this.Digit_Tube_Display_Module_String,
+            Digit_Tube_Display_Module_Number_Pin: this.Digit_Tube_Display_Module_Number_Pin,
+            Digit_Tube_Display_Module_String_Pin: this.Digit_Tube_Display_Module_String_Pin,
             BLDC: this.BLDC,
             Color_Sensor_light: this.Color_Sensor_light,
             Color_Sensor_Colors: this.Color_Sensor_Colors,
@@ -66,15 +68,20 @@ class Scratch3RobotBlocks {
             OLED_Set: this.OLED_Set,
             OLED_String: this.OLED_String,
             OLED_Number: this.OLED_Number,
-            OLED_INIT:this.OLED_INIT,
-            OLED_SHOW:this.OLED_SHOW,
+            OLED_INIT: this.OLED_INIT,
+            OLED_SHOW: this.OLED_SHOW,
             OLED_Clear: this.OLED_Clear,
             KEY_BOARD: this.KEY_BOARD,
             Vibration: this.Vibration,
-            InfraredProximity:this.InfraredProximity,
-            TrafficLight:this.TrafficLight,
-            TOUCH_BOARD:this.TOUCH_BOARD,
-            GET_NOW_TIME:this.GET_NOW_TIME
+            InfraredProximity: this.InfraredProximity,
+            TrafficLight: this.TrafficLight,
+            TOUCH_BOARD: this.TOUCH_BOARD,
+            GET_NOW_TIME: this.GET_NOW_TIME,
+            ultraviolet_ray: this.ultraviolet_ray,
+            wind_cup: this.wind_cup,
+            PM2_5: this.PM2_5,
+            four_button: this.four_button,
+            atmospheric_pressure: this.atmospheric_pressure
         }
     }
 
@@ -296,6 +303,16 @@ class Scratch3RobotBlocks {
         await window.electronAPI.clientSend('send', code)
     }
 
+    async Digit_Tube_Display_Module_Number_Pin(args) {
+        let code = `A43 ${args.PIN_LIST_1} ${args.PIN_LIST_2} ${args.NUMBER}\r\n`
+        await window.electronAPI.clientSend('send', code)
+    }
+
+    async Digit_Tube_Display_Module_String_Pin(args) {
+        let code = `A43 ${args.PIN_LIST_1} ${args.PIN_LIST_2} ${args.STRING}\r\n`
+        await window.electronAPI.clientSend('send', code)
+    }
+
     //颜色传感器
     async Color_Sensor_light(args) {
         let code = `A2 ${args.PIN_LIST} 1\r\n`
@@ -456,7 +473,7 @@ class Scratch3RobotBlocks {
     }
 
     //触摸键盘
-    TOUCH_BOARD(){
+    TOUCH_BOARD() {
         let code = `A38`
         let variable = readAnalogPin(code, 'string')
         window.electronAPI.clientSend('send', code + '\r\n')
@@ -481,13 +498,53 @@ class Scratch3RobotBlocks {
 
     //交通信号灯
     async TrafficLight(args) {
-        let code = `A37 ${args.PIN1} ${args.PIN2} ${args.PIN3} ${'open'===args.RED_SWITCH?1:0} ${'open'===args.YELLOW_SWITCH?1:0} ${'open'===args.GREEN_SWITCH?1:0}\r\n`
+        let code = `A37 ${args.PIN1} ${args.PIN2} ${args.PIN3} ${'open' === args.RED_SWITCH ? 1 : 0} ${'open' === args.YELLOW_SWITCH ? 1 : 0} ${'open' === args.GREEN_SWITCH ? 1 : 0}\r\n`
         await window.electronAPI.clientSend('send', code)
     }
 
     //获取主板时间
-    async GET_NOW_TIME(){
+    async GET_NOW_TIME() {
         let code = `A41`
+        let variable = readAnalogPin(code, 'number')
+        window.electronAPI.clientSend('send', code + '\r\n')
+        return variable
+    }
+
+    //紫外线
+    ultraviolet_ray(args) {
+        let code = `A3 ${args.PIN_LIST}`
+        let variable = readAnalogPin(code, 'number')
+        window.electronAPI.clientSend('send', code + '\r\n')
+        return variable
+    }
+
+    //风杯
+    wind_cup(args) {
+        let code = `A3 ${args.PIN_LIST}`
+        let variable = readAnalogPin(code, 'number')
+        window.electronAPI.clientSend('send', code + '\r\n')
+        return variable
+    }
+
+    //pm2.5
+    PM2_5(args) {
+        let code = `A44 ${args.PIN_LIST_1} ${args.PIN_LIST_2}`
+        let variable = readAnalogPin(code, 'number')
+        window.electronAPI.clientSend('send', code + '\r\n')
+        return variable
+    }
+
+    //四位按键
+    four_button(args) { 
+        let code = `A45 ${args.PIN_LIST} ${args.BUTTON_COLOR}`
+        let variable = readAnalogPin(code, 'boolean')
+        window.electronAPI.clientSend('send', code + '\r\n')
+        return variable
+    }
+
+    //大气压
+    async atmospheric_pressure(args) {
+        let code = `A42 ${args.TYPE}`
         let variable = readAnalogPin(code, 'number')
         window.electronAPI.clientSend('send', code + '\r\n')
         return variable

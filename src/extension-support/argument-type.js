@@ -41,7 +41,8 @@ const ArgumentType = {
     /**
      * Inline image on block (as part of the label)
      */
-    IMAGE: 'image'
+    IMAGE: 'image',
+    FIELD_VARIABLE: 'field_variable'
 };
 
 module.exports = ArgumentType;

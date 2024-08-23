@@ -30,7 +30,8 @@ const builtinExtensions = {
     gestureRecognition: () => require('../extensions/scratch3_gesture_recognition'),
     fourLeggedBionicSpider: () => require('../extensions/scratch3_spider_robot'),
     carMotor: () => require('../extensions/scratch_car_motor'),
-    mechanicalArm: () => require('../extensions/scratch_mechanical_arm')
+    mechanicalArm: () => require('../extensions/scratch_mechanical_arm'),
+    bipedRobot: () => require('../extensions/scratch_biped_robot')
 };
 
 /**
