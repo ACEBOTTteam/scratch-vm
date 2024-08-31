@@ -917,7 +917,6 @@ class Runtime extends EventEmitter {
      * @private
      */
     _fillExtensionCategory (categoryInfo, extensionInfo) {
-        console.log(categoryInfo,extensionInfo,extensionInfo.customFieldTypes,'extensionInfo')
         categoryInfo.blocks = [];
         categoryInfo.customFieldTypes = {};
         categoryInfo.menus = [];
@@ -1463,6 +1462,14 @@ class Runtime extends EventEmitter {
                     paletteBlocks.map(block => block.xml).join('')}</category>`
             };
         });
+    }
+
+    delBlockInfo(id){
+        for(const i in this._blockInfo){
+            if(id===this._blockInfo[i].id){
+                this._blockInfo.splice(i,1)
+            }
+        }
     }
 
     /**
@@ -2777,14 +2784,12 @@ class Runtime extends EventEmitter {
      * @param {*} locale 
      */
     setCurrentLocale(locale) {
-        console.log(locale,'locale')
         let language = locale
         if(locale === 'zh-cn'){
             language = 'zh_cn'
         }else if(locale === 'zh-tw'){
             language = 'zh_tw'
         }
-        console.log(language,'language')
         this.currentLocale = language
     }
 

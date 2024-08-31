@@ -121,6 +121,10 @@ class Scratch3BipedRobot {
                             type: ArgumentType.NUMBER,
                             defaultValue: "45"
                         },
+                        FIVE:{
+                            type: ArgumentType.NUMBER,
+                            defaultValue: "60"
+                        }
                     }
                 },
                 {

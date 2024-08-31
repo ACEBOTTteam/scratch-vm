@@ -173,6 +173,15 @@ class ExtensionManager {
     }
 
     /**
+     * Unload an extension by URL or internal extension ID
+     * @param {string} extensionURL - the URL for the extension to load OR the ID of an internal extension
+     */
+    unloadExtension (extensionURL) {
+        this._loadedExtensions.delete(extensionURL);
+        this.runtime.delBlockInfo(extensionURL)
+    }
+
+    /**
      * Regenerate blockinfo for any loaded extensions
      * @returns {Promise} resolved once all the extensions have been reinitialized
      */

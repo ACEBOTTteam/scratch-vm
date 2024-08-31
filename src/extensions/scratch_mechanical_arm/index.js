@@ -341,6 +341,7 @@ class Scratch3MechanicalArm {
                         { text: formatMessage({ id: 'ROBOT_ARM_STOP'}), value: "33" },
                         { text: formatMessage({ id: 'ROBOT_ARM_START'}), value: "32" },
                         { text: formatMessage({ id: 'ROBOT_ARM_RUN'}), value: "34" },
+                        { text: formatMessage({ id: 'ROBOT_ARM_LOOP_RUN'}), value: "55" },
                         { text: formatMessage({ id: 'ROBOT_ARM_MODE1'}), value: "41" },
                         { text: formatMessage({ id: 'ROBOT_ARM_MODE2'}), value: "42" },
                         { text: formatMessage({ id: 'ROBOT_ARM_MODE3'}), value: "43" },
