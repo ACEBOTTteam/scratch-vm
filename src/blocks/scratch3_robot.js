@@ -32,6 +32,7 @@ class Scratch3RobotBlocks {
             Moisture_Sensor: this.Moisture_Sensor,
             Raindrop_Sensor: this.Raindrop_Sensor,
             SG90_Module: this.SG90_Module,
+            GET_SG90_Module_ANGLE: this.GET_SG90_Module_ANGLE,
             Laser_Module: this.Laser_Module,
             P_Buzzer_Module: this.P_Buzzer_Module,
             MQ4_Gas_Sensor: this.MQ4_Gas_Sensor,
@@ -50,6 +51,8 @@ class Scratch3RobotBlocks {
             Digit_Tube_Display_Module_Number_Pin: this.Digit_Tube_Display_Module_Number_Pin,
             Digit_Tube_Display_Module_String_Pin: this.Digit_Tube_Display_Module_String_Pin,
             BLDC: this.BLDC,
+            BLDC_switch: this.BLDC_switch,
+            BLDC_speed: this.BLDC_speed,
             Color_Sensor_light: this.Color_Sensor_light,
             Color_Sensor_Colors: this.Color_Sensor_Colors,
             RFID_RC522_I2C_Module: this.RFID_RC522_I2C_Module,
@@ -192,6 +195,14 @@ class Scratch3RobotBlocks {
         let code = `A8 ${args.PIN_LIST} ${args.ANGLE}`
 
         let variable = readAnalogPin(code, 'string')
+        window.electronAPI.clientSend('send', code + '\r\n')
+        return variable
+    }
+
+    async GET_SG90_Module_ANGLE(args){
+        let code = `A48 ${args.PIN_LIST}`
+
+        let variable = readAnalogPin(code, 'number')
         window.electronAPI.clientSend('send', code + '\r\n')
         return variable
     }
@@ -339,8 +350,17 @@ class Scratch3RobotBlocks {
 
     //BLDC
     async BLDC(args) {
-        console.log(args.PIN_LIST, args.SPEED, 'args.SPEED')
         let code = `A14 ${args.PIN_LIST} ${args.SPEED}\r\n`
+        await window.electronAPI.clientSend('send', code)
+    }
+
+    async BLDC_switch(args) {
+        let code = `A47 ${args.PIN_LIST_1} ${args.PIN_LIST_2} ${args.SWITCH}\r\n`
+        await window.electronAPI.clientSend('send', code)
+    }
+
+    async BLDC_speed(args) {
+        let code = `A46 ${args.PIN_LIST_1} ${args.PIN_LIST_2} ${args.SPEED}\r\n`
         await window.electronAPI.clientSend('send', code)
     }
 
@@ -535,7 +555,7 @@ class Scratch3RobotBlocks {
     }
 
     //四位按键
-    four_button(args) { 
+    four_button(args) {
         let code = `A45 ${args.PIN_LIST} ${args.BUTTON_COLOR}`
         let variable = readAnalogPin(code, 'boolean')
         window.electronAPI.clientSend('send', code + '\r\n')

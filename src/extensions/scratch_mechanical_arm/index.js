@@ -110,26 +110,26 @@ class Scratch3MechanicalArm {
                         }
                     }
                 },
-                // {
-                //     opcode: "setArthrosis",
-                //     text: "设置[ONE]角度[TWO]速度[THREE]",
-                //     blockType: BlockType.COMMAND,
-                //     arguments: {
-                //         ONE: {
-                //             type: ArgumentType.STRING,
-                //             menu: "JOYSTICK",
-                //             defaultValue: "chassis"
-                //         },
-                //         TWO: {
-                //             type: ArgumentType.NUMBER,
-                //             defaultValue: 0
-                //         },
-                //         THREE: {
-                //             type: ArgumentType.NUMBER,
-                //             defaultValue: 0
-                //         }
-                //     }
-                // },
+                {
+                    opcode: "setArthrosis",
+                    text: formatMessage({ id: 'carMotor.setArmAngleSpeed'}),
+                    blockType: BlockType.COMMAND,
+                    arguments: {
+                        ONE: {
+                            type: ArgumentType.STRING,
+                            menu: "JOYSTICK",
+                            defaultValue: "chassis"
+                        },
+                        TWO: {
+                            type: ArgumentType.NUMBER,
+                            defaultValue: 90
+                        },
+                        THREE: {
+                            type: ArgumentType.NUMBER,
+                            defaultValue: 100
+                        }
+                    }
+                },
                 {
                     opcode: "getArmAngle",
                     text: formatMessage({ id: 'ROBOT_ARM_GET_ARM_ANGLE'}),

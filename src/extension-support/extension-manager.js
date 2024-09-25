@@ -31,7 +31,8 @@ const builtinExtensions = {
     fourLeggedBionicSpider: () => require('../extensions/scratch3_spider_robot'),
     carMotor: () => require('../extensions/scratch_car_motor'),
     mechanicalArm: () => require('../extensions/scratch_mechanical_arm'),
-    bipedRobot: () => require('../extensions/scratch_biped_robot')
+    bipedRobot: () => require('../extensions/scratch_biped_robot'),
+    ASR: () => require('../extensions/scratch_ASR')
 };
 
 /**

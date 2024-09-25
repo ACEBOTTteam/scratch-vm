@@ -35,18 +35,6 @@ class Scratch3CarMotor {
             blockIconURL: iconURI,
             showStatusButton: false,
             blocks: [
-                // {
-                //     opcode: "aaaaa",
-                //     text: "创建动作[TWO]",
-                //     blockType: BlockType.HAT,
-                //     arguments:{
-                //         TWO: {
-                //             type: ArgumentType.STRING,
-                //             menu:'DEMO',
-                //             defaultValue: 100
-                //         },
-                //     }
-                // },
                 {
                     opcode: "carMove",
                     text: formatMessage({ id: 'carMotor.move' }),
@@ -322,6 +310,143 @@ class Scratch3CarMotor {
                         }
                     }
                 },
+                {
+                    func:"aabutton",
+                    text:formatMessage({ id: 'carMotor.firing.expansion'}),
+                    blockType:BlockType.BUTTON
+                },
+                {
+                    opcode:"firingModuleInit",
+                    text:formatMessage({ id: 'carMotor.firing.module'}),
+                    blockType:BlockType.COMMAND,
+                    arguments: {
+                        ONE: {
+                            type: ArgumentType.STRING,
+                            menu: "SERVO_PIN",
+                            defaultValue: "32"
+                        },
+                    }
+                },
+                {
+                    opcode:"firing",
+                    text:formatMessage({ id: 'carMotor.firing'}),
+                    blockType:BlockType.COMMAND,
+                },
+                {
+                    opcode:"firingServoInit",
+                    text:formatMessage({ id: 'carMotor.firing.servoInit'}),
+                    blockType:BlockType.COMMAND,
+                    arguments: {
+                        ONE: {
+                            type: ArgumentType.STRING,
+                            menu: "SERVO_PIN",
+                            defaultValue: "26"
+                        },
+                    }
+                },
+                {
+                    opcode:"firingServoSetAngle",
+                    text:formatMessage({ id: 'carMotor.firing.servoSetAngle'}),
+                    blockType:BlockType.COMMAND,
+                    arguments: {
+                        ONE: {
+                            type: ArgumentType.NUMBER,
+                            defaultValue: 90
+                        },
+                    }
+                },
+                {
+                    opcode: "firingGetCommand",
+                    text: formatMessage({ id: 'ROBOT_ARM_GET_COMMAND' }),
+                    blockType: BlockType.BOOLEAN,
+                    arguments: {
+                        ONE: {
+                            type: ArgumentType.NUMBER,
+                            menu: "FIRING_COMMAND",
+                            defaultValue: "88"
+                        }
+                    }
+                },
+                // {
+                //     opcode: "firingGetCommandData",
+                //     text: formatMessage({ id: 'ROBOT_ARM_GET_COMMAND_DATA'}),
+                //     blockType: BlockType.REPORTER,
+                //     arguments: {
+                //         TWO: {
+                //             type: ArgumentType.STRING,
+                //             menu: "FIRING_COMMAND_DATA",
+                //             defaultValue: "Camera_servo_angles"
+                //         }
+                //     }
+                // },
+                {
+                    func:"aabutton",
+                    text:formatMessage({ id: 'carMotor.camera.module'}),
+                    blockType:BlockType.BUTTON
+                },
+                {
+                    opcode: "carCameraServerInit",
+                    text:formatMessage({ id: 'carMotor.camera.serverInit'}),
+                    blockType: BlockType.COMMAND,
+                    arguments: {
+                        ONE: {
+                            type: ArgumentType.STRING,
+                            menu: 'OVERTURN',
+                            defaultValue: '1'
+                        },
+                        TWO:{
+                            type: ArgumentType.STRING,
+                            menu: 'DEFINITION',
+                            defaultValue: '2'
+                        }
+                    }
+                },
+                {
+                    opcode: "carCameraStartCamera",
+                    text:formatMessage({ id: 'carMotor.camera.open'}),
+                    blockType: BlockType.COMMAND,
+                    arguments: {
+                        ONE: {
+                            type: ArgumentType.STRING,
+                            menu: 'CAMERA_TYPE',
+                            defaultValue: 'web'
+                        }
+                    }
+                },
+                {
+                    opcode: "cameraServer",
+                    text:formatMessage({ id: 'carMotor.camera.server'}),
+                    blockType: BlockType.CONDITIONAL,
+                    arguments: {
+                        ONE: {
+                            type: ArgumentType.STRING,
+                            menu: 'SERVER',
+                            defaultValue: 'app'
+                        }
+                    }
+                },
+                {
+                    opcode: "clientIsGetData",
+                    text:formatMessage({ id: 'carMotor.camera.clientIsGetData'}),
+                    blockType: BlockType.BOOLEAN,
+                },
+                {
+                    opcode: "dataForward",
+                    text:formatMessage({ id: 'carMotor.camera.dataForward'}),
+                    blockType: BlockType.COMMAND,
+                    arguments: {
+                        ONE: {
+                            type: ArgumentType.STRING,
+                            menu: 'SERVER',
+                            defaultValue: 'app'
+                        }
+                    }
+                },
+                {
+                    opcode: "cameraCarRun",
+                    text:formatMessage({ id: 'carMotor.camera.carRun'}),
+                    blockType: BlockType.CONDITIONAL,
+                },
             ],
             menus: {
                 SERVER:{
@@ -545,12 +670,43 @@ class Scratch3CarMotor {
                         { text: formatMessage({ id: 'ROBOT_ARM_ZERO' }), value: "70" }
                     ]
                 },
+                FIRING_COMMAND: {
+                    items: [
+                        { text: formatMessage({ id: 'carMotor.item.firing' }), value: "88" },
+                        // { text: "射击角度", value: "81" }
+                    ]
+                },
+                FIRING_COMMAND_DATA: {
+                    items: [
+                        { text: formatMessage({ id: 'carMotor.item.firingAngle' }), value: "Camera_servo_angles" }
+                    ]
+                },
                 CARSIGNALDATA:{
                     items:[
                         {text:formatMessage({ id: 'carMotor.speed' }),value:"Car_Speed"},
                         {text:formatMessage({ id: 'carMotor.slider' }),value:"SliderAngle"},
                     ]
+                },
+                OVERTURN:{
+                    items:[
+                        {text: formatMessage({ id: 'carMotor.item.forwardDirection' }),value:"1"},
+                        {text: formatMessage({ id: 'carMotor.item.reverseDirection' }),value:"0"},
+                    ]
+                },
+                CAMERA_TYPE:{
+                    items:[
+                        {text:formatMessage({ id: 'carMotor.camera.frames' }),value:"camera"},
+                        {text:formatMessage({ id: 'carMotor.camera.webPageControl' }),value:"web"}
+                    ]
+                },
+                DEFINITION:{
+                    items:[
+                        {text:formatMessage({ id: 'carMotor.camera.highDefinition' }),value:"3"},
+                        {text:formatMessage({ id: 'carMotor.camera.mediumQuality' }),value:"2"},
+                        {text:formatMessage({ id: 'carMotor.camera.lowQuality' }),value:"1"}
+                    ]
                 }
+                
             }
         }
     }
