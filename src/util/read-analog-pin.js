@@ -23,7 +23,11 @@ const readAnalogPin = (command, type) => {
                     subStr = subStr.trim()
                     switch (type) {
                         case 'number':
-                            resolve(Number(subStr))
+                            if(-1!==item.indexOf('A7')){
+                                resolve(Number(subStr).toFixed(2))
+                            }else{
+                                resolve(Number(subStr))
+                            }
                             break;
                         case 'boolean':
                             let boolean = '0' === subStr ? true : false

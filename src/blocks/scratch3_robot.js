@@ -532,7 +532,7 @@ class Scratch3RobotBlocks {
 
     //紫外线
     ultraviolet_ray(args) {
-        let code = `A3 ${args.PIN_LIST}`
+        let code = `A49 ${args.PIN_LIST} ${args.TYPE}`
         let variable = readAnalogPin(code, 'number')
         window.electronAPI.clientSend('send', code + '\r\n')
         return variable
@@ -540,7 +540,7 @@ class Scratch3RobotBlocks {
 
     //风杯
     wind_cup(args) {
-        let code = `A3 ${args.PIN_LIST}`
+        let code = `A50 ${args.PIN_LIST}`
         let variable = readAnalogPin(code, 'number')
         window.electronAPI.clientSend('send', code + '\r\n')
         return variable
