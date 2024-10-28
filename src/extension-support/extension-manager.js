@@ -32,7 +32,8 @@ const builtinExtensions = {
     carMotor: () => require('../extensions/scratch_car_motor'),
     mechanicalArm: () => require('../extensions/scratch_mechanical_arm'),
     bipedRobot: () => require('../extensions/scratch_biped_robot'),
-    ASR: () => require('../extensions/scratch_ASR')
+    ASR: () => require('../extensions/scratch_ASR'),
+    meteorologicalStation: () => require('../extensions/scratch_meteorologicalStation')
 };
 
 /**
