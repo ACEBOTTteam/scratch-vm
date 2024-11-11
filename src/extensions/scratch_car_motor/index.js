@@ -394,7 +394,12 @@ class Scratch3CarMotor {
                             menu: 'OVERTURN',
                             defaultValue: '1'
                         },
-                        TWO:{
+                        TWO: {
+                            type: ArgumentType.STRING,
+                            menu: 'LEFT_RIGHT',
+                            defaultValue: '1'
+                        },
+                        THREE:{
                             type: ArgumentType.STRING,
                             menu: 'DEFINITION',
                             defaultValue: '2'
@@ -690,7 +695,13 @@ class Scratch3CarMotor {
                 OVERTURN:{
                     items:[
                         {text: formatMessage({ id: 'carMotor.item.forwardDirection' }),value:"1"},
-                        {text: formatMessage({ id: 'carMotor.item.reverseDirection' }),value:"0"},
+                        {text: formatMessage({ id: 'carMotor.item.reverseDirection' }),value:"0"}
+                    ]
+                },
+                LEFT_RIGHT:{
+                    items:[
+                        {text: formatMessage({ id: 'carMotor.item.flipToTheLeft' }),value:'1'},
+                        {text: formatMessage({ id: 'carMotor.item.flipToTheRight' }),value:'0'}
                     ]
                 },
                 CAMERA_TYPE:{

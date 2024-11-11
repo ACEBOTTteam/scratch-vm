@@ -33,7 +33,8 @@ const builtinExtensions = {
     mechanicalArm: () => require('../extensions/scratch_mechanical_arm'),
     bipedRobot: () => require('../extensions/scratch_biped_robot'),
     ASR: () => require('../extensions/scratch_ASR'),
-    meteorologicalStation: () => require('../extensions/scratch_meteorologicalStation')
+    meteorologicalStation: () => require('../extensions/scratch_meteorologicalStation'),
+    chart: () => require('../extensions/scratch_chart')
 };
 
 /**
