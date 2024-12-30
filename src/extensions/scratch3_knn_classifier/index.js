@@ -8,7 +8,7 @@ const iconURI = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAMAAAC5z
 class Scratch3KnnClassifier {
     constructor(runtime) {
         this.runtime = runtime
-        this.knn = new KnnClassifiers(runtime, runtime.getVideoEl())
+        this.knn = new KnnClassifiers(runtime)
         this.name = null
         this.resultPossibility = null
     }

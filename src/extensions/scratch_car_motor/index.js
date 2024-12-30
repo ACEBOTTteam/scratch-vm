@@ -333,6 +333,18 @@ class Scratch3CarMotor {
                     blockType:BlockType.COMMAND,
                 },
                 {
+                    opcode:"continuous_firing",
+                    text:formatMessage({ id: 'carMotor.continuous.firing'}),
+                    blockType:BlockType.COMMAND,
+                    arguments: {
+                        ONE: {
+                            type: ArgumentType.STRING,
+                            menu: "FIRING_TYPE",
+                            defaultValue: "open"
+                        },
+                    }
+                },
+                {
                     opcode:"firingServoInit",
                     text:formatMessage({ id: 'carMotor.firing.servoInit'}),
                     blockType:BlockType.COMMAND,
@@ -452,6 +464,83 @@ class Scratch3CarMotor {
                     text:formatMessage({ id: 'carMotor.camera.carRun'}),
                     blockType: BlockType.CONDITIONAL,
                 },
+                // {
+                //     opcode: "sendCameraCode",
+                //     text:"转发摄像头代码",
+                //     blockType: BlockType.CONDITIONAL
+                // }
+                {
+                    func:"aabutton",
+                    text: formatMessage({ id: 'carMotor.bluetoothController.expansion.name'}),
+                    blockType:BlockType.BUTTON
+                },
+                {
+                    opcode: "connectHandShank",
+                    text: formatMessage({ id: 'carMotor.bluetoothController.connect'}),
+                    blockType: BlockType.COMMAND,
+                    arguments: {
+                        ONE: {
+                            type: ArgumentType.STRING,
+                            defaultValue: '20:00:00:00:14:51'
+                        }
+                    }
+                },
+                {
+                    opcode: "isConnectHandShank",
+                    text: formatMessage({ id: 'carMotor.bluetoothController.isConnect'}),
+                    blockType: BlockType.BOOLEAN
+                },
+                {
+                    opcode: "handShankButtons",
+                    text: formatMessage({ id: 'carMotor.bluetoothController.buttons'}),
+                    blockType: BlockType.BOOLEAN,
+                    arguments: {
+                        ONE: {
+                            type: ArgumentType.STRING,
+                            menu: "Buttons",
+                            defaultValue: "l1"
+                        },
+                        TWO: {
+                            type: ArgumentType.STRING,
+                            menu: "Buttons_ACTION",
+                            defaultValue: "down"
+                        }
+                    }
+                },
+                {
+                    opcode: "HandShankDisconnect",
+                    text: formatMessage({ id: 'carMotor.bluetoothController.disConnect'}),
+                    blockType: BlockType.COMMAND
+                },
+                {
+                    opcode: "handShankIsMove",
+                    text: formatMessage({ id: 'carMotor.bluetoothController.move'}),
+                    blockType: BlockType.BOOLEAN,
+                    arguments: {
+                        ONE: {
+                            type: ArgumentType.STRING,
+                            menu: "ROCKER",
+                            defaultValue: "left"
+                        }
+                    }
+                },
+                {
+                    opcode: "getHandShankRockerData",
+                    text: formatMessage({ id: 'carMotor.bluetoothController.getData'}),
+                    blockType: BlockType.REPORTER,
+                    arguments: {
+                        ONE: {
+                            type: ArgumentType.STRING,
+                            menu: "ROCKER",
+                            defaultValue: "left"
+                        },
+                        TWO:{
+                            type: ArgumentType.STRING,
+                            menu: "AXIS",
+                            defaultValue: "x"
+                        }
+                    }
+                }
             ],
             menus: {
                 SERVER:{
@@ -478,6 +567,22 @@ class Scratch3CarMotor {
                             text: formatMessage({ id: 'carMotor.right' }),
                             value: "right"
                         },
+                        {
+                            text: formatMessage({ id: 'carMotor.bluetoothController.leftUp'}),
+                            value: "leftUp"
+                        },
+                        {
+                            text: formatMessage({ id: 'carMotor.bluetoothController.leftDown'}),
+                            value: "leftDown"
+                        },
+                        {
+                            text: formatMessage({ id: 'carMotor.bluetoothController.rightUp'}),
+                            value: "rightUp"
+                        },
+                        {
+                            text: formatMessage({ id: 'carMotor.bluetoothController.rightDown'}),
+                            value: "rightDown"
+                        },
                         // {
                         //     text: formatMessage({ id: 'carMotor.lf' }),
                         //     value: "leftUp"
@@ -501,7 +606,8 @@ class Scratch3CarMotor {
                         {
                             text: formatMessage({ id: 'carMotor.anticlockwise' }),
                             value: "anticlockwise"
-                        }
+                        },
+
                     ]
                 },
                 CARMODE: {
@@ -716,8 +822,50 @@ class Scratch3CarMotor {
                         {text:formatMessage({ id: 'carMotor.camera.mediumQuality' }),value:"2"},
                         {text:formatMessage({ id: 'carMotor.camera.lowQuality' }),value:"1"}
                     ]
+                },
+                Buttons:{
+                    items:[
+                        {text: "L1",value:"l1"},
+                        {text: "L2",value:"l2"},
+                        {text: "R1",value:"r1"},
+                        {text: "R2",value:"r2"},
+                        {text: "UP",value:"up"},
+                        {text: "DOWN",value:"down"},
+                        {text: "LEFT",value:"left"},
+                        {text: "RIGHT",value:"right"},
+                        {text: "X",value:"square"},
+                        {text: "Y",value:"triangle"},
+                        {text: "A",value:"cross"},
+                        {text: "B",value:"circle"},
+                        {text: "SELECT",value:"select"},
+                        {text: "START",value:"start"},
+                        {text: "PS",value:"ps"}
+                    ]
+                },
+                ROCKER:{
+                    items:[
+                        {text: formatMessage({ id: 'ROBOT_ARM_LEFT_ROCKER' }),value:"left"},
+                        {text: formatMessage({ id: 'ROBOT_ARM_RIGHT_ROCKER' }),value:"right"}
+                    ]
+                },
+                AXIS:{
+                    items:[
+                        {text: "x",value:"x"},
+                        {text: "y",value:"y"}
+                    ]
+                },
+                Buttons_ACTION:{
+                    items:[
+                        {text:formatMessage({ id: 'carMotor.bluetoothController.pressDown' }),value:"down"},
+                        {text:formatMessage({ id: 'carMotor.bluetoothController.undo' }),value:"up"}
+                    ]
+                },
+                FIRING_TYPE:{
+                    items:[
+                        {text:formatMessage({ id: 'open' }),value:"open"},
+                        {text:formatMessage({ id: 'close' }),value:"close"}
+                    ]
                 }
-                
             }
         }
     }

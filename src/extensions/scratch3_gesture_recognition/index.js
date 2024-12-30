@@ -10,8 +10,7 @@ class scratch3GestureRecognition {
         this.runtime = runtime
         this.Key = 'jMq8vtlI7x4nKgifJIV9BWY4BcAYVNPb'
         this.Secret = '352eeGCKseiOfKNUVId5MKaLpTifzRjj'
-        this.recognizeResult = null,
-        this.video = this.runtime.getVideoEl()
+        this.recognizeResult = null
     }
 
     getInfo() {
@@ -189,8 +188,8 @@ class scratch3GestureRecognition {
         }
         let base64 = ''
         //获取当前摄像头画面
-        const canvas = await html2canvas(this.video)
-
+        const video = this.runtime.getVideoEl()
+        const canvas = await html2canvas(video)
         base64 = canvas.toDataURL('image/png', 1);
         //创建请求参数
         let data = new FormData();

@@ -1621,6 +1621,16 @@ class VirtualMachine extends EventEmitter {
     configureScratchLinkSocketFactory (factory) {
         this.runtime.configureScratchLinkSocketFactory(factory);
     }
+
+    /**
+     * @param {Block[]} blockObjects
+     * @returns {object}
+     */
+    exportStandaloneBlocks (blockObjects) {
+        const sb3 = require('./serialization/sb3');
+        const serialized = sb3.serializeStandaloneBlocks(blockObjects, this.runtime);
+        return serialized;
+    }
 }
 
 module.exports = VirtualMachine;

@@ -34,7 +34,9 @@ const builtinExtensions = {
     bipedRobot: () => require('../extensions/scratch_biped_robot'),
     ASR: () => require('../extensions/scratch_ASR'),
     meteorologicalStation: () => require('../extensions/scratch_meteorologicalStation'),
-    chart: () => require('../extensions/scratch_chart')
+    chart: () => require('../extensions/scratch_chart'),
+    smartHome: () => require('../extensions/scratch_smart_home'),
+    smartFarm: () => require('../extensions/scratch_smart_farm'),
 };
 
 /**

@@ -152,13 +152,13 @@ class Scratch3BipedRobot {
             menus: {
                 SOUND: {
                     items: [
-                        { text: '甜美女生', value: '1' },
-                        { text: '台湾女生', value: '2' },
-                        { text: '活泼女生', value: '3' },
-                        { text: '可爱女生', value: '4' },
-                        { text: '女播音员', value: '5' },
-                        { text: '男播音员', value: '6' },
-                        { text: '天真男生', value: '7' }
+                        { text: 'Dora', value: '1' },
+                        { text: 'Rebecca', value: '2' },
+                        { text: 'Ana', value: '3' },
+                        { text: 'Dane', value: '4' },
+                        { text: 'Allen', value: '5' },
+                        { text: 'Ava', value: '6' },
+                        // { text: '天真男生', value: '7' }
                     ]
                 },
                 SENSITIVITY: {

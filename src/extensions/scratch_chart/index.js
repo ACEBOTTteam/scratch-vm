@@ -26,14 +26,52 @@ class ScratchChart {
             },
             grid: {
                 left: '3%',
-                right: '4%',
+                right: '5%',
                 bottom: '3%',
                 containLabel: true
             },
+            tooltip: {
+                show: true
+            },
             toolbox: {
+                show: true,
                 feature: {
-                    saveAsImage: {}
-                }
+                    saveAsImage: {},
+                    magicType: {
+                        type: ['line', 'bar']
+                    },
+                    dataView: {
+                        show: true,
+                        // optionToContent: function (opt) {
+                        //     console.log(opt,'opt')
+                        //     var axisData = opt.xAxis[0].data;
+                        //     var series = opt.series;
+                        //     var table = `<table style="width:100%;text-align:center"><tbody><tr>`
+                        //     if(series[0]){
+                        //         table += '<td>' + series[0].name + '</td>'
+                        //     }
+                        //     if(series[1]){
+                        //         table += '<td>' + series[1].name + '</td>'
+                        //     }
+                        //     table  += '</tr>';
+                                
+                        //     for (var i = 0, l = axisData.length; i < l; i++) {
+                        //         table += '<tr>'
+                        //             + '<td>' + axisData[i] + '</td>'
+                        //         if(series[0]){
+                        //             table += '<td>' + series[0].data[i] + '</td>'
+                        //         }
+                        //         if(series[1]){
+                        //             table + '<td>' + series[1].data[i] + '</td>'
+                        //         }
+                        //         table += '</tr>';
+                        //     }
+                        //     table += '</tbody></table>';
+                        //     return table;
+                        // }
+                    }
+                },
+
             },
             xAxis: {
                 name: "x",
@@ -153,7 +191,7 @@ class ScratchChart {
             this.option.series.push({
                 name: input,
                 type: 'line',
-                stack: 'Total',
+                // stack: 'Total',
                 data: [y]
             })
         } else {
@@ -163,8 +201,11 @@ class ScratchChart {
                 }
             }
         }
-        this.option.xAxis.data.push(x)
+        if (-1 === this.option.xAxis.data.indexOf(x)) {
+            this.option.xAxis.data.push(x)
+        }
         this.myChart.setOption(this.option)
+        console.log(this.option, 'this.option')
     }
 
     clearData() {
@@ -180,13 +221,20 @@ class ScratchChart {
             },
             grid: {
                 left: '3%',
-                right: '4%',
+                right: '5%',
                 bottom: '3%',
                 containLabel: true
             },
             toolbox: {
+                show: true,
                 feature: {
-                    saveAsImage: {}
+                    saveAsImage: {},
+                    magicType: {
+                        type: ['line', 'bar']
+                    },
+                    dataView: {
+                        show: true
+                    }
                 }
             },
             xAxis: {

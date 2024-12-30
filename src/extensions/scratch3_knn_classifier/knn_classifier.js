@@ -4,10 +4,9 @@ const tf = require('@tensorflow/tfjs')
 
 
 class KnnClassifiers {
-    constructor(runtime, videoEl) {
+    constructor(runtime) {
         this.classifier = null
         this.mobilenet = null
-        this.videoEl = videoEl
         this.runtime = runtime
     }
 
@@ -126,7 +125,8 @@ class KnnClassifiers {
     }
 
     getImage() {
-        return tf.browser.fromPixels(this.videoEl);
+        const videoEl = this.runtime.getVideoEl()
+        return tf.browser.fromPixels(videoEl);
     }
 }
 

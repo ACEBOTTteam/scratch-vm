@@ -1314,10 +1314,70 @@ const deserialize = function (json, runtime, zip, isSingleSprite) {
         }));
 };
 
+/**
+ * @param {Block[]} blocks List of block objects.
+ * @param {Runtime} runtime Runtime
+ * @returns {object} Something that can be understood by deserializeStandaloneBlocks
+ */
+const serializeStandaloneBlocks = (blocks, runtime) => {
+    const extensionIDs = new Set();
+    for (const block of blocks) {
+        const extensionID = getExtensionIdForOpcode(block.opcode);
+        if (extensionID) {
+            extensionIDs.add(extensionID);
+        }
+    }
+    const extensionURLs = getExtensionURLsToSave(extensionIDs, runtime);
+    if (extensionURLs) {
+        return {
+            blocks,
+            // same format as project.json
+            extensionURLs: extensionURLs
+        };
+    }
+    // Vanilla Scratch always just uses the block array as-is. To reduce compatibility concerns
+    // we too will use that when possible.
+    return blocks;
+};
+
+/**
+ * @param {Set<string>|string[]} extensionIDs Project extension IDs
+ * @param {Runtime} runtime
+ * @returns {Record<string, string>|null} extension ID -> URL map, or null if no custom extensions.
+ */
+const getExtensionURLsToSave = (extensionIDs, runtime) => {
+    // Extension manager only exists when runtime is wrapped by VirtualMachine
+    if (!runtime.extensionManager) {
+        return null;
+    }
+
+    // We'll save the extensions in the format:
+    // {
+    //   "extensionid": "https://...",
+    //   "otherid": "https://..."
+    // }
+    // Which lets the VM know which URLs correspond to which IDs, which is useful when the project
+    // is being loaded. For example, if the extension is eventually converted to a builtin extension
+    // or if it is already loaded, then it doesn't need to fetch the script again.
+    const extensionURLs = runtime.extensionManager.getExtensionURLs();
+    const toSave = {};
+    for (const extension of extensionIDs) {
+        const url = extensionURLs[extension];
+        if (typeof url === 'string') {
+            toSave[extension] = url;
+        }
+    }
+    if (Object.keys(toSave).length === 0) {
+        return null;
+    }
+    return toSave;
+};
+
 module.exports = {
     serialize: serialize,
     deserialize: deserialize,
     deserializeBlocks: deserializeBlocks,
     serializeBlocks: serializeBlocks,
-    getExtensionIdForOpcode: getExtensionIdForOpcode
+    getExtensionIdForOpcode: getExtensionIdForOpcode,
+    serializeStandaloneBlocks: serializeStandaloneBlocks,
 };
