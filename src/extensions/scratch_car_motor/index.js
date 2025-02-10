@@ -469,78 +469,78 @@ class Scratch3CarMotor {
                 //     text:"转发摄像头代码",
                 //     blockType: BlockType.CONDITIONAL
                 // }
-                {
-                    func:"aabutton",
-                    text: formatMessage({ id: 'carMotor.bluetoothController.expansion.name'}),
-                    blockType:BlockType.BUTTON
-                },
-                {
-                    opcode: "connectHandShank",
-                    text: formatMessage({ id: 'carMotor.bluetoothController.connect'}),
-                    blockType: BlockType.COMMAND,
-                    arguments: {
-                        ONE: {
-                            type: ArgumentType.STRING,
-                            defaultValue: '20:00:00:00:14:51'
-                        }
-                    }
-                },
-                {
-                    opcode: "isConnectHandShank",
-                    text: formatMessage({ id: 'carMotor.bluetoothController.isConnect'}),
-                    blockType: BlockType.BOOLEAN
-                },
-                {
-                    opcode: "handShankButtons",
-                    text: formatMessage({ id: 'carMotor.bluetoothController.buttons'}),
-                    blockType: BlockType.BOOLEAN,
-                    arguments: {
-                        ONE: {
-                            type: ArgumentType.STRING,
-                            menu: "Buttons",
-                            defaultValue: "l1"
-                        },
-                        TWO: {
-                            type: ArgumentType.STRING,
-                            menu: "Buttons_ACTION",
-                            defaultValue: "down"
-                        }
-                    }
-                },
-                {
-                    opcode: "HandShankDisconnect",
-                    text: formatMessage({ id: 'carMotor.bluetoothController.disConnect'}),
-                    blockType: BlockType.COMMAND
-                },
-                {
-                    opcode: "handShankIsMove",
-                    text: formatMessage({ id: 'carMotor.bluetoothController.move'}),
-                    blockType: BlockType.BOOLEAN,
-                    arguments: {
-                        ONE: {
-                            type: ArgumentType.STRING,
-                            menu: "ROCKER",
-                            defaultValue: "left"
-                        }
-                    }
-                },
-                {
-                    opcode: "getHandShankRockerData",
-                    text: formatMessage({ id: 'carMotor.bluetoothController.getData'}),
-                    blockType: BlockType.REPORTER,
-                    arguments: {
-                        ONE: {
-                            type: ArgumentType.STRING,
-                            menu: "ROCKER",
-                            defaultValue: "left"
-                        },
-                        TWO:{
-                            type: ArgumentType.STRING,
-                            menu: "AXIS",
-                            defaultValue: "x"
-                        }
-                    }
-                }
+                // {
+                //     func:"aabutton",
+                //     text: formatMessage({ id: 'carMotor.bluetoothController.expansion.name'}),
+                //     blockType:BlockType.BUTTON
+                // },
+                // {
+                //     opcode: "connectHandShank",
+                //     text: formatMessage({ id: 'carMotor.bluetoothController.connect'}),
+                //     blockType: BlockType.COMMAND,
+                //     arguments: {
+                //         ONE: {
+                //             type: ArgumentType.STRING,
+                //             defaultValue: '20:00:00:00:14:51'
+                //         }
+                //     }
+                // },
+                // {
+                //     opcode: "isConnectHandShank",
+                //     text: formatMessage({ id: 'carMotor.bluetoothController.isConnect'}),
+                //     blockType: BlockType.BOOLEAN
+                // },
+                // {
+                //     opcode: "handShankButtons",
+                //     text: formatMessage({ id: 'carMotor.bluetoothController.buttons'}),
+                //     blockType: BlockType.BOOLEAN,
+                //     arguments: {
+                //         ONE: {
+                //             type: ArgumentType.STRING,
+                //             menu: "Buttons",
+                //             defaultValue: "l1"
+                //         },
+                //         TWO: {
+                //             type: ArgumentType.STRING,
+                //             menu: "Buttons_ACTION",
+                //             defaultValue: "down"
+                //         }
+                //     }
+                // },
+                // {
+                //     opcode: "HandShankDisconnect",
+                //     text: formatMessage({ id: 'carMotor.bluetoothController.disConnect'}),
+                //     blockType: BlockType.COMMAND
+                // },
+                // {
+                //     opcode: "handShankIsMove",
+                //     text: formatMessage({ id: 'carMotor.bluetoothController.move'}),
+                //     blockType: BlockType.BOOLEAN,
+                //     arguments: {
+                //         ONE: {
+                //             type: ArgumentType.STRING,
+                //             menu: "ROCKER",
+                //             defaultValue: "left"
+                //         }
+                //     }
+                // },
+                // {
+                //     opcode: "getHandShankRockerData",
+                //     text: formatMessage({ id: 'carMotor.bluetoothController.getData'}),
+                //     blockType: BlockType.REPORTER,
+                //     arguments: {
+                //         ONE: {
+                //             type: ArgumentType.STRING,
+                //             menu: "ROCKER",
+                //             defaultValue: "left"
+                //         },
+                //         TWO:{
+                //             type: ArgumentType.STRING,
+                //             menu: "AXIS",
+                //             defaultValue: "x"
+                //         }
+                //     }
+                // }
             ],
             menus: {
                 SERVER:{

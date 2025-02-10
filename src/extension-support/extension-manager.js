@@ -37,6 +37,8 @@ const builtinExtensions = {
     chart: () => require('../extensions/scratch_chart'),
     smartHome: () => require('../extensions/scratch_smart_home'),
     smartFarm: () => require('../extensions/scratch_smart_farm'),
+    bluetoothController: () => require('../extensions/scratch_bluetooth_controller'),
+    bluetoothControllerRealTime: () => require('../extensions/scratch_bluetooth_controller_realTime'),
 };
 
 /**

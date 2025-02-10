@@ -13,13 +13,13 @@ class Scratch3BipedRobot {
     getInfo() {
         return {
             id: "ASR",
-            name: "语音识别",
+            name: formatMessage({ id: 'ASR.categoryName' }),
             blockIconURL: iconURI,
             showStatusButton: false,
             blocks: [
                 {
                     opcode: "ASR",
-                    text: "语音识别",
+                    text: formatMessage({ id: 'ASR.categoryName' }),
                     blockType: BlockType.CONDITIONAL,
                     arguments: {
                         ONE: {
@@ -30,7 +30,7 @@ class Scratch3BipedRobot {
                 },
                 {
                     opcode: "sound_config",
-                    text: "声音配置 发音[ONE]音量[TWO]语速[THREE]",
+                    text: formatMessage({ id: 'ASR.sound_config' }),
                     blockType: BlockType.COMMAND,
                     arguments: {
                         ONE: {
@@ -50,7 +50,7 @@ class Scratch3BipedRobot {
                 },
                 {
                     opcode: "turn_on_the_radio",
-                    text: '开机播报[ONE]超时时间[TWO]s',
+                    text: formatMessage({ id: 'ASR.turn_on_the_radio' }),
                     blockType: BlockType.COMMAND,
                     arguments: {
                         ONE: {
@@ -65,7 +65,7 @@ class Scratch3BipedRobot {
                 },
                 {
                     opcode: "wakeword",
-                    text: '唤醒灵敏度[ONE]唤醒词[TWO] 唤醒回复[THREE]',
+                    text: formatMessage({ id: 'ASR.wakeword' }),
                     blockType: BlockType.COMMAND,
                     arguments: {
                         ONE: {
@@ -85,7 +85,7 @@ class Scratch3BipedRobot {
                 },
                 {
                     opcode: "exit_reply",
-                    text: '超时退出回复[ONE]',
+                    text: formatMessage({ id: 'ASR.exit_reply' }),
                     blockType: BlockType.COMMAND,
                     arguments:{
                         ONE: {
@@ -96,7 +96,7 @@ class Scratch3BipedRobot {
                 },
                 {
                     opcode: "initiative_exit",
-                    text: '主动退出命令[ONE]回复[TWO]',
+                    text: formatMessage({ id: 'ASR.initiative_exit' }),
                     blockType: BlockType.COMMAND,
                     arguments: {
                         ONE: {
@@ -111,7 +111,7 @@ class Scratch3BipedRobot {
                 },
                 {
                     opcode: "command_recognition_sensitivity",
-                    text: '命令识别灵敏度[ONE]',
+                    text: formatMessage({ id: 'ASR.command_recognition_sensitivity' }),
                     blockType: BlockType.COMMAND,
                     arguments:{
                         ONE: {
@@ -123,7 +123,7 @@ class Scratch3BipedRobot {
                 },
                 {
                     opcode: "recognition_command",
-                    text: '行为名[ONE]ID[TWO]命令词[THREE]回复语[FOUR]端口输出[FIVE]',
+                    text: formatMessage({ id: 'ASR.recognition_command' }),
                     blockType: BlockType.COMMAND,
                     arguments: {
                         ONE: {
@@ -152,12 +152,12 @@ class Scratch3BipedRobot {
             menus: {
                 SOUND: {
                     items: [
-                        { text: 'Dora', value: '1' },
-                        { text: 'Rebecca', value: '2' },
-                        { text: 'Ana', value: '3' },
-                        { text: 'Dane', value: '4' },
-                        { text: 'Allen', value: '5' },
-                        { text: 'Ava', value: '6' },
+                        { text: formatMessage({ id: 'ASR.sweet_girl' }), value: '1' },
+                        { text: formatMessage({ id: 'ASR.cute_girl_voice' }), value: '2' },
+                        { text: formatMessage({ id: 'ASR.vivacious_female_voice' }), value: '3' },
+                        { text: formatMessage({ id: 'ASR.male_announcer' }), value: '4' },
+                        { text: formatMessage({ id: 'ASR.naive_boy_voice' }), value: '5' },
+                        { text: formatMessage({ id: 'ASR.childs_voice' }), value: '6' },
                         // { text: '天真男生', value: '7' }
                     ]
                 },
