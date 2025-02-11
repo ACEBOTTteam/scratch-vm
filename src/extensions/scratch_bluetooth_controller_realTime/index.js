@@ -68,13 +68,13 @@ class Scratch3BluetoothController {
     getInfo() {
         return {
             id: "bluetoothControllerRealTime",
-            name: formatMessage({ id: 'carMotor.bluetoothController.expansion.name' }),
+            name: formatMessage({ id: 'carMotor.bluetoothControllerRealTime.expansion.name' }),
             blockIconURL: iconURI,
-            showStatusButton: true,
+            // showStatusButton: true,
             blocks: [
                 {
                     opcode: "handShankButtons",
-                    text: formatMessage({ id: 'carMotor.bluetoothController.buttons' }),
+                    text: formatMessage({ id: 'carMotor.bluetoothControllerRealTime.buttons' }),
                     blockType: BlockType.BOOLEAN,
                     arguments: {
                         ONE: {
@@ -91,7 +91,7 @@ class Scratch3BluetoothController {
                 },
                 {
                     opcode: "getHandShankRockerData",
-                    text: formatMessage({ id: 'carMotor.bluetoothController.getData' }),
+                    text: formatMessage({ id: 'carMotor.bluetoothControllerRealTime.getData' }),
                     blockType: BlockType.REPORTER,
                     arguments: {
                         ONE: {

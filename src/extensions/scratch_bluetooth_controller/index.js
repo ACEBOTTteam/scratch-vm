@@ -15,7 +15,7 @@ class Scratch3BluetoothController {
             id: "bluetoothController",
             name: formatMessage({ id: 'carMotor.bluetoothController.expansion.name'}),
             blockIconURL: iconURI,
-            showStatusButton: true,
+            // showStatusButton: true,
             blocks: [
                 {
                     opcode: "connectHandShank",
