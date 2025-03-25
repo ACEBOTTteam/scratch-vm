@@ -58,13 +58,13 @@ class Scratch3Sharkbot {
                 },
                 {
                     opcode: "IR_getData",
-                    text: "接收到[ONE]被按下",
+                    text: "红外接收模块接收到[ONE]被按下",
                     blockType: BlockType.BOOLEAN,
                     arguments: {
                         ONE: {
                             type: ArgumentType.STRING,
                             menu: "BUTTONS",
-                            defaultValue: 'up'
+                            defaultValue: '12'
                         }
                     }
                 },
@@ -92,7 +92,7 @@ class Scratch3Sharkbot {
                 },
                 {
                     opcode: "Trace_getData",
-                    text: '四路巡线[ONE]的取值',
+                    text: '巡线传感器[ONE]的取值',
                     blockType: BlockType.REPORTER,
                     arguments: {
                         ONE: {
@@ -140,7 +140,7 @@ class Scratch3Sharkbot {
                 },
                 {
                     opcode: "rotationAngle",
-                    text: '编码电机[ONE]转动[TWO]°',
+                    text: '编码电机[ONE]转动[TWO]圈',
                     blockType: BlockType.COMMAND,
                     arguments:{
                         ONE:{
@@ -150,7 +150,7 @@ class Scratch3Sharkbot {
                         },
                         TWO:{
                             type:ArgumentType.NUMBER,
-                            defaultValue:180
+                            defaultValue:1
                         }
                     }
                 },
@@ -212,23 +212,23 @@ class Scratch3Sharkbot {
                     items: [
                         {
                             text: "up",
-                            value: "up"
+                            value: "12"
                         },
                         {
                             text: "down",
-                            value: "down"
+                            value: "13"
                         },
                         {
                             text: "left",
-                            value: "left"
+                            value: "14"
                         },
                         {
                             text: "right",
-                            value: "right"
+                            value: "15"
                         },
                         {
                             text: "ok",
-                            value: "ok"
+                            value: "16"
                         },
                         {
                             text: "0",
@@ -272,11 +272,11 @@ class Scratch3Sharkbot {
                         },
                         {
                             text: "*",
-                            value: "*"
+                            value: "10"
                         },
                         {
                             text: "#",
-                            value: "#"
+                            value: "11"
                         }
                     ]
                 },

@@ -170,7 +170,18 @@ class Scratch3BluetoothController {
                             defaultValue: "x"
                         }
                     }
-                }
+                },
+                {
+                    opcode: "multithreading",
+                    text: formatMessage({ id: 'carMotor.bluetoothController.multithreading'}),
+                    blockType: BlockType.CONDITIONAL,
+                    arguments: {
+                        ONE: {
+                            type: ArgumentType.STRING,
+                            defaultValue: 'callback'
+                        },
+                    }
+                },
             ],
             menus: {
                 Buttons:{
