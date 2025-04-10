@@ -42,7 +42,7 @@ const ArgumentType = {
      * Inline image on block (as part of the label)
      */
     IMAGE: 'image',
-    FIELD_VARIABLE: 'field_variable'
+    MATH_SPEED: 'math_speed_number'
 };
 
 module.exports = ArgumentType;

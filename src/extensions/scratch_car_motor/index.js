@@ -464,6 +464,30 @@ class Scratch3CarMotor {
                     text:formatMessage({ id: 'carMotor.camera.carRun'}),
                     blockType: BlockType.CONDITIONAL,
                 },
+                {
+                    opcode: "cameraLED",
+                    text: formatMessage({ id: 'carMotor.camera.led'}),
+                    arguments:{
+                        ONE:{
+                            type:ArgumentType.STRING,
+                            menu:"CAMETA_LED",
+                            defaultValue:"1"
+                        }
+                    },
+                    blockType: BlockType.COMMAND
+                },
+                {
+                    opcode: "cameraGetCommant",
+                    text: formatMessage({ id: 'carMotor.camera.Commant'}),
+                    blockType: BlockType.BOOLEAN,
+                    arguments: {
+                        ONE: {
+                            type: ArgumentType.STRING,
+                            menu: 'CAMETA_LED',
+                            defaultValue: '1'
+                        }
+                    }
+                },
                 // {
                 //     opcode: "sendCameraCode",
                 //     text:"转发摄像头代码",
@@ -864,6 +888,18 @@ class Scratch3CarMotor {
                     items:[
                         {text:formatMessage({ id: 'open' }),value:"open"},
                         {text:formatMessage({ id: 'close' }),value:"close"}
+                    ]
+                },
+                CAMETA_LED:{
+                    items:[
+                        {
+                            text: formatMessage({ id: 'carMotor.openLED' }),
+                            value: "1"
+                        },
+                        {
+                            text: formatMessage({ id: 'carMotor.closeLED' }),
+                            value: "0"
+                        },
                     ]
                 }
             }

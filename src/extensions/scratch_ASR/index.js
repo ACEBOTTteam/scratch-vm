@@ -163,9 +163,9 @@ class Scratch3BipedRobot {
                 },
                 SENSITIVITY: {
                     items: [
-                        { text: '低', value: 'low' },
-                        { text: '中', value: 'middle' },
-                        { text: '高', value: 'high' },
+                        { text: formatMessage({ id: 'ASR.LOW' }), value: 'low' },
+                        { text: formatMessage({ id: 'ASR.MIDDLE' }), value: 'middle' },
+                        { text: formatMessage({ id: 'ASR.HIGH' }), value: 'high' },
                     ]
                 }
             }

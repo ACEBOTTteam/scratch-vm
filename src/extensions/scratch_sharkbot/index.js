@@ -18,6 +18,46 @@ class Scratch3Sharkbot {
             showStatusButton: false,
             blocks: [
                 {
+                    opcode: "app_init",
+                    text: "sharkbot app 初始化",
+                    blockType: BlockType.COMMAND
+                },
+                {
+                    opcode: "get_commant",
+                    text: "sharkbot 获取指令[ONE]",
+                    blockType: BlockType.BOOLEAN,
+                    arguments: {
+                        ONE: {
+                            type: ArgumentType.STRING,
+                            menu: "COMMANT",
+                            defaultValue: '1'
+                        }
+                    }
+                },
+                {
+                    opcode: "get_commantData",
+                    text: "sharkbot 获取指令[ONE]值",
+                    blockType: BlockType.REPORTER,
+                    arguments: {
+                        ONE: {
+                            type: ArgumentType.STRING,
+                            menu: "COMMANT_DATA",
+                            defaultValue: 'forward_dis'
+                        }
+                    }
+                },
+                {
+                    opcode: "execute",
+                    text: "sharkbot 运动",
+                    blockType: BlockType.CONDITIONAL,
+                    arguments: {
+                        ONE: {
+                            type: ArgumentType.STRING,
+                            defaultValue: 'callback'
+                        },
+                    }
+                },
+                {
                     opcode: "setRGB_color",
                     text: "RGB灯[ONE][TWO]",
                     blockType: BlockType.COMMAND,
@@ -69,24 +109,27 @@ class Scratch3Sharkbot {
                     }
                 },
                 {
-                    opcode: "Ultrasonic_getData",
-                    text: "超声波测距(cm)",
+                    opcode: "Ultrasonic_launch",
+                    text: "超声波发射",
+                    blockType: BlockType.COMMAND
+                },
+                {
+                    opcode: "Ultrasonic_get_time",
+                    text: "超声波传播时间",
                     blockType: BlockType.REPORTER
                 },
                 {
                     opcode: "P_Buzzer",
-                    text: '蜂鸣器频率[ONE]持续时间[TWO]拍',
+                    text: '蜂鸣器频率[ONE]hz 持续时间[TWO]s',
                     blockType: BlockType.COMMAND,
                     arguments: {
                         ONE: {
-                            type: ArgumentType.STRING,
-                            menu: 'FREQUENCY',
-                            defaultValue: '31'
+                            type: ArgumentType.NUMBER,
+                            defaultValue: 100
                         },
-                        TWO:{
-                            type: ArgumentType.STRING,
-                            menu: 'BEAT',
-                            defaultValue: '0.5'
+                        TWO: {
+                            type: ArgumentType.NUMBER,
+                            defaultValue: 500
                         }
                     }
                 },
@@ -104,92 +147,184 @@ class Scratch3Sharkbot {
                 },
                 {
                     opcode: "speed_move",
-                    text: '以[ONE]的速度[TWO]',
+                    text: '以[ONE]的PWM值[TWO]',
                     blockType: BlockType.COMMAND,
-                    arguments:{
-                        ONE:{
-                            type:ArgumentType.NUMBER,
-                            defaultValue:50
+                    arguments: {
+                        ONE: {
+                            type: ArgumentType.NUMBER,
+                            defaultValue: 50
                         },
-                        TWO:{
-                            type:ArgumentType.STRING,
-                            menu:"RUN",
-                            defaultValue:"forward"
+                        TWO: {
+                            type: ArgumentType.STRING,
+                            menu: "RUN",
+                            defaultValue: "forward"
                         }
                     }
                 },
                 {
                     opcode: "time_move",
-                    text: '以[ONE]的速度[TWO],持续[THREE]秒',
+                    text: '以[ONE]的PWM值[TWO],持续[THREE]秒',
                     blockType: BlockType.COMMAND,
-                    arguments:{
-                        ONE:{
-                            type:ArgumentType.NUMBER,
-                            defaultValue:50
+                    arguments: {
+                        ONE: {
+                            type: ArgumentType.NUMBER,
+                            defaultValue: 50
                         },
-                        TWO:{
-                            type:ArgumentType.STRING,
-                            menu:"RUN",
-                            defaultValue:"forward"
+                        TWO: {
+                            type: ArgumentType.STRING,
+                            menu: "RUN",
+                            defaultValue: "forward"
                         },
-                        THREE:{
-                            type:ArgumentType.NUMBER,
-                            defaultValue:1
+                        THREE: {
+                            type: ArgumentType.NUMBER,
+                            defaultValue: 1
+                        }
+                    }
+                },
+                {
+                    opcode: "setPWM",
+                    text: '设置PWM值 左电机[ONE]右电机[TWO]',
+                    blockType: BlockType.COMMAND,
+                    arguments: {
+                        ONE: {
+                            type: ArgumentType.NUMBER,
+                            defaultValue: 50
+                        },
+                        TWO: {
+                            type: ArgumentType.NUMBER,
+                            defaultValue: 50
+                        }
+                    }
+                },
+                {
+                    opcode: "encoder_init",
+                    text: '[ONE]编码器初始化',
+                    blockType: BlockType.COMMAND,
+                    arguments: {
+                        ONE: {
+                            type: ArgumentType.STRING,
+                            menu: "ALL_WHELL",
+                            defaultValue: "M2"
+                        }
+                    }
+                },
+                {
+                    opcode: "encoder_num",
+                    text: '[ONE]编码器脉冲数',
+                    blockType: BlockType.REPORTER,
+                    arguments: {
+                        ONE: {
+                            type: ArgumentType.STRING,
+                            menu: "ALL_WHELL",
+                            defaultValue: "M2"
+                        }
+                    }
+                },
+                {
+                    opcode: "encoder_reset",
+                    text: '[ONE]编码器重置',
+                    blockType: BlockType.COMMAND,
+                    arguments: {
+                        ONE: {
+                            type: ArgumentType.STRING,
+                            menu: "ALL_WHELL",
+                            defaultValue: "M2"
+                        }
+                    }
+                },
+                {
+                    opcode: "encoder_turn",
+                    text: '[ONE][TWO]°',
+                    blockType: BlockType.COMMAND,
+                    arguments: {
+                        ONE: {
+                            type: ArgumentType.STRING,
+                            menu: "TURN",
+                            defaultValue: "turnLeft"
+                        },
+                        TWO: {
+                            type: ArgumentType.NUMBER,
+                            defaultValue: 180
+                        }
+                    }
+                },
+                {
+                    opcode: "encoder_move",
+                    text: '[ONE][TWO]cm',
+                    blockType: BlockType.COMMAND,
+                    arguments: {
+                        ONE: {
+                            type: ArgumentType.STRING,
+                            menu: "MOVE",
+                            defaultValue: "forward"
+                        },
+                        TWO: {
+                            type: ArgumentType.NUMBER,
+                            defaultValue: 10
                         }
                     }
                 },
                 {
                     opcode: "rotationAngle",
-                    text: '编码电机[ONE]转动[TWO]圈',
+                    text: '左编码电机转动[ONE]圈 右编码电机转动[TWO]圈',
                     blockType: BlockType.COMMAND,
-                    arguments:{
-                        ONE:{
-                            type:ArgumentType.STRING,
-                            menu:"WHELL",
-                            defaultValue:"left"
+                    arguments: {
+                        ONE: {
+                            type: ArgumentType.NUMBER,
+                            defaultValue: 1
                         },
-                        TWO:{
-                            type:ArgumentType.NUMBER,
-                            defaultValue:1
+                        TWO: {
+                            type: ArgumentType.NUMBER,
+                            defaultValue: 1
                         }
                     }
                 },
                 {
                     opcode: "rotationAngle_time",
-                    text: '编码电机[ONE]以速度[TWO]转动,持续[THREE]秒',
+                    text: '编码电机以[ONE]速度[TWO],持续[THREE]秒',
                     blockType: BlockType.COMMAND,
-                    arguments:{
-                        ONE:{
-                            type:ArgumentType.STRING,
-                            menu:"ALL_WHELL",
-                            defaultValue:"M2"
+                    arguments: {
+                        ONE: {
+                            type: ArgumentType.NUMBER,
+                            defaultValue: 100
                         },
-                        TWO:{
-                            type:ArgumentType.NUMBER,
-                            defaultValue:100
+                        TWO: {
+                            type: ArgumentType.STRING,
+                            menu: "RUN",
+                            defaultValue: "forward"
                         },
-                        THREE:{
-                            type:ArgumentType.NUMBER,
-                            defaultValue:1
+                        THREE: {
+                            type: ArgumentType.NUMBER,
+                            defaultValue: 1
                         }
                     }
                 },
                 {
                     opcode: "rotationAngle_speed",
-                    text: '编码电机[ONE]以速度[TWO]转动',
+                    text: '编码电机以[ONE]速度[TWO]',
                     blockType: BlockType.COMMAND,
-                    arguments:{
-                        ONE:{
-                            type:ArgumentType.STRING,
-                            menu:"ALL_WHELL",
-                            defaultValue:"M2"
+                    arguments: {
+                        ONE: {
+                            type: ArgumentType.NUMBER,
+                            defaultValue: 100
                         },
-                        TWO:{
-                            type:ArgumentType.NUMBER,
-                            defaultValue:100
-                        }
+                        TWO: {
+                            type: ArgumentType.STRING,
+                            menu: "RUN",
+                            defaultValue: "forward"
+                        },
                     }
-                }
+                },
+                {
+                    opcode: "ASR_init",
+                    text: '语音识别初始化',
+                    blockType: BlockType.COMMAND
+                },
+                {
+                    opcode: "ASR_get_command",
+                    text: '语音识别获取指令',
+                    blockType: BlockType.REPORTER
+                },
             ],
             menus: {
                 PLACES: {
@@ -280,99 +415,161 @@ class Scratch3Sharkbot {
                         }
                     ]
                 },
-                FREQUENCY: {
+                TRACE: {
                     items: [
-                        { text: 'B0', value: '31' },
-                        { text: 'C1', value: '33' },
-                        { text: 'D1', value: '37' },
-                        { text: 'E1', value: '41' },
-                        { text: 'F1', value: '44' },
-                        { text: 'G1', value: '49' },
-                        { text: 'A1', value: '55' },
-                        { text: 'B1', value: '62' },
-                        { text: 'C2', value: '65' },
-                        { text: 'D2', value: '73' },
-                        { text: 'E2', value: '82' },
-                        { text: 'F2', value: '87' },
-                        { text: 'G2', value: '98' },
-                        { text: 'A2', value: '110' },
-                        { text: 'B2', value: '123' },
-                        { text: 'C3', value: '131' },
-                        { text: 'D3', value: '147' },
-                        { text: 'E3', value: '165' },
-                        { text: 'F3', value: '175' },
-                        { text: 'G3', value: '196' },
-                        { text: 'A3', value: '220' },
-                        { text: 'B3', value: '247' },
-                        { text: 'C4', value: '262' },
-                        { text: 'D4', value: '294' },
-                        { text: 'E4', value: '330' },
-                        { text: 'F4', value: '349' },
-                        { text: 'G4', value: '392' },
-                        { text: 'A4', value: '440' },
-                        { text: 'B4', value: '494' },
-                        { text: 'C5', value: '523' },
-                        { text: 'D5', value: '587' },
-                        { text: 'E5', value: '659' },
-                        { text: 'F5', value: '698' },
-                        { text: 'G5', value: '784' },
-                        { text: 'A5', value: '880' },
-                        { text: 'B5', value: '988' },
-                        { text: 'C6', value: '1047' },
-                        { text: 'D6', value: '1175' },
-                        { text: 'E6', value: '1319' },
-                        { text: 'F6', value: '1397' },
-                        { text: 'G6', value: '1568' },
-                        { text: 'A6', value: '1760' },
-                        { text: 'B6', value: '1976' },
-                        { text: 'C7', value: '2093' },
-                        { text: 'D7', value: '2349' },
-                        { text: 'E7', value: '2637' },
-                        { text: 'F7', value: '2794' },
-                        { text: 'G7', value: '3136' },
-                        { text: 'GS7', value: '3322' },
-                        { text: 'A7', value: '3520' },
-                        { text: 'B7', value: '3951' },
-                        { text: 'C8', value: '4186' },
-                        { text: 'D8', value: '4699' }
+                        { text: "1", value: "1" },
+                        { text: "2", value: "2" },
+                        { text: "3", value: "3" },
+                        { text: "4", value: "4" }
                     ]
                 },
-                BEAT:{
-                    items:[
-                        {text:"二分之一",value:"0.5"},
-                        {text:"四分之一",value:"0.25"},
-                        {text:"八分之一",value:"0.125"},
-                        {text:"整",value:"1"},
-                        {text:"双",value:"2"}
+                RUN: {
+                    items: [
+                        { text: "前进", value: "forward" },
+                        { text: "后退", value: "backward" },
+                        { text: "左转", value: "turnLeft" },
+                        { text: "右转", value: "turnRight" }
                     ]
                 },
-                TRACE:{
-                    items:[
-                        {text:"1",value:"1"},
-                        {text:"2",value:"2"},
-                        {text:"3",value:"3"},
-                        {text:"4",value:"4"}
+                WHELL: {
+                    items: [
+                        { text: "左轮", value: "left" },
+                        { text: "右轮", value: "right" }
                     ]
                 },
-                RUN:{
-                    items:[
-                        {text:"前进",value:"forward"},
-                        {text:"后退",value:"backward"},
-                        {text:"左转",value:"turnLeft"},
-                        {text:"右转",value:"turnRight"}
+                ALL_WHELL: {
+                    items: [
+                        { text: "左轮", value: "M2" },
+                        { text: "右轮", value: "M1" },
+                        // {text:"全部",value:"all"}
                     ]
                 },
-                WHELL:{
-                    items:[
-                        {text:"左轮",value:"left"},
-                        {text:"右轮",value:"right"}
+                MOVE: {
+                    items: [
+                        { text: "前进", value: "forward" },
+                        { text: "后退", value: "backward" }
                     ]
                 },
-                ALL_WHELL:{
-                    items:[
-                        {text:"左轮",value:"M2"},
-                        {text:"右轮",value:"M1"},
-                        {text:"全部",value:"all"}
+                TURN: {
+                    items: [
+                        { text: "左转", value: "turnLeft" },
+                        { text: "右转", value: "turnRight" }
+                    ]
+                },
+                COMMANT: {
+                    items: [
+                        {
+                            text: formatMessage({ id: 'carMotor.forward' }),
+                            value: "1"
+                        },
+                        {
+                            text: formatMessage({ id: 'carMotor.backward' }),
+                            value: "2"
+                        },
+                        {
+                            text: formatMessage({ id: 'carMotor.leftMove' }),
+                            value: "3"
+                        },
+                        {
+                            text: formatMessage({ id: 'carMotor.rightMove' }),
+                            value: "4"
+                        },
+                        {
+                            text: formatMessage({ id: 'carMotor.move.stop' }),
+                            value: "0"
+                        },
+                        {
+                            text: formatMessage({ id: 'carMotor.buzzer' }) + '1',
+                            value: "5"
+                        },
+                        {
+                            text: formatMessage({ id: 'carMotor.buzzer' }) + '2',
+                            value: "6"
+                        },
+                        {
+                            text: formatMessage({ id: 'carMotor.buzzer' }) + '3',
+                            value: "7"
+                        },
+                        {
+                            text: formatMessage({ id: 'carMotor.buzzer' }) + '4',
+                            value: "8"
+                        },
+                        {
+                            text: "巡线",
+                            value: "10"
+                        },
+                        {
+                            text: formatMessage({ id: 'carMotor.follow' }),
+                            value: "11"
+                        },
+                        {
+                            text: formatMessage({ id: 'carMotor.slider' }),
+                            value: "12"
+                        },
+                        {
+                            text: "全部灯",
+                            value: "13"
+                        },
+                        {
+                            text: "左灯",
+                            value: "14"
+                        },
+                        {
+                            text: "右灯",
+                            value: "15"
+                        },
+                        {
+                            text: "前进输入",
+                            value: "16"
+                        },
+                        {
+                            text: "后退输入",
+                            value: "17"
+                        },
+                        {
+                            text: "左转输入",
+                            value: "18"
+                        },
+                        {
+                            text: "右转输入",
+                            value: "19"
+                        },
+                    ]
+                },
+                COMMANT_DATA: {
+                    items: [
+                        {
+                            text: "前进输入",
+                            value: "forward_dis"
+                        },
+                        {
+                            text: "后退输入",
+                            value: "backward_dis"
+                        },
+                        {
+                            text: "左转输入",
+                            value: "left_degree"
+                        },
+                        {
+                            text: "右转输入",
+                            value: "right_degree"
+                        },
+                        {
+                            text: "速度",
+                            value: "Car_Speed"
+                        },
+                        {
+                            text: "R",
+                            value: "R"
+                        },
+                        {
+                            text: "G",
+                            value: "G"
+                        },
+                        {
+                            text: "B",
+                            value: "B"
+                        },
                     ]
                 }
             }
