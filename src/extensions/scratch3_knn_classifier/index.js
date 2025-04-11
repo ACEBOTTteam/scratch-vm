@@ -60,7 +60,7 @@ class Scratch3KnnClassifier {
                 },
                 {
                     opcode: "getPossibility",
-                    text: '识别结果的可能性',
+                    text: formatMessage({ id: "KNN.RESULT.POSSIBILITY" }),
                     blockType: BlockType.REPORTER,
                 },
                 {
