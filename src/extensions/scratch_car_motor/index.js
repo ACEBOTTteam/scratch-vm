@@ -489,84 +489,148 @@ class Scratch3CarMotor {
                     }
                 },
                 // {
-                //     opcode: "sendCameraCode",
-                //     text:"转发摄像头代码",
-                //     blockType: BlockType.CONDITIONAL
-                // }
-                // {
                 //     func:"aabutton",
-                //     text: formatMessage({ id: 'carMotor.bluetoothController.expansion.name'}),
+                //     text:"视觉模块",
                 //     blockType:BlockType.BUTTON
                 // },
                 // {
-                //     opcode: "connectHandShank",
-                //     text: formatMessage({ id: 'carMotor.bluetoothController.connect'}),
+                //     opcode: "lcd_init",
+                //     text: "LCD屏幕初始化",
+                //     blockType: BlockType.COMMAND,
+                // },
+                // {
+                //     opcode: "lcd_rotation",
+                //     text: "LCD屏幕旋转方向[ONE]",
                 //     blockType: BlockType.COMMAND,
                 //     arguments: {
                 //         ONE: {
                 //             type: ArgumentType.STRING,
-                //             defaultValue: '20:00:00:00:14:51'
+                //             menu: 'LED_DIRECTION',
+                //             defaultValue: '2'
                 //         }
                 //     }
                 // },
                 // {
-                //     opcode: "isConnectHandShank",
-                //     text: formatMessage({ id: 'carMotor.bluetoothController.isConnect'}),
-                //     blockType: BlockType.BOOLEAN
+                //     opcode: "vision_camera_init",
+                //     text: "摄像头初始化",
+                //     blockType: BlockType.COMMAND,
                 // },
                 // {
-                //     opcode: "handShankButtons",
-                //     text: formatMessage({ id: 'carMotor.bluetoothController.buttons'}),
-                //     blockType: BlockType.BOOLEAN,
+                //     opcode: "camera_resolution_ratio",
+                //     text: "摄像头[ONE]",
+                //     blockType: BlockType.COMMAND,
                 //     arguments: {
                 //         ONE: {
                 //             type: ArgumentType.STRING,
-                //             menu: "Buttons",
-                //             defaultValue: "l1"
-                //         },
-                //         TWO: {
-                //             type: ArgumentType.STRING,
-                //             menu: "Buttons_ACTION",
-                //             defaultValue: "down"
+                //             menu: 'RESOLUTION_RATIO',
+                //             defaultValue: 'QVGA'
                 //         }
                 //     }
                 // },
                 // {
-                //     opcode: "HandShankDisconnect",
-                //     text: formatMessage({ id: 'carMotor.bluetoothController.disConnect'}),
-                //     blockType: BlockType.COMMAND
-                // },
-                // {
-                //     opcode: "handShankIsMove",
-                //     text: formatMessage({ id: 'carMotor.bluetoothController.move'}),
-                //     blockType: BlockType.BOOLEAN,
+                //     opcode: "vision_camera_switch",
+                //     text: "摄像头[ONE]",
+                //     blockType: BlockType.COMMAND,
                 //     arguments: {
                 //         ONE: {
                 //             type: ArgumentType.STRING,
-                //             menu: "ROCKER",
-                //             defaultValue: "left"
+                //             menu: 'CAMERA_SWITCH',
+                //             defaultValue: 'open'
                 //         }
                 //     }
                 // },
                 // {
-                //     opcode: "getHandShankRockerData",
-                //     text: formatMessage({ id: 'carMotor.bluetoothController.getData'}),
+                //     opcode: "ai_mode",
+                //     text: "[ONE]",
+                //     blockType: BlockType.COMMAND,
+                //     arguments: {
+                //         ONE: {
+                //             type: ArgumentType.STRING,
+                //             menu: 'AI_MODE',
+                //             defaultValue: 'color_recognize'
+                //         }
+                //     }
+                // },
+                // {
+                //     opcode: "color_appoint_recognize",
+                //     text: "颜色追踪[ONE]",
+                //     blockType: BlockType.COMMAND,
+                //     arguments: {
+                //         ONE: {
+                //             type: ArgumentType.STRING,
+                //             menu: 'COLOR',
+                //             defaultValue: 'red'
+                //         }
+                //     }
+                // },
+                // {
+                //     opcode: "get_recognition_data",
+                //     text: "获取[ONE]",
                 //     blockType: BlockType.REPORTER,
                 //     arguments: {
                 //         ONE: {
                 //             type: ArgumentType.STRING,
-                //             menu: "ROCKER",
-                //             defaultValue: "left"
+                //             menu: 'DATA_NAME',
+                //             defaultValue: "X"
                 //         },
-                //         TWO:{
-                //             type: ArgumentType.STRING,
-                //             menu: "AXIS",
-                //             defaultValue: "x"
-                //         }
                 //     }
-                // }
+                // },
             ],
             menus: {
+                COLOR:{
+                    items:[
+                        {text:"红色",value:"red"},
+                        {text:"绿色",value:"green"},
+                        {text:"蓝色",value:"blue"}
+                    ]
+                },
+                DATA_NAME:{
+                    items:[
+                        {text:"x坐标",value:"X"},
+                        {text:"y坐标",value:"Y"},
+                        {text:"宽度",value:"W"},
+                        {text:"高度",value:"H"},
+                        {text:"识别结果",value:"Tag"},
+                        {text:"巡线结果",value:"Visual_data"},
+                        // {text:"上权重",value:"Tag"},
+                        // {text:"中权重",value:"Tag"},
+                        // {text:"下权重",value:"Tag"},
+                    ]
+                },
+                AI_MODE:{
+                    items:[
+                        {text:"颜色识别",value:"color_recognize"},
+                        {text:"二维码识别",value:"qrcode_recognize"},
+                        {text:"条形码识别",value:"barcode_recognize"},
+                        {text:"人脸识别",value:"face_graphical"},
+                        {text:"图像识别",value:"image_recognize"},
+                        {text:"数字识别",value:"number_recognize"},
+                        {text:"交通识别",value:"Traffic_graphical"},
+                        {text:"视觉巡线",value:"tacking_open"},
+                        // {text:"颜色追踪",value:"color_appoint_recognize"},
+                        {text:"机器学习",value:"machine_learning"},
+                    ]
+                },
+                CAMERA_SWITCH:{
+                    items:[
+                        {text:"开启",value:"open"},
+                        {text:"关闭",value:"close"}
+                    ]
+                },
+                RESOLUTION_RATIO:{
+                    items:[
+                        {text:"高分辨率",value:"QVGA"},
+                        {text:"低分辨率",value:"QQVGA"}
+                    ]
+                },
+                LED_DIRECTION:{
+                    items:[
+                        {text:"上",value:"2"},
+                        {text:"下",value:"0"},
+                        {text:"左",value:"3"},
+                        {text:"右",value:"1"},
+                    ]
+                },
                 SERVER:{
                     items:[
                         {text:formatMessage({ id: 'ROBOT_ARM_WEB_SERVER' }),value:"web"},

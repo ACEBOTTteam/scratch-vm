@@ -1,7 +1,6 @@
 const formatMessage = require('format-message');
 const ArgumentType = require('../../extension-support/argument-type');
 const BlockType = require('../../extension-support/block-type');
-const Video = require('../../io/video');
 const iconURI = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAMAAAC5zwKfAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAACpQTFRF////fIel5ufolZ62/2YavsPS+YZOkJmy9/j53+Hk6+zs6N/b6dfO////tDhMHAAAAA50Uk5T/////////////////wBFwNzIAAAA6ElEQVR42uzX2w6DIBAEUGDVtlr//3dLaLwgiwUd2z7MJPJg5EQWiGhGcAxBggQJEiT436CIfqXJPTn3MKNYYMSDFpoAmp24OaYgvwKnFgL2zvVTCwHrMoMi+nUQLFthaNCCa0iwclLkDgYVsQp0mzxuqXgK1MRzoCLWgkPXNN2wI/q6Kvt7u/cX0HtejN8x2sXpnpb8J8D3b0Keuhh3X975M+i0xNVbg3s1TIasgK21bQyGO+s2PykaGMYbge8KrNrssvkOWDXkErB8UuBHETjoYLkKBA8ZfuDkbwVBggQJEiR4MC8BBgDTtMZLx2nFCQAAAABJRU5ErkJggg==';
 
 class Scratch3PAW {
@@ -13,57 +12,23 @@ class Scratch3PAW {
     getInfo() {
         return {
             id: "PAW",
-            name: "机械爪",
+            name: formatMessage({ id: 'PAW.categoryName' }),
             blockIconURL: iconURI,
             showStatusButton: false,
             blocks: [
                 {
-                    opcode: "openBle",
-                    text: "开启蓝牙[ONE]",
-                    blockType: BlockType.COMMAND,
-                    arguments: {
-                        ONE: {
-                            type: ArgumentType.STRING,
-                            defaultValue: 'ESP32-BLE'
-                        }
-                    }
-                },
-                {
-                    opcode: "connectBle",
-                    text: "连接蓝牙[ONE]",
-                    blockType: BlockType.COMMAND,
-                    arguments: {
-                        ONE: {
-                            type: ArgumentType.STRING,
-                            defaultValue: 'ESP32-BLE'
-                        }
-                    }
-                },
-                {
                     opcode: "MPU6050_init",
-                    text: "机械爪初始化",
+                    text: formatMessage({ id: 'PAW_MPU6050_init' }),
                     blockType: BlockType.COMMAND
                 },
                 {
                     opcode: "MPU6050_getData",
-                    text: "机械爪初获取数据",
+                    text: formatMessage({ id: 'PAW_MPU6050_getData' }),
                     blockType: BlockType.COMMAND
                 },
                 {
-                    opcode: "MPU6050_sendData",
-                    text: "机械爪初发送数据[ONE]",
-                    blockType: BlockType.COMMAND,
-                    arguments: {
-                        ONE: {
-                            type: ArgumentType.STRING,
-                            // menu: 'OPERATE',
-                            defaultValue: 'forward'
-                        }
-                    }
-                },
-                {
                     opcode: "getXYZData",
-                    text: '获取[ONE]加速度',
+                    text: formatMessage({ id: 'PAW_getXYZData' }),
                     blockType: BlockType.REPORTER,
                     arguments: {
                         ONE: {
@@ -126,7 +91,7 @@ class Scratch3PAW {
                 // },
                 {
                     opcode: "getAngle",
-                    text: '获取电位器[ONE]偏转角度',
+                    text: formatMessage({ id: 'PAW_getAngle' }),
                     blockType: BlockType.REPORTER,
                     arguments: {
                         ONE: {
@@ -138,7 +103,7 @@ class Scratch3PAW {
                 },
                 {
                     opcode: "RPcomparison",
-                    text: '1电位器[ONE][TWO][THREE] 2电位器[FOUR][FIVE][SIX] 3电位器[SEVEN][EIGHT][NINE] 4电位器[TEN][ELEVEN][TWELEV] 5电位器[THIRTEEN][FOURTEEN]',
+                    text: formatMessage({ id: 'PAW_RPcomparison' }),
                     blockType: BlockType.BOOLEAN,
                     arguments: {
                         ONE: {
@@ -219,26 +184,9 @@ class Scratch3PAW {
                 },
                 {
                     opcode: "getK1Button",
-                    text: 'K1按键被按下',
+                    text: formatMessage({ id: 'PAW_getK1Button' }),
                     blockType: BlockType.BOOLEAN,
                     setEditable: true,
-                },
-                {
-                    opcode: "getData",
-                    text: "接收数据",
-                    blockType: BlockType.COMMAND
-                },
-                {
-                    opcode: "getCommand",
-                    text: "获取[ONE]指令",
-                    blockType: BlockType.BOOLEAN,
-                    arguments: {
-                        ONE: {
-                            type: ArgumentType.STRING,
-                            // menu: 'OPERATE_VAL',
-                            defaultValue: "forward"
-                        },
-                    }
                 }
             ],
             menus: {
@@ -325,37 +273,37 @@ class Scratch3PAW {
                 RP: {
                     items: [
                         {
-                            text: "1旋转电位器",
+                            text: formatMessage({ id: 'PAW_RP_potValue1' }),
                             value: "potValue1"
                         },
                         {
-                            text: "2旋转电位器",
+                            text: formatMessage({ id: 'PAW_RP_potValue2' }),
                             value: "potValue2"
                         },
                         {
-                            text: "3旋转电位器",
+                            text: formatMessage({ id: 'PAW_RP_potValue3' }),
                             value: "potValue3"
                         },
                         {
-                            text: "4旋转电位器",
+                            text: formatMessage({ id: 'PAW_RP_potValue4' }),
                             value: "potValue4"
                         },
                         {
-                            text: "5旋转电位器",
+                            text: formatMessage({ id: 'PAW_RP_potValue5' }),
                             value: "potValue5"
                         }
                     ]
                 },
                 GATE:{
                     items:[
-                        {text:"与",value:"&&"},
-                        {text:"或",value:"||"}
+                        {text:formatMessage({ id: 'PAW_and' }),value:"&&"},
+                        {text:formatMessage({ id: 'PAW_or' }),value:"||"}
                     ]
                 },
                 COMPARISON:{
                     items:[
-                        {text:"大于",value:">"},
-                        {text:"小于",value:"<"}
+                        {text:formatMessage({ id: 'PAW_greaterThan' }),value:">"},
+                        {text:formatMessage({ id: 'PAW_lessThan' }),value:"<"}
                     ]
                 }
             }

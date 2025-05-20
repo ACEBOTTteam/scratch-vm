@@ -19,12 +19,12 @@ class Scratch3Sharkbot {
             blocks: [
                 {
                     opcode: "app_init",
-                    text: "sharkbot app 初始化",
+                    text: formatMessage({ id: 'sharnbot.app_init' }),
                     blockType: BlockType.COMMAND
                 },
                 {
                     opcode: "get_commant",
-                    text: "sharkbot 获取指令[ONE]",
+                    text: formatMessage({ id: 'sharnbot.get_commant' }),
                     blockType: BlockType.BOOLEAN,
                     arguments: {
                         ONE: {
@@ -36,7 +36,7 @@ class Scratch3Sharkbot {
                 },
                 {
                     opcode: "get_commantData",
-                    text: "sharkbot 获取指令[ONE]值",
+                    text: formatMessage({ id: 'sharnbot.get_commantData' }),
                     blockType: BlockType.REPORTER,
                     arguments: {
                         ONE: {
@@ -48,7 +48,7 @@ class Scratch3Sharkbot {
                 },
                 {
                     opcode: "execute",
-                    text: "sharkbot 运动",
+                    text: formatMessage({ id: 'sharnbot.execute' }),
                     blockType: BlockType.CONDITIONAL,
                     arguments: {
                         ONE: {
@@ -59,7 +59,7 @@ class Scratch3Sharkbot {
                 },
                 {
                     opcode: "setRGB_color",
-                    text: "RGB灯[ONE][TWO]",
+                    text: formatMessage({ id: 'sharnbot.setRGB_color' }),
                     blockType: BlockType.COMMAND,
                     arguments: {
                         ONE: {
@@ -74,7 +74,7 @@ class Scratch3Sharkbot {
                 },
                 {
                     opcode: "setRGB",
-                    text: "RGB灯[ONE]红色[TWO]绿色[THREE]蓝色[FOUR]",
+                    text: formatMessage({ id: 'sharnbot.setRGB' }),
                     blockType: BlockType.COMMAND,
                     arguments: {
                         ONE: {
@@ -98,7 +98,7 @@ class Scratch3Sharkbot {
                 },
                 {
                     opcode: "IR_getData",
-                    text: "红外接收模块接收到[ONE]被按下",
+                    text: formatMessage({ id: 'sharnbot.IR_getData' }),
                     blockType: BlockType.BOOLEAN,
                     arguments: {
                         ONE: {
@@ -110,17 +110,17 @@ class Scratch3Sharkbot {
                 },
                 {
                     opcode: "Ultrasonic_launch",
-                    text: "超声波发射",
+                    text: formatMessage({ id: 'sharnbot.Ultrasonic_launch' }),
                     blockType: BlockType.COMMAND
                 },
                 {
                     opcode: "Ultrasonic_get_time",
-                    text: "超声波传播时间",
+                    text: formatMessage({ id: 'sharnbot.Ultrasonic_get_time' }),
                     blockType: BlockType.REPORTER
                 },
                 {
                     opcode: "P_Buzzer",
-                    text: '蜂鸣器频率[ONE]hz 持续时间[TWO]s',
+                    text: formatMessage({ id: 'sharnbot.P_Buzzer' }),
                     blockType: BlockType.COMMAND,
                     arguments: {
                         ONE: {
@@ -129,13 +129,29 @@ class Scratch3Sharkbot {
                         },
                         TWO: {
                             type: ArgumentType.NUMBER,
-                            defaultValue: 500
+                            defaultValue: 1
+                        }
+                    }
+                },
+                {
+                    opcode: "P_Buzzer_name",
+                    text: formatMessage({ id: 'sharnbot.P_Buzzer.name' }),
+                    blockType: BlockType.COMMAND,
+                    arguments: {
+                        ONE: {
+                            type: ArgumentType.NUMBER,
+                            menu:"BUZER",
+                            defaultValue: "31"
+                        },
+                        TWO: {
+                            type: ArgumentType.NUMBER,
+                            defaultValue: 1
                         }
                     }
                 },
                 {
                     opcode: "Trace_getData",
-                    text: '巡线传感器[ONE]的取值',
+                    text: formatMessage({ id: 'sharnbot.Trace_getData' }),
                     blockType: BlockType.REPORTER,
                     arguments: {
                         ONE: {
@@ -147,7 +163,7 @@ class Scratch3Sharkbot {
                 },
                 {
                     opcode: "speed_move",
-                    text: '以[ONE]的PWM值[TWO]',
+                    text: formatMessage({ id: 'sharnbot.speed_move' }),
                     blockType: BlockType.COMMAND,
                     arguments: {
                         ONE: {
@@ -163,7 +179,7 @@ class Scratch3Sharkbot {
                 },
                 {
                     opcode: "time_move",
-                    text: '以[ONE]的PWM值[TWO],持续[THREE]秒',
+                    text: formatMessage({ id: 'sharnbot.time_move' }),
                     blockType: BlockType.COMMAND,
                     arguments: {
                         ONE: {
@@ -183,7 +199,7 @@ class Scratch3Sharkbot {
                 },
                 {
                     opcode: "setPWM",
-                    text: '设置PWM值 左电机[ONE]右电机[TWO]',
+                    text: formatMessage({ id: 'sharnbot.setPWM' }),
                     blockType: BlockType.COMMAND,
                     arguments: {
                         ONE: {
@@ -198,7 +214,7 @@ class Scratch3Sharkbot {
                 },
                 {
                     opcode: "encoder_init",
-                    text: '[ONE]编码器初始化',
+                    text: formatMessage({ id: 'sharnbot.encoder_init' }),
                     blockType: BlockType.COMMAND,
                     arguments: {
                         ONE: {
@@ -210,7 +226,7 @@ class Scratch3Sharkbot {
                 },
                 {
                     opcode: "encoder_num",
-                    text: '[ONE]编码器脉冲数',
+                    text: formatMessage({ id: 'sharnbot.encoder_num' }),
                     blockType: BlockType.REPORTER,
                     arguments: {
                         ONE: {
@@ -222,7 +238,7 @@ class Scratch3Sharkbot {
                 },
                 {
                     opcode: "encoder_reset",
-                    text: '[ONE]编码器重置',
+                    text: formatMessage({ id: 'sharnbot.encoder_reset' }),
                     blockType: BlockType.COMMAND,
                     arguments: {
                         ONE: {
@@ -266,7 +282,7 @@ class Scratch3Sharkbot {
                 },
                 {
                     opcode: "rotationAngle",
-                    text: '左编码电机转动[ONE]圈 右编码电机转动[TWO]圈',
+                    text: formatMessage({ id: 'sharnbot.rotationAngle' }),
                     blockType: BlockType.COMMAND,
                     arguments: {
                         ONE: {
@@ -281,7 +297,7 @@ class Scratch3Sharkbot {
                 },
                 {
                     opcode: "rotationAngle_time",
-                    text: '编码电机以[ONE]速度[TWO],持续[THREE]秒',
+                    text: formatMessage({ id: 'sharnbot.rotationAngle_time' }),
                     blockType: BlockType.COMMAND,
                     arguments: {
                         ONE: {
@@ -301,7 +317,7 @@ class Scratch3Sharkbot {
                 },
                 {
                     opcode: "rotationAngle_speed",
-                    text: '编码电机以[ONE]速度[TWO]',
+                    text: formatMessage({ id: 'sharnbot.rotationAngle_speed' }),
                     blockType: BlockType.COMMAND,
                     arguments: {
                         ONE: {
@@ -317,28 +333,85 @@ class Scratch3Sharkbot {
                 },
                 {
                     opcode: "ASR_init",
-                    text: '语音识别初始化',
+                    text: formatMessage({ id: 'sharnbot.ASR_init' }),
                     blockType: BlockType.COMMAND
                 },
                 {
                     opcode: "ASR_get_command",
-                    text: '语音识别获取指令',
+                    text: formatMessage({ id: 'sharnbot.ASR_get_command' }),
                     blockType: BlockType.REPORTER
                 },
             ],
             menus: {
+                BUZER: {
+                    items: [
+                        {text:'B0', value:'31'},
+                        {text:'C1', value:'33'},
+                        {text:'D1', value:'37'},
+                        {text:'E1', value:'41'},
+                        {text:'F1', value:'44'},
+                        {text:'G1', value:'49'},
+                        {text:'A1', value:'55'},
+                        {text:'B1', value:'62'},
+                        {text:'C2', value:'65'},
+                        {text:'D2', value:'73'},
+                        {text:'E2', value:'82'},
+                        {text:'F2', value:'87'},
+                        {text:'G2', value:'98'},
+                        {text:'A2', value:'110'},
+                        {text:'B2', value:'123'},
+                        {text:'C3', value:'131'},
+                        {text:'D3', value:'147'},
+                        {text:'E3', value:'165'},
+                        {text:'F3', value:'175'},
+                        {text:'G3', value:'196'},
+                        {text:'A3', value:'220'},
+                        {text:'B3', value:'247'},
+                        {text:'C4', value:'262'},
+                        {text:'D4', value:'294'},
+                        {text:'E4', value:'330'},
+                        {text:'F4', value:'349'},
+                        {text:'G4', value:'392'},
+                        {text:'A4', value:'440'},
+                        {text:'B4', value:'494'},
+                        {text:'C5', value:'523'},
+                        {text:'D5', value:'587'},
+                        {text:'E5', value:'659'},
+                        {text:'F5', value:'698'},
+                        {text:'G5', value:'784'},
+                        {text:'A5', value:'880'},
+                        {text:'B5', value:'988'},
+                        {text:'C6', value:'1047'},
+                        {text:'D6', value:'1175'},
+                        {text:'E6', value:'1319'},
+                        {text:'F6', value:'1397'},
+                        {text:'G6', value:'1568'},
+                        {text:'A6', value:'1760'},
+                        {text:'B6', value:'1976'},
+                        {text:'C7', value:'2093'},
+                        {text:'D7', value:'2349'},
+                        {text:'E7', value:'2637'},
+                        {text:'F7', value:'2794'},
+                        {text:'G7', value:'3136'},
+                        {text:'GS7',value: '3322'},
+                        {text:'A7', value:'3520'},
+                        {text:'B7', value:'3951'},
+                        {text:'C8', value:'4186'},
+                        {text:'D8', value:'4699'}
+                    ]
+                },
                 PLACES: {
                     items: [
                         {
-                            text: "左",
+                            text: formatMessage({ id: 'sharnbot.PLACES.left' }),
                             value: "0"
                         },
                         {
-                            text: "右",
+                            text: formatMessage({ id: 'sharnbot.PLACES.right' }),
                             value: "1"
                         },
                         {
-                            text: "全部",
+                            text: formatMessage({ id: 'sharnbot.PLACES.all' }),
                             value: "2"
                         }
                     ]
@@ -425,35 +498,35 @@ class Scratch3Sharkbot {
                 },
                 RUN: {
                     items: [
-                        { text: "前进", value: "forward" },
-                        { text: "后退", value: "backward" },
-                        { text: "左转", value: "turnLeft" },
-                        { text: "右转", value: "turnRight" }
+                        { text: formatMessage({ id: 'sharnbot.RUN.forward' }), value: "forward" },
+                        { text: formatMessage({ id: 'sharnbot.RUN.backward' }), value: "backward" },
+                        { text: formatMessage({ id: 'sharnbot.RUN.turnLeft' }), value: "turnLeft" },
+                        { text: formatMessage({ id: 'sharnbot.RUN.turnRight' }), value: "turnRight" }
                     ]
                 },
                 WHELL: {
                     items: [
-                        { text: "左轮", value: "left" },
-                        { text: "右轮", value: "right" }
+                        { text: formatMessage({ id: 'sharnbot.WHELL.left' }), value: "left" },
+                        { text: formatMessage({ id: 'sharnbot.WHELL.right' }), value: "right" }
                     ]
                 },
                 ALL_WHELL: {
                     items: [
-                        { text: "左轮", value: "M2" },
-                        { text: "右轮", value: "M1" },
+                        { text: formatMessage({ id: 'sharnbot.WHELL.left' }), value: "M2" },
+                        { text: formatMessage({ id: 'sharnbot.WHELL.right' }), value: "M1" },
                         // {text:"全部",value:"all"}
                     ]
                 },
                 MOVE: {
                     items: [
-                        { text: "前进", value: "forward" },
-                        { text: "后退", value: "backward" }
+                        { text: formatMessage({ id: 'sharnbot.RUN.forward' }), value: "forward" },
+                        { text: formatMessage({ id: 'sharnbot.RUN.backward' }), value: "backward" }
                     ]
                 },
                 TURN: {
                     items: [
-                        { text: "左转", value: "turnLeft" },
-                        { text: "右转", value: "turnRight" }
+                        { text: formatMessage({ id: 'sharnbot.RUN.turnLeft' }), value: "turnLeft" },
+                        { text: formatMessage({ id: 'sharnbot.RUN.turnRight' }), value: "turnRight" }
                     ]
                 },
                 COMMANT: {
@@ -467,11 +540,11 @@ class Scratch3Sharkbot {
                             value: "2"
                         },
                         {
-                            text: formatMessage({ id: 'carMotor.leftMove' }),
+                            text: formatMessage({ id: 'fourLeggedBionicSpider.leftMove' }),
                             value: "3"
                         },
                         {
-                            text: formatMessage({ id: 'carMotor.rightMove' }),
+                            text: formatMessage({ id: 'fourLeggedBionicSpider.rightMove' }),
                             value: "4"
                         },
                         {
@@ -495,67 +568,67 @@ class Scratch3Sharkbot {
                             value: "8"
                         },
                         {
-                            text: "巡线",
+                            text: formatMessage({ id: 'sharnbot.COMMANT.lineWalking' }),
                             value: "10"
                         },
                         {
-                            text: formatMessage({ id: 'carMotor.follow' }),
+                            text: formatMessage({ id: 'carMotor.avoidance' }),
                             value: "11"
                         },
                         {
-                            text: formatMessage({ id: 'carMotor.slider' }),
+                            text: formatMessage({ id: 'carMotor.follow' }),
                             value: "12"
                         },
                         {
-                            text: "全部灯",
+                            text: formatMessage({ id: 'sharnbot.COMMANT.all_light' }),
                             value: "13"
                         },
                         {
-                            text: "左灯",
+                            text: formatMessage({ id: 'sharnbot.COMMANT.left_light' }),
                             value: "14"
                         },
                         {
-                            text: "右灯",
+                            text: formatMessage({ id: 'sharnbot.COMMANT.right_light' }),
                             value: "15"
                         },
                         {
-                            text: "前进输入",
+                            text: formatMessage({ id: 'sharnbot.COMMANT.input_forward' }),
                             value: "16"
                         },
                         {
-                            text: "后退输入",
+                            text: formatMessage({ id: 'sharnbot.COMMANT.input_backward' }),
                             value: "17"
                         },
                         {
-                            text: "左转输入",
-                            value: "18"
+                            text: formatMessage({ id: 'sharnbot.COMMANT.input_turnLeft' }),
+                            value: "19"
                         },
                         {
-                            text: "右转输入",
-                            value: "19"
+                            text: formatMessage({ id: 'sharnbot.COMMANT.input_turnRight' }),
+                            value: "18"
                         },
                     ]
                 },
                 COMMANT_DATA: {
                     items: [
                         {
-                            text: "前进输入",
+                            text: formatMessage({ id: 'sharnbot.COMMANT.input_forward' }),
                             value: "forward_dis"
                         },
                         {
-                            text: "后退输入",
+                            text: formatMessage({ id: 'sharnbot.COMMANT.input_backward' }),
                             value: "backward_dis"
                         },
                         {
-                            text: "左转输入",
+                            text: formatMessage({ id: 'sharnbot.COMMANT.input_turnLeft' }),
                             value: "left_degree"
                         },
                         {
-                            text: "右转输入",
+                            text: formatMessage({ id: 'sharnbot.COMMANT.input_turnRight' }),
                             value: "right_degree"
                         },
                         {
-                            text: "速度",
+                            text: formatMessage({ id: 'sharnbot.COMMANT_DATA.speed' }),
                             value: "Car_Speed"
                         },
                         {
