@@ -488,110 +488,158 @@ class Scratch3CarMotor {
                         }
                     }
                 },
-                // {
-                //     func:"aabutton",
-                //     text:"视觉模块",
-                //     blockType:BlockType.BUTTON
-                // },
-                // {
-                //     opcode: "lcd_init",
-                //     text: "LCD屏幕初始化",
-                //     blockType: BlockType.COMMAND,
-                // },
-                // {
-                //     opcode: "lcd_rotation",
-                //     text: "LCD屏幕旋转方向[ONE]",
-                //     blockType: BlockType.COMMAND,
-                //     arguments: {
-                //         ONE: {
-                //             type: ArgumentType.STRING,
-                //             menu: 'LED_DIRECTION',
-                //             defaultValue: '2'
-                //         }
-                //     }
-                // },
-                // {
-                //     opcode: "vision_camera_init",
-                //     text: "摄像头初始化",
-                //     blockType: BlockType.COMMAND,
-                // },
-                // {
-                //     opcode: "camera_resolution_ratio",
-                //     text: "摄像头[ONE]",
-                //     blockType: BlockType.COMMAND,
-                //     arguments: {
-                //         ONE: {
-                //             type: ArgumentType.STRING,
-                //             menu: 'RESOLUTION_RATIO',
-                //             defaultValue: 'QVGA'
-                //         }
-                //     }
-                // },
-                // {
-                //     opcode: "vision_camera_switch",
-                //     text: "摄像头[ONE]",
-                //     blockType: BlockType.COMMAND,
-                //     arguments: {
-                //         ONE: {
-                //             type: ArgumentType.STRING,
-                //             menu: 'CAMERA_SWITCH',
-                //             defaultValue: 'open'
-                //         }
-                //     }
-                // },
-                // {
-                //     opcode: "ai_mode",
-                //     text: "[ONE]",
-                //     blockType: BlockType.COMMAND,
-                //     arguments: {
-                //         ONE: {
-                //             type: ArgumentType.STRING,
-                //             menu: 'AI_MODE',
-                //             defaultValue: 'color_recognize'
-                //         }
-                //     }
-                // },
-                // {
-                //     opcode: "color_appoint_recognize",
-                //     text: "颜色追踪[ONE]",
-                //     blockType: BlockType.COMMAND,
-                //     arguments: {
-                //         ONE: {
-                //             type: ArgumentType.STRING,
-                //             menu: 'COLOR',
-                //             defaultValue: 'red'
-                //         }
-                //     }
-                // },
-                // {
-                //     opcode: "get_recognition_data",
-                //     text: "获取[ONE]",
-                //     blockType: BlockType.REPORTER,
-                //     arguments: {
-                //         ONE: {
-                //             type: ArgumentType.STRING,
-                //             menu: 'DATA_NAME',
-                //             defaultValue: "X"
-                //         },
-                //     }
-                // },
+                {
+                    func:"aabutton",
+                    text:formatMessage({ id: 'carMotor.aabutton.name'}),
+                    blockType:BlockType.BUTTON
+                },
+                {
+                    opcode: "lcd_init",
+                    text: formatMessage({ id: 'carMotor.visionModule.lcd_init'}),
+                    blockType: BlockType.COMMAND,
+                },
+                {
+                    opcode: "lcd_rotation",
+                    text: formatMessage({ id: 'carMotor.visionModule.lcd_rotation'}),
+                    blockType: BlockType.COMMAND,
+                    arguments: {
+                        ONE: {
+                            type: ArgumentType.STRING,
+                            menu: 'LED_DIRECTION',
+                            defaultValue: '2'
+                        }
+                    }
+                },
+                {
+                    opcode: "vision_camera_init",
+                    text: formatMessage({ id: 'carMotor.visionModule.vision_camera_init'}),
+                    blockType: BlockType.COMMAND,
+                },
+                {
+                    opcode: "camera_resolution_ratio",
+                    text: formatMessage({ id: 'carMotor.visionModule.camera_resolution_ratio'}),
+                    blockType: BlockType.COMMAND,
+                    arguments: {
+                        ONE: {
+                            type: ArgumentType.STRING,
+                            menu: 'RESOLUTION_RATIO',
+                            defaultValue: 'QVGA'
+                        }
+                    }
+                },
+                {
+                    opcode: "vision_camera_switch",
+                    text: formatMessage({ id: 'carMotor.visionModule.camera_resolution_ratio'}),
+                    blockType: BlockType.COMMAND,
+                    arguments: {
+                        ONE: {
+                            type: ArgumentType.STRING,
+                            menu: 'CAMERA_SWITCH',
+                            defaultValue: 'open'
+                        }
+                    }
+                },
+                {
+                    opcode: "ai_mode",
+                    text: "[ONE]",
+                    blockType: BlockType.COMMAND,
+                    arguments: {
+                        ONE: {
+                            type: ArgumentType.STRING,
+                            menu: 'AI_MODE',
+                            defaultValue: 'color_recognize'
+                        }
+                    }
+                },
+                {
+                    opcode: "color_appoint_recognize",
+                    text: formatMessage({ id: 'carMotor.visionModule.color_appoint_recognize'}),
+                    blockType: BlockType.COMMAND,
+                    arguments: {
+                        ONE: {
+                            type: ArgumentType.STRING,
+                            menu: 'COLOR',
+                            defaultValue: 'red'
+                        }
+                    }
+                },
+                {
+                    opcode: "get_recognition_data",
+                    text: formatMessage({ id: 'carMotor.visionModule.get_recognition_data'}),
+                    blockType: BlockType.REPORTER,
+                    arguments: {
+                        ONE: {
+                            type: ArgumentType.STRING,
+                            menu: 'DATA_NAME',
+                            defaultValue: "X"
+                        },
+                    }
+                },
+                {
+                    opcode: "get_visionModule_command",
+                    text: formatMessage({ id: 'carMotor.visionModule.get_visionModule_command'}),
+                    blockType: BlockType.BOOLEAN,
+                    arguments: {
+                        ONE: {
+                            type: ArgumentType.STRING,
+                            menu: 'VISION_COMMAND',
+                            defaultValue: 89
+                        }
+                    }
+                },
+                {
+                    opcode: "get_visionModule_command_data",
+                    text: formatMessage({ id: 'carMotor.visionModule.get_visionModule_command_data'}),
+                    blockType: BlockType.REPORTER,
+                    arguments: {
+                        ONE: {
+                            type: ArgumentType.STRING,
+                            menu: 'VISION_COMMAND_DATA',
+                            defaultValue: 'RGB_Red_Val'
+                        }
+                    }
+                },
             ],
             menus: {
+                VISION_COMMAND_DATA:{
+                    items:[
+                        {text:"R",value:"RGB_Red_Val"},
+                        {text:"G",value:"RGB_Green_Val"},
+                        {text:"B",value:"RGB_Blue_Val"},
+                    ]
+                },
+                VISION_COMMAND:{
+                    items:[
+                        {text:formatMessage({ id: 'carMotor.menus.qrCode'}),value:"89"},
+                        {text:formatMessage({ id: 'carMotor.menus.barCode'}),value:"90"},
+                        {text:formatMessage({ id: 'carMotor.menus.num'}),value:"91"},
+                        {text:formatMessage({ id: 'carMotor.menus.color'}),value:"92"},
+                        {text:formatMessage({ id: 'carMotor.menus.image'}),value:"93"},
+                        {text:formatMessage({ id: 'carMotor.menus.color_red'}),value:"94"},
+                        {text:formatMessage({ id: 'carMotor.menus.color_blue'}),value:"95"},
+                        {text:formatMessage({ id: 'carMotor.menus.color_green'}),value:"96"},
+                        {text:formatMessage({ id: 'carMotor.menus.visionModuleLine'}),value:"97"},
+                        {text:formatMessage({ id: 'carMotor.menus.trafficIdentification'}),value:"98"},
+                        {text:formatMessage({ id: 'carMotor.menus.machineLearning'}),value:"99"},
+                        {text:formatMessage({ id: 'carMotor.menus.face'}),value:"100"},
+                        {text:formatMessage({ id: 'carMotor.menus.photograph'}),value:"101"},
+                    ]
+                },
                 COLOR:{
                     items:[
-                        {text:"红色",value:"red"},
-                        {text:"绿色",value:"green"},
-                        {text:"蓝色",value:"blue"}
+                        {text:formatMessage({ id: 'carMotor.menus.red'}),value:"red"},
+                        {text:formatMessage({ id: 'carMotor.menus.green'}),value:"green"},
+                        {text:formatMessage({ id: 'carMotor.menus.blue'}),value:"blue"}
                     ]
                 },
                 DATA_NAME:{
                     items:[
-                        {text:"x坐标",value:"X"},
-                        {text:"y坐标",value:"Y"},
-                        {text:"宽度",value:"W"},
-                        {text:"高度",value:"H"},
-                        {text:"识别结果",value:"Tag"},
-                        {text:"巡线结果",value:"Visual_data"},
+                        {text:formatMessage({ id: 'carMotor.menus.x'}),value:"X"},
+                        {text:formatMessage({ id: 'carMotor.menus.y'}),value:"Y"},
+                        {text:formatMessage({ id: 'carMotor.menus.width'}),value:"W"},
+                        {text:formatMessage({ id: 'carMotor.menus.height'}),value:"H"},
+                        {text:formatMessage({ id: 'carMotor.menus.result'}),value:"Tag"},
+                        {text:formatMessage({ id: 'carMotor.menus.lineData'}),value:"Visual_data"},
                         // {text:"上权重",value:"Tag"},
                         // {text:"中权重",value:"Tag"},
                         // {text:"下权重",value:"Tag"},
@@ -599,36 +647,36 @@ class Scratch3CarMotor {
                 },
                 AI_MODE:{
                     items:[
-                        {text:"颜色识别",value:"color_recognize"},
-                        {text:"二维码识别",value:"qrcode_recognize"},
-                        {text:"条形码识别",value:"barcode_recognize"},
-                        {text:"人脸识别",value:"face_graphical"},
-                        {text:"图像识别",value:"image_recognize"},
-                        {text:"数字识别",value:"number_recognize"},
-                        {text:"交通识别",value:"Traffic_graphical"},
-                        {text:"视觉巡线",value:"tacking_open"},
+                        {text:formatMessage({ id: 'carMotor.menus.color'}),value:"color_recognize"},
+                        {text:formatMessage({ id: 'carMotor.menus.qrCode'}),value:"qrcode_recognize"},
+                        {text:formatMessage({ id: 'carMotor.menus.barCode'}),value:"barcode_recognize"},
+                        {text:formatMessage({ id: 'carMotor.menus.face'}),value:"face_graphical"},
+                        {text:formatMessage({ id: 'carMotor.menus.image'}),value:"image_recognize"},
+                        {text:formatMessage({ id: 'carMotor.menus.num'}),value:"number_recognize"},
+                        {text:formatMessage({ id: 'carMotor.menus.trafficIdentification'}),value:"Traffic_graphical"},
+                        {text:formatMessage({ id: 'carMotor.menus.visionModuleLine'}),value:"tacking_open"},
                         // {text:"颜色追踪",value:"color_appoint_recognize"},
-                        {text:"机器学习",value:"machine_learning"},
+                        {text:formatMessage({ id: 'carMotor.menus.machineLearning'}),value:"machine_learning"},
                     ]
                 },
                 CAMERA_SWITCH:{
                     items:[
-                        {text:"开启",value:"open"},
-                        {text:"关闭",value:"close"}
+                        {text:formatMessage({ id: 'open'}),value:"open"},
+                        {text:formatMessage({ id: 'close'}),value:"close"}
                     ]
                 },
                 RESOLUTION_RATIO:{
                     items:[
-                        {text:"高分辨率",value:"QVGA"},
-                        {text:"低分辨率",value:"QQVGA"}
+                        {text:formatMessage({ id: 'carMotor.menus.QVGA'}),value:"QVGA"},
+                        {text:formatMessage({ id: 'carMotor.menus.QQVGA'}),value:"QQVGA"}
                     ]
                 },
                 LED_DIRECTION:{
                     items:[
-                        {text:"上",value:"2"},
-                        {text:"下",value:"0"},
-                        {text:"左",value:"3"},
-                        {text:"右",value:"1"},
+                        {text:formatMessage({ id: 'wedo2.tiltDirection.up'}),value:"2"},
+                        {text:formatMessage({ id: 'wedo2.tiltDirection.down'}),value:"0"},
+                        {text:formatMessage({ id: 'wedo2.tiltDirection.left'}),value:"3"},
+                        {text:formatMessage({ id: 'wedo2.tiltDirection.right'}),value:"1"},
                     ]
                 },
                 SERVER:{

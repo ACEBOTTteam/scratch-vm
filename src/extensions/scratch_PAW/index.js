@@ -26,22 +26,34 @@ class Scratch3PAW {
                     text: formatMessage({ id: 'PAW_MPU6050_getData' }),
                     blockType: BlockType.COMMAND
                 },
-                {
-                    opcode: "getXYZData",
-                    text: formatMessage({ id: 'PAW_getXYZData' }),
-                    blockType: BlockType.REPORTER,
-                    arguments: {
-                        ONE: {
-                            type: ArgumentType.STRING,
-                            menu: 'AXIS',
-                            defaultValue: 'X'
-                        }
-                    }
-                },
                 // {
-                //     opcode: "XYZcomparison",
-                //     text: 'x[ONE][TWO][THREE] y电位器[FOUR][FIVE][SIX] z[SEVEN][EIGHT]',
+                //     opcode: "getXYZData",
+                //     text: formatMessage({ id: 'PAW_getXYZData' }),
                 //     blockType: BlockType.REPORTER,
+                //     arguments: {
+                //         ONE: {
+                //             type: ArgumentType.STRING,
+                //             menu: 'AXIS',
+                //             defaultValue: 'X'
+                //         }
+                //     }
+                // },
+                // {
+                //     opcode: "getAngle",
+                //     text: formatMessage({ id: 'PAW_getAngle' }),
+                //     blockType: BlockType.REPORTER,
+                //     arguments: {
+                //         ONE: {
+                //             type: ArgumentType.STRING,
+                //             menu: 'RP',
+                //             defaultValue: 'potValue1'
+                //         }
+                //     }
+                // },
+                // {
+                //     opcode: "RPcomparison",
+                //     text: formatMessage({ id: 'PAW_RPcomparison' }),
+                //     blockType: BlockType.BOOLEAN,
                 //     arguments: {
                 //         ONE: {
                 //             type: ArgumentType.STRING,
@@ -86,110 +98,71 @@ class Scratch3PAW {
                 //             type: ArgumentType.NUMBER,
                 //             menu: 'GATE',
                 //             defaultValue: '&&'
+                //         },
+
+                //         TEN: {
+                //             type: ArgumentType.STRING,
+                //             menu: 'COMPARISON',
+                //             defaultValue: '>'
+                //         },
+                //         ELEVEN:{
+                //             type: ArgumentType.NUMBER,
+                //             defaultValue: '100'
+                //         },
+                //         TWELEV:{
+                //             type: ArgumentType.NUMBER,
+                //             menu: 'GATE',
+                //             defaultValue: '&&'
+                //         },
+
+                //         THIRTEEN: {
+                //             type: ArgumentType.STRING,
+                //             menu: 'COMPARISON',
+                //             defaultValue: '>'
+                //         },
+                //         FOURTEEN:{
+                //             type: ArgumentType.NUMBER,
+                //             defaultValue: '100'
+                //         },
+                //         FIFTEEN:{
+                //             type: ArgumentType.NUMBER,
+                //             menu: 'GATE',
+                //             defaultValue: '&&'
                 //         }
                 //     }
                 // },
+                // {
+                //     opcode: "getK1Button",
+                //     text: formatMessage({ id: 'PAW_getK1Button' }),
+                //     blockType: BlockType.BOOLEAN,
+                //     setEditable: true,
+                // }
                 {
-                    opcode: "getAngle",
-                    text: formatMessage({ id: 'PAW_getAngle' }),
+                    opcode: "getCommand",
+                    text: formatMessage({ id: 'PAW.getCommand' }),
                     blockType: BlockType.REPORTER,
+                    setEditable: false,
+                },
+                {
+                    opcode: "bel_led",
+                    text: formatMessage({ id: 'PAW.getCommand.bel_led' }),
+                    blockType: BlockType.COMMAND,
                     arguments: {
                         ONE: {
                             type: ArgumentType.STRING,
-                            menu: 'RP',
-                            defaultValue: 'potValue1'
+                            menu: 'LED_TYPE',
+                            defaultValue: 'open'
                         }
                     }
-                },
-                {
-                    opcode: "RPcomparison",
-                    text: formatMessage({ id: 'PAW_RPcomparison' }),
-                    blockType: BlockType.BOOLEAN,
-                    arguments: {
-                        ONE: {
-                            type: ArgumentType.STRING,
-                            menu: 'COMPARISON',
-                            defaultValue: '>'
-                        },
-                        TWO:{
-                            type: ArgumentType.NUMBER,
-                            defaultValue: '100'
-                        },
-                        THREE:{
-                            type: ArgumentType.NUMBER,
-                            menu: 'GATE',
-                            defaultValue: '&&'
-                        },
-
-                        FOUR: {
-                            type: ArgumentType.STRING,
-                            menu: 'COMPARISON',
-                            defaultValue: '>'
-                        },
-                        FIVE:{
-                            type: ArgumentType.NUMBER,
-                            defaultValue: '100'
-                        },
-                        SIX:{
-                            type: ArgumentType.NUMBER,
-                            menu: 'GATE',
-                            defaultValue: '&&'
-                        },
-
-                        SEVEN: {
-                            type: ArgumentType.STRING,
-                            menu: 'COMPARISON',
-                            defaultValue: '>'
-                        },
-                        EIGHT:{
-                            type: ArgumentType.NUMBER,
-                            defaultValue: '100'
-                        },
-                        NINE:{
-                            type: ArgumentType.NUMBER,
-                            menu: 'GATE',
-                            defaultValue: '&&'
-                        },
-
-                        TEN: {
-                            type: ArgumentType.STRING,
-                            menu: 'COMPARISON',
-                            defaultValue: '>'
-                        },
-                        ELEVEN:{
-                            type: ArgumentType.NUMBER,
-                            defaultValue: '100'
-                        },
-                        TWELEV:{
-                            type: ArgumentType.NUMBER,
-                            menu: 'GATE',
-                            defaultValue: '&&'
-                        },
-
-                        THIRTEEN: {
-                            type: ArgumentType.STRING,
-                            menu: 'COMPARISON',
-                            defaultValue: '>'
-                        },
-                        FOURTEEN:{
-                            type: ArgumentType.NUMBER,
-                            defaultValue: '100'
-                        },
-                        FIFTEEN:{
-                            type: ArgumentType.NUMBER,
-                            menu: 'GATE',
-                            defaultValue: '&&'
-                        }
-                    }
-                },
-                {
-                    opcode: "getK1Button",
-                    text: formatMessage({ id: 'PAW_getK1Button' }),
-                    blockType: BlockType.BOOLEAN,
-                    setEditable: true,
                 }
             ],
             menus: {
+                LED_TYPE: {
+                    items: [
+                        { text: formatMessage({ id: 'open' }), value: "open" },
+                        { text: formatMessage({ id: 'close' }), value: "close" }
+                    ]
+                },
                 OPERATE: {
                     items: [
                         {
@@ -294,16 +267,16 @@ class Scratch3PAW {
                         }
                     ]
                 },
-                GATE:{
-                    items:[
-                        {text:formatMessage({ id: 'PAW_and' }),value:"&&"},
-                        {text:formatMessage({ id: 'PAW_or' }),value:"||"}
+                GATE: {
+                    items: [
+                        { text: formatMessage({ id: 'PAW_and' }), value: "&&" },
+                        { text: formatMessage({ id: 'PAW_or' }), value: "||" }
                     ]
                 },
-                COMPARISON:{
-                    items:[
-                        {text:formatMessage({ id: 'PAW_greaterThan' }),value:">"},
-                        {text:formatMessage({ id: 'PAW_lessThan' }),value:"<"}
+                COMPARISON: {
+                    items: [
+                        { text: formatMessage({ id: 'PAW_greaterThan' }), value: ">" },
+                        { text: formatMessage({ id: 'PAW_lessThan' }), value: "<" }
                     ]
                 }
             }
@@ -340,6 +313,8 @@ class Scratch3PAW {
     openBle(arg) {
 
     }
+
+    getKCommand() { }
 }
 
 module.exports = Scratch3PAW
