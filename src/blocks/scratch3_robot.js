@@ -194,9 +194,9 @@ class Scratch3RobotBlocks {
     async SG90_Module(args) {
         let code = `A8 ${args.PIN_LIST} ${args.ANGLE}`
 
-        let variable = readAnalogPin(code, 'string')
+        // let variable = readAnalogPin(code, 'string')
         window.electronAPI.clientSend('send', code + '\r\n')
-        return variable
+        // return variable
     }
 
     async GET_SG90_Module_ANGLE(args){

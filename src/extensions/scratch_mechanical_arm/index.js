@@ -175,6 +175,18 @@ class Scratch3MechanicalArm {
                     blockType: BlockType.COMMAND, 
                 },
                 {
+                    opcode: "armDefaultMotion",
+                    text: formatMessage({ id: 'mechanicalArm.armDefaultMotion'}),
+                    blockType: BlockType.COMMAND,
+                    arguments: {
+                        ONE: {
+                            type: ArgumentType.STRING,
+                            menu: "ARM_DEFAULT_MOTION",
+                            defaultValue: "keep"
+                        }
+                    }
+                },
+                {
                     opcode: "armMotion",
                     text: formatMessage({ id: 'ROBOT_ARM_MOTION'}),
                     blockType: BlockType.COMMAND,
@@ -303,6 +315,13 @@ class Scratch3MechanicalArm {
                         { text: "x", value: "x" },
                         { text: "y", value: "y" },
                         { text: "z", value: "z" }
+                    ]
+                },
+                ARM_DEFAULT_MOTION:{
+                    items: [
+                        { text: formatMessage({ id: 'ROBOT_ARM_KEEP'}), value: "keep" },
+                        { text: formatMessage({ id: 'ROBOT_ARM_RUN'}), value: "run" },
+                        { text: formatMessage({ id: 'ROBOT_ARM_CLEAR'}), value: "clear" }
                     ]
                 },
                 ARM_MOTION: {

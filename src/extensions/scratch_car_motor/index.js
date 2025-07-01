@@ -5,6 +5,8 @@ const BlockType = require('../../extension-support/block-type');
 const iconURI = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAMAAAC5zwKfAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAACpQTFRF////fIel5ufolZ62/2YavsPS+YZOkJmy9/j53+Hk6+zs6N/b6dfO////tDhMHAAAAA50Uk5T/////////////////wBFwNzIAAAA6ElEQVR42uzX2w6DIBAEUGDVtlr//3dLaLwgiwUd2z7MJPJg5EQWiGhGcAxBggQJEiT436CIfqXJPTn3MKNYYMSDFpoAmp24OaYgvwKnFgL2zvVTCwHrMoMi+nUQLFthaNCCa0iwclLkDgYVsQp0mzxuqXgK1MRzoCLWgkPXNN2wI/q6Kvt7u/cX0HtejN8x2sXpnpb8J8D3b0Keuhh3X975M+i0xNVbg3s1TIasgK21bQyGO+s2PykaGMYbge8KrNrssvkOWDXkErB8UuBHETjoYLkKBA8ZfuDkbwVBggQJEiR4MC8BBgDTtMZLx2nFCQAAAABJRU5ErkJggg==';
 
 const servo = [
+    { text: '1', value: '1' },
+    { text: '3', value: '3' },
     { text: '4', value: '4' },
     { text: '5', value: '5' },
     { text: '12', value: '12' },
@@ -14,6 +16,8 @@ const servo = [
     { text: '17', value: '17' },
     { text: '18', value: '18' },
     { text: '19', value: '19' },
+    { text: '21', value: '21' },
+    { text: '22', value: '22' },
     { text: '23', value: '23' },
     { text: '25', value: '25' },
     { text: '26', value: '26' },
@@ -493,73 +497,114 @@ class Scratch3CarMotor {
                     text:formatMessage({ id: 'carMotor.aabutton.name'}),
                     blockType:BlockType.BUTTON
                 },
+                // {
+                //     opcode: "lcd_init",
+                //     text: formatMessage({ id: 'carMotor.visionModule.lcd_init'}),
+                //     blockType: BlockType.COMMAND,
+                // },
+                // {
+                //     opcode: "lcd_rotation",
+                //     text: formatMessage({ id: 'carMotor.visionModule.lcd_rotation'}),
+                //     blockType: BlockType.COMMAND,
+                //     arguments: {
+                //         ONE: {
+                //             type: ArgumentType.STRING,
+                //             menu: 'LED_DIRECTION',
+                //             defaultValue: '2'
+                //         }
+                //     }
+                // },
+                // {
+                //     opcode: "vision_camera_init",
+                //     text: formatMessage({ id: 'carMotor.visionModule.vision_camera_init'}),
+                //     blockType: BlockType.COMMAND,
+                // },
+                // {
+                //     opcode: "camera_resolution_ratio",
+                //     text: formatMessage({ id: 'carMotor.visionModule.camera_resolution_ratio'}),
+                //     blockType: BlockType.COMMAND,
+                //     arguments: {
+                //         ONE: {
+                //             type: ArgumentType.STRING,
+                //             menu: 'RESOLUTION_RATIO',
+                //             defaultValue: 'QVGA'
+                //         }
+                //     }
+                // },
+                // {
+                //     opcode: "vision_camera_switch",
+                //     text: formatMessage({ id: 'carMotor.visionModule.camera_resolution_ratio'}),
+                //     blockType: BlockType.COMMAND,
+                //     arguments: {
+                //         ONE: {
+                //             type: ArgumentType.STRING,
+                //             menu: 'CAMERA_SWITCH',
+                //             defaultValue: 'open'
+                //         }
+                //     }
+                // },
                 {
-                    opcode: "lcd_init",
-                    text: formatMessage({ id: 'carMotor.visionModule.lcd_init'}),
-                    blockType: BlockType.COMMAND,
-                },
-                {
-                    opcode: "lcd_rotation",
-                    text: formatMessage({ id: 'carMotor.visionModule.lcd_rotation'}),
+                    opcode: "ai_mode_init",
+                    text:formatMessage({ id: 'arm_car.ai_mode_init'}),
                     blockType: BlockType.COMMAND,
                     arguments: {
                         ONE: {
                             type: ArgumentType.STRING,
-                            menu: 'LED_DIRECTION',
-                            defaultValue: '2'
+                            menu: 'SERVO_PIN',
+                            defaultValue: '26'
+                        },
+                        TWO: {
+                            type: ArgumentType.STRING,
+                            menu: 'SERVO_PIN',
+                            defaultValue: '27'
                         }
                     }
                 },
                 {
-                    opcode: "vision_camera_init",
-                    text: formatMessage({ id: 'carMotor.visionModule.vision_camera_init'}),
-                    blockType: BlockType.COMMAND,
+                    opcode: "ai_mode_return",
+                    text:formatMessage({ id: 'arm_car.ai_mode_return'}),
+                    blockType: BlockType.COMMAND
                 },
                 {
-                    opcode: "camera_resolution_ratio",
-                    text: formatMessage({ id: 'carMotor.visionModule.camera_resolution_ratio'}),
+                    opcode: "ai_mode_set_color",
+                    text:formatMessage({ id: 'arm_car.ai_mode_set_color'}),
                     blockType: BlockType.COMMAND,
                     arguments: {
                         ONE: {
                             type: ArgumentType.STRING,
-                            menu: 'RESOLUTION_RATIO',
-                            defaultValue: 'QVGA'
-                        }
-                    }
-                },
-                {
-                    opcode: "vision_camera_switch",
-                    text: formatMessage({ id: 'carMotor.visionModule.camera_resolution_ratio'}),
-                    blockType: BlockType.COMMAND,
-                    arguments: {
-                        ONE: {
+                            defaultValue: '255'
+                        },
+                        TWO: {
                             type: ArgumentType.STRING,
-                            menu: 'CAMERA_SWITCH',
-                            defaultValue: 'open'
+                            defaultValue: '255'
+                        },
+                        THREE: {
+                            type: ArgumentType.STRING,
+                            defaultValue: '255'
                         }
                     }
                 },
                 {
                     opcode: "ai_mode",
                     text: "[ONE]",
-                    blockType: BlockType.COMMAND,
+                    blockType: BlockType.BOOLEAN,
                     arguments: {
                         ONE: {
                             type: ArgumentType.STRING,
                             menu: 'AI_MODE',
-                            defaultValue: 'color_recognize'
+                            defaultValue: 'qrcode_recognize'
                         }
                     }
                 },
                 {
                     opcode: "color_appoint_recognize",
                     text: formatMessage({ id: 'carMotor.visionModule.color_appoint_recognize'}),
-                    blockType: BlockType.COMMAND,
+                    blockType: BlockType.BOOLEAN,
                     arguments: {
                         ONE: {
                             type: ArgumentType.STRING,
                             menu: 'COLOR',
-                            defaultValue: 'red'
+                            defaultValue: '0'
                         }
                     }
                 },
@@ -622,14 +667,15 @@ class Scratch3CarMotor {
                         {text:formatMessage({ id: 'carMotor.menus.trafficIdentification'}),value:"98"},
                         {text:formatMessage({ id: 'carMotor.menus.machineLearning'}),value:"99"},
                         {text:formatMessage({ id: 'carMotor.menus.face'}),value:"100"},
-                        {text:formatMessage({ id: 'carMotor.menus.photograph'}),value:"101"},
+                        {text:formatMessage({ id: 'carMotor.menus.exit'}),value:"3"},
                     ]
                 },
                 COLOR:{
                     items:[
-                        {text:formatMessage({ id: 'carMotor.menus.red'}),value:"red"},
-                        {text:formatMessage({ id: 'carMotor.menus.green'}),value:"green"},
-                        {text:formatMessage({ id: 'carMotor.menus.blue'}),value:"blue"}
+                        {text:formatMessage({ id: 'carMotor.menus.anyColor'}),value:"0"},
+                        {text:formatMessage({ id: 'carMotor.menus.red'}),value:"1"},
+                        {text:formatMessage({ id: 'carMotor.menus.green'}),value:"2"},
+                        {text:formatMessage({ id: 'carMotor.menus.blue'}),value:"3"}
                     ]
                 },
                 DATA_NAME:{
@@ -647,14 +693,15 @@ class Scratch3CarMotor {
                 },
                 AI_MODE:{
                     items:[
-                        {text:formatMessage({ id: 'carMotor.menus.color'}),value:"color_recognize"},
+                        // {text:formatMessage({ id: 'carMotor.menus.color'}),value:"color_recognize"},
                         {text:formatMessage({ id: 'carMotor.menus.qrCode'}),value:"qrcode_recognize"},
                         {text:formatMessage({ id: 'carMotor.menus.barCode'}),value:"barcode_recognize"},
-                        {text:formatMessage({ id: 'carMotor.menus.face'}),value:"face_graphical"},
+                        {text:formatMessage({ id: 'carMotor.menus.face'}),value:"face_recognize"},
                         {text:formatMessage({ id: 'carMotor.menus.image'}),value:"image_recognize"},
                         {text:formatMessage({ id: 'carMotor.menus.num'}),value:"number_recognize"},
-                        {text:formatMessage({ id: 'carMotor.menus.trafficIdentification'}),value:"Traffic_graphical"},
-                        {text:formatMessage({ id: 'carMotor.menus.visionModuleLine'}),value:"tacking_open"},
+                        {text:formatMessage({ id: 'carMotor.menus.Traffic_recognize_card'}),value:"Traffic_recognize_card"},
+                        {text:formatMessage({ id: 'carMotor.menus.Traffic_recognize_signPlate'}),value:"Traffic_recognize_signPlate"},
+                        {text:formatMessage({ id: 'carMotor.menus.visionModuleLine'}),value:"visual_patrol"},
                         // {text:"颜色追踪",value:"color_appoint_recognize"},
                         {text:formatMessage({ id: 'carMotor.menus.machineLearning'}),value:"machine_learning"},
                     ]
