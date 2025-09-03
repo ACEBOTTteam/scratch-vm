@@ -29,6 +29,18 @@ class Scratch3BipedRobot {
                     }
                 },
                 {
+                    opcode: "set_baudRate",
+                    text: formatMessage({ id: 'ASR.set_baudRate' }),
+                    blockType: BlockType.COMMAND,
+                    arguments: {
+                        ONE: {
+                            type: ArgumentType.STRING,
+                            menu: 'BAUDRATE',
+                            defaultValue: '9600'
+                        },
+                    }
+                },
+                {
                     opcode: "sound_config",
                     text: formatMessage({ id: 'ASR.sound_config' }),
                     blockType: BlockType.COMMAND,
@@ -147,9 +159,34 @@ class Scratch3BipedRobot {
                             defaultValue: 1
                         },
                     }
-                }
+                },
+                {
+                    opcode: "learn_command_words",
+                    text: formatMessage({ id: 'ASR.learn_command_words' }),
+                    arguments: {
+                        ONE: {
+                            type: ArgumentType.STRING,
+                            defaultValue: 'open'
+                        },
+                        TWO: {
+                            type: ArgumentType.STRING,
+                            defaultValue: 'Start learning the command word open'
+                        },
+                        THREE: {
+                            type: ArgumentType.STRING,
+                            defaultValue: 'Learning success'
+                        },
+                    },
+                    blockType: BlockType.COMMAND,
+                },
             ],
             menus: {
+                BAUDRATE:{
+                    items: [
+                        { text: '9600', value: '9600' },
+                        { text: '115200', value: '115200' },
+                    ]
+                },
                 SOUND: {
                     items: [
                         { text: formatMessage({ id: 'ASR.sweet_girl' }), value: '1' },

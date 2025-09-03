@@ -40,6 +40,8 @@ const builtinExtensions = {
     bluetoothController: () => require('../extensions/scratch_bluetooth_controller'),
     PAW: () => require('../extensions/scratch_PAW'),
     sharkbot: () => require('../extensions/scratch_sharkbot'),
+    truckbott: () => require('../extensions/scratch_truckbott'),
+    battleCar: () => require('../extensions/scratch_battle_car'),
 };
 
 /**

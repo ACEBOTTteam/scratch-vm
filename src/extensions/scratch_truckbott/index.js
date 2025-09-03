@@ -4,7 +4,7 @@ const BlockType = require('../../extension-support/block-type');
 
 const iconURI = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAMAAAC5zwKfAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAACpQTFRF////fIel5ufolZ62/2YavsPS+YZOkJmy9/j53+Hk6+zs6N/b6dfO////tDhMHAAAAA50Uk5T/////////////////wBFwNzIAAAA6ElEQVR42uzX2w6DIBAEUGDVtlr//3dLaLwgiwUd2z7MJPJg5EQWiGhGcAxBggQJEiT436CIfqXJPTn3MKNYYMSDFpoAmp24OaYgvwKnFgL2zvVTCwHrMoMi+nUQLFthaNCCa0iwclLkDgYVsQp0mzxuqXgK1MRzoCLWgkPXNN2wI/q6Kvt7u/cX0HtejN8x2sXpnpb8J8D3b0Keuhh3X975M+i0xNVbg3s1TIasgK21bQyGO+s2PykaGMYbge8KrNrssvkOWDXkErB8UuBHETjoYLkKBA8ZfuDkbwVBggQJEiR4MC8BBgDTtMZLx2nFCQAAAABJRU5ErkJggg==';
 
-class Scratch3Sharkbot {
+class Scratch3Truckbott {
     constructor(runtime) {
         this.runtime = runtime
 
@@ -12,19 +12,24 @@ class Scratch3Sharkbot {
 
     getInfo() {
         return {
-            id: "sharkbot",
-            name: "Sharkbot",
+            id: "truckbott",
+            name: "Truckbott",
             blockIconURL: iconURI,
             showStatusButton: false,
             blocks: [
                 {
                     opcode: "app_init",
-                    text: formatMessage({ id: 'sharnbot.app_init' }),
+                    text: formatMessage({ id: 'truckbott.app_init' }),
+                    blockType: BlockType.COMMAND
+                },
+                {
+                    opcode: "sendTip",
+                    text: formatMessage({ id: 'truckbott.sendTip' }),
                     blockType: BlockType.COMMAND
                 },
                 {
                     opcode: "get_commant",
-                    text: formatMessage({ id: 'sharnbot.get_commant' }),
+                    text: formatMessage({ id: 'truckbott.get_commant' }),
                     blockType: BlockType.BOOLEAN,
                     arguments: {
                         ONE: {
@@ -36,7 +41,7 @@ class Scratch3Sharkbot {
                 },
                 {
                     opcode: "get_commantData",
-                    text: formatMessage({ id: 'sharnbot.get_commantData' }),
+                    text: formatMessage({ id: 'truckbott.get_commantData' }),
                     blockType: BlockType.REPORTER,
                     arguments: {
                         ONE: {
@@ -48,13 +53,47 @@ class Scratch3Sharkbot {
                 },
                 {
                     opcode: "execute",
-                    text: formatMessage({ id: 'sharnbot.execute' }),
+                    text: formatMessage({ id: 'truckbott.execute' }),
                     blockType: BlockType.CONDITIONAL,
                     arguments: {
                         ONE: {
                             type: ArgumentType.STRING,
                             defaultValue: 'callback'
                         },
+                    }
+                },
+                {
+                    opcode: "tipping_angle",
+                    text:formatMessage({ id: 'sharnbot.tipping_angle' }),
+                    blockType: BlockType.COMMAND,
+                    arguments: {
+                        ONE: {
+                            type: ArgumentType.NUMBER,
+                            defaultValue: 90
+                        }
+                    }
+                },
+                {
+                    opcode: "tippingBucket",
+                    text:formatMessage({ id: 'sharnbot.tippingType' }),
+                    blockType: BlockType.COMMAND,
+                    arguments: {
+                        ONE: {
+                            type: ArgumentType.STRING,
+                            menu: "BUCKET_TYPE",
+                            defaultValue: 'open'
+                        }
+                    }
+                },
+                {
+                    opcode: "forklift_angle",
+                    text:formatMessage({ id: 'sharnbot.forkliftAngle' }),
+                    blockType: BlockType.COMMAND,
+                    arguments: {
+                        ONE: {
+                            type: ArgumentType.NUMBER,
+                            defaultValue: 90
+                        }
                     }
                 },
                 {
@@ -343,6 +382,12 @@ class Scratch3Sharkbot {
                 },
             ],
             menus: {
+                BUCKET_TYPE:{
+                    items:[
+                        {text:formatMessage({ id: 'sharnbot.COMMANT_DATA.uplift' }),value:"open"},
+                        {text:formatMessage({ id: 'sharnbot.COMMANT_DATA.layDown' }),value:"close"},
+                    ]
+                },
                 BUZER: {
                     items: [
                         {text:'B0', value:'31'},
@@ -607,6 +652,14 @@ class Scratch3Sharkbot {
                             text: formatMessage({ id: 'sharnbot.COMMANT.input_turnRight' }),
                             value: "18"
                         },
+                        {
+                            text:formatMessage({ id: 'sharnbot.COMMANT_DATA.Forklift' }),
+                            value: "20"
+                        },
+                        {
+                            text:formatMessage({ id: 'sharnbot.COMMANT_DATA.Tipping' }),
+                            value: "21"
+                        }
                     ]
                 },
                 COMMANT_DATA: {
@@ -643,6 +696,14 @@ class Scratch3Sharkbot {
                             text: "B",
                             value: "B"
                         },
+                        {
+                            text:formatMessage({ id: 'sharnbot.COMMANT_DATA.Forklift' }),
+                            value: "Forklift_val"
+                        },
+                        {
+                            text:formatMessage({ id: 'sharnbot.COMMANT_DATA.Tipping' }),
+                            value: "Tipping_val"
+                        }
                     ]
                 }
             }
@@ -680,4 +741,4 @@ class Scratch3Sharkbot {
     }
 }
 
-module.exports = Scratch3Sharkbot
+module.exports = Scratch3Truckbott
