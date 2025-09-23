@@ -35,6 +35,16 @@ class Scratch3Truckbott {
                     }
                 },
                 {
+                    opcode: "app_getBlueCode",
+                    text: formatMessage({ id: 'battleCar.app_getBlueCode' }),
+                    blockType: BlockType.REPORTER
+                },
+                {
+                    opcode: "getMacLocation",
+                    text: formatMessage({ id: 'battleCar.getMacLocation' }),
+                    blockType: BlockType.REPORTER
+                },
+                {
                     opcode: "reset",
                     text: formatMessage({ id: 'battleCar.reset' }),
                     blockType: BlockType.COMMAND
@@ -98,6 +108,17 @@ class Scratch3Truckbott {
                     }
                 },
                 {
+                    opcode: "setBuzzer",
+                    text: formatMessage({ id: 'battleCar.setBuzzer' }),
+                    blockType: BlockType.COMMAND,
+                    arguments: {
+                        ONE: {
+                            type: ArgumentType.NUMBER,
+                            defaultValue: 1000
+                        }
+                    }
+                },
+                {
                     opcode: "buzzer",
                     text: formatMessage({ id: 'battleCar.buzzer' }),
                     blockType: BlockType.COMMAND,
@@ -114,8 +135,46 @@ class Scratch3Truckbott {
                         }
                     }
                 },
+                {
+                    opcode: "setBuzzerTime",
+                    text: formatMessage({ id: 'battleCar.setBuzzerTime' }),
+                    blockType: BlockType.COMMAND,
+                    arguments: {
+                        ONE: {
+                            type: ArgumentType.NUMBER,
+                            defaultValue: 100
+                        },
+                        TWO: {
+                            type: ArgumentType.NUMBER,
+                            defaultValue: 1000
+                        }
+                    }
+                },
+                {
+                    opcode: "setTypeBuzzer",
+                    text: formatMessage({ id: 'battleCar.setTypeBuzzer' }),
+                    blockType: BlockType.COMMAND,
+                    arguments: {
+                        ONE: {
+                            type: ArgumentType.STRING,
+                            menu: "BUZER",
+                            defaultValue: '31'
+                        },
+                        TWO: {
+                            type: ArgumentType.STRING,
+                            menu: "SWITCH",
+                            defaultValue: 'open'
+                        }
+                    }
+                }
             ],
             menus: {
+                SWITCH:{
+                    items:[
+                        {text:formatMessage({ id: 'open' }),value:"open"},
+                        {text:formatMessage({ id: 'close' }),value:"close"},
+                    ]
+                },
                 TIME: {
                     items: [
                         { text: formatMessage({ id: 'battleCar.half' }), value: "0.5" },
@@ -278,6 +337,10 @@ class Scratch3Truckbott {
                         {
                             text: formatMessage({ id: 'battleCar.stopAttack' }),
                             value: "10"
+                        },
+                        {
+                            text: "蓝牙配对码",
+                            value: "23"
                         }
                     ]
                 }

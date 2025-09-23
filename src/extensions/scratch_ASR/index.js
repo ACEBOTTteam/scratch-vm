@@ -148,7 +148,7 @@ class Scratch3BipedRobot {
                         },
                         THREE: {
                             type: ArgumentType.STRING,
-                            defaultValue: 'open the light'
+                            defaultValue: 'turn on the light'
                         },
                         FOUR: {
                             type: ArgumentType.STRING,
