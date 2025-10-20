@@ -37,6 +37,13 @@ class Scratch3Truckbott {
                 {
                     opcode: "app_getBlueCode",
                     text: formatMessage({ id: 'battleCar.app_getBlueCode' }),
+                    arguments: {
+                        ONE: {
+                            type: ArgumentType.STRING,
+                            menu: "COMMANT_DATA",
+                            defaultValue: 'bluetooth'
+                        },
+                    },
                     blockType: BlockType.REPORTER
                 },
                 {
@@ -44,6 +51,17 @@ class Scratch3Truckbott {
                     text: formatMessage({ id: 'battleCar.getMacLocation' }),
                     blockType: BlockType.REPORTER
                 },
+                // {
+                //     opcode: "app_sendData",
+                //     text:" 格斗小车发送[ONE]到app",
+                //     arguments: {
+                //         ONE: {
+                //             type: ArgumentType.STRING,
+                //             menu: "SEND_DATA",
+                //             defaultValue: 'speed_max'
+                //         },
+                //     }
+                // },
                 {
                     opcode: "reset",
                     text: formatMessage({ id: 'battleCar.reset' }),
@@ -169,10 +187,23 @@ class Scratch3Truckbott {
                 }
             ],
             menus: {
-                SWITCH:{
-                    items:[
-                        {text:formatMessage({ id: 'open' }),value:"open"},
-                        {text:formatMessage({ id: 'close' }),value:"close"},
+                COMMANT_DATA: {
+                    items: [
+                        { text: formatMessage({ id: 'battleCar.bluetoothCode' }), value: "bluetooth" },
+                        { text: formatMessage({ id: 'battleCar.weapon_max' }), value: "weapon_max" },
+                        { text: formatMessage({ id: 'battleCar.weapon_min' }), value: "weapon_min" },
+                    ]
+                },
+                // SEND_DATA:{
+                //     items:[
+                //         {text:"速度达到最大值",value:"speed_max"},
+                //         {text:"速度达到最小值",value:"speed_min"}
+                //     ]
+                // },
+                SWITCH: {
+                    items: [
+                        { text: formatMessage({ id: 'open' }), value: "open" },
+                        { text: formatMessage({ id: 'close' }), value: "close" },
                     ]
                 },
                 TIME: {
@@ -339,8 +370,12 @@ class Scratch3Truckbott {
                             value: "10"
                         },
                         {
-                            text: "蓝牙配对码",
+                            text: formatMessage({ id: 'battleCar.bluetoothCode' }),
                             value: "23"
+                        },
+                        {
+                            text: formatMessage({ id: 'battleCar.weapon' }),
+                            value: "22"
                         }
                     ]
                 }
