@@ -26,7 +26,7 @@ const servo = [
     { text: '33', value: '33' }
 ]
 
-class Scratch3CarMotor {
+class Scratch3CarMotorV2 {
     constructor(runtime) {
         this.runtime = runtime
 
@@ -34,15 +34,36 @@ class Scratch3CarMotor {
 
     getInfo() {
         return {
-            id: "carMotor",
-            name: formatMessage({ id: 'carMotor.categoryName' }),
+            id: "carMotorV2",
+            name: formatMessage({ id: 'carMotor.categoryName' })+'V2',
             blockIconURL: iconURI,
             showStatusButton: false,
             blocks: [
                 {
                     opcode: "carWebInit",
-                    text: "小车网页设计",
+                    text: formatMessage({ id: 'carMotorV2.carWebInit' }), 
                     blockType: BlockType.REPORTER
+                },
+                {
+                    opcode: "initCar",
+                    text: formatMessage({ id: 'carMotorV2.initCar' }),
+                    blockType:BlockType.COMMAND,
+                },
+                {
+                    opcode:"motor",
+                    text:formatMessage({ id: 'carMotorV2.setMotorSpeed' }),
+                    blockType:BlockType.COMMAND,
+                    arguments:{
+                        ONE:{
+                            type:ArgumentType.STRING,
+                            menu:"MOTOR_PIN",
+                            defaultValue:"1"
+                        },
+                        TWO:{
+                            type:ArgumentType.NUMBER,
+                            defaultValue:100
+                        }
+                    }
                 },
                 {
                     opcode: "carMove",
@@ -651,6 +672,14 @@ class Scratch3CarMotor {
                 },
             ],
             menus: {
+                MOTOR_PIN:{
+                    items:[
+                        {text:"M1",value:"1"},
+                        {text:"M2",value:"2"},
+                        {text:"M3",value:"3"},
+                        {text:"M4",value:"4"},
+                    ]
+                },
                 VISION_COMMAND_DATA:{
                     items:[
                         {text:"R",value:"RGB_Red_Val"},
@@ -1087,4 +1116,4 @@ class Scratch3CarMotor {
     aaaaa(){}
 }
 
-module.exports = Scratch3CarMotor
+module.exports = Scratch3CarMotorV2

@@ -45,6 +45,7 @@ class Scratch3RobotBlocks {
             set_tape_lights: this.set_tape_lights,
             tape_lights: this.tape_lights,
             Humidifier_Moudule: this.Humidifier_Moudule,
+            Humidifier_Moudule_V2: this.Humidifier_Moudule_V2,
             Water_Sensor: this.Water_Sensor,
             Digit_Tube_Display_Module_Number: this.Digit_Tube_Display_Module_Number,
             Digit_Tube_Display_Module_String: this.Digit_Tube_Display_Module_String,
@@ -292,6 +293,19 @@ class Scratch3RobotBlocks {
         if ('close' === args.TYPE) {
             code = `A10 ${args.PIN_LIST} 0\r\n`
         }
+        await window.electronAPI.clientSend('send', code)
+    }
+
+    //加湿器模块
+    async Humidifier_Moudule_V2(args) {
+        console.log(args,'args')
+        let num = null
+        if ('open' === args.TYPE) {
+            num = 1
+        } else {
+            num = 0
+        }
+        let code = `A2 ${args.PIN_LIST} ${num}\r\n`
         await window.electronAPI.clientSend('send', code)
     }
 
