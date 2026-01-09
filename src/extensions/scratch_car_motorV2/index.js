@@ -886,6 +886,22 @@ class Scratch3CarMotorV2 {
                             value: "64"
                         },
                         {
+                            text: formatMessage({ id: 'carMotor.leftUp' }),
+                            value: "74"
+                        },
+                        {
+                            text: formatMessage({ id: 'carMotor.leftDown' }),
+                            value: "71"
+                        },
+                        {
+                            text: formatMessage({ id: 'carMotor.rightUp' }),
+                            value: "72"
+                        },
+                        {
+                            text: formatMessage({ id: 'carMotor.rightDown' }),
+                            value: "73"
+                        },
+                        {
                             text: formatMessage({ id: 'carMotor.speed' }),
                             value: "58"
                         },
