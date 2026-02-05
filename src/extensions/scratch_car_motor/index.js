@@ -41,7 +41,7 @@ class Scratch3CarMotor {
             blocks: [
                 {
                     opcode: "carWebInit",
-                    text: "小车网页设计",
+                    text: formatMessage({ id: 'carMotorV2.carWebInit' }),
                     blockType: BlockType.REPORTER
                 },
                 {
@@ -917,6 +917,34 @@ class Scratch3CarMotor {
                         {
                             text: formatMessage({ id: 'carMotor.slider' }),
                             value: "81"
+                        },
+                        {
+                            text: formatMessage({ id: 'carMotor.latticeScreen.img' }),
+                            value: "102"
+                        },
+                        {
+                            text: formatMessage({ id: 'carMotor.latticeScreen.pixel' }),
+                            value: "103"
+                        },
+                        {
+                            text: formatMessage({ id: 'carMotor.mp3.play' }),
+                            value: "106"
+                        },
+                        {
+                            text: formatMessage({ id: 'carMotor.mp3.suspend' }),
+                            value: "107"
+                        },
+                        {
+                            text: formatMessage({ id: 'carMotor.mp3.previous' }),
+                            value: "104"
+                        },
+                        {
+                            text: formatMessage({ id: 'carMotor.mp3.next' }),
+                            value: "105"
+                        },
+                        {
+                            text: formatMessage({ id: 'carMotor.mp3.volume' }),
+                            value: "108"
                         }
                     ]
                 },
@@ -1000,6 +1028,9 @@ class Scratch3CarMotor {
                     items: [
                         { text: formatMessage({ id: 'carMotor.speed' }), value: "Car_Speed" },
                         { text: formatMessage({ id: 'carMotor.slider' }), value: "SliderAngle" },
+                        { text: formatMessage({ id: 'carMotor.latticeScreen.img' }), value: "g_screen_pattern" },
+                        { text: formatMessage({ id: 'carMotor.latticeScreen.pixel' }), value: "g_screen_data" },
+                        { text: 'mp3'+formatMessage({ id: 'carMotor.mp3.volume' }), value: "g_mp3_volume" }
                     ]
                 },
                 OVERTURN: {
