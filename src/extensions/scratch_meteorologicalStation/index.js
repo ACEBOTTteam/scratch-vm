@@ -18,6 +18,40 @@ class Scratch3MeteorologicalStation {
             showStatusButton: false,
             blocks: [
                 {
+                    opcode: "weather_setWebTitle",
+                    text: formatMessage({ id: 'meteorologicalStation_weather_setWebTitle' }),
+                    blockType: BlockType.COMMAND,
+                    arguments: {
+                        ONE: {
+                            type: ArgumentType.STRING,
+                            defaultValue: "Weather Station"
+                        }
+                    }
+                },
+                {
+                    opcode: "weather_setServoName",
+                    text: formatMessage({ id: 'meteorologicalStation_weather_setServoName' }),
+                    blockType: BlockType.COMMAND,
+                    arguments: {
+                        ONE: {
+                            type: ArgumentType.STRING,
+                            defaultValue: "Servo"
+                        }
+                    }
+                },
+                {
+                    opcode: "weather_setLanguage",
+                    text: formatMessage({ id: 'meteorologicalStation_weather_setLanguage' }),
+                    blockType: BlockType.COMMAND,
+                    arguments: {
+                        ONE: {
+                            type: ArgumentType.STRING,
+                            menu: 'LANGUAGE',
+                            defaultValue: 'English'
+                        }
+                    }
+                },
+                {
                     opcode: "weather_server",
                     text: formatMessage({ id: 'meteorologicalStation.server' }),
                     blockType: BlockType.COMMAND,
@@ -71,6 +105,12 @@ class Scratch3MeteorologicalStation {
                 }
             ],
             menus: {
+                LANGUAGE:{
+                    items: [
+                        { text: formatMessage({ id: 'meteorologicalStation.english' }), value: 'English' },
+                        { text: formatMessage({ id: 'meteorologicalStation.chinese' }), value: 'Chinese' }
+                    ]
+                },
                 SERVER: {
                     items: [
                         { text: 'app', value: 'app' },
