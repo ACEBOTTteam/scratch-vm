@@ -44,6 +44,7 @@ const builtinExtensions = {
     sharkbot: () => require('../extensions/scratch_sharkbot'),
     truckbott: () => require('../extensions/scratch_truckbott'),
     battleCar: () => require('../extensions/scratch_battle_car'),
+    nineInOne: () => require('../extensions/scratch_nine_in_one'),
 };
 
 /**
