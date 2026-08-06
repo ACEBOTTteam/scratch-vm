@@ -39,11 +39,13 @@ class Scratch3CarMotor {
             blockIconURL: iconURI,
             showStatusButton: false,
             blocks: [
+                //获取小车网页设计代码
                 {
                     opcode: "carWebInit",
                     text: formatMessage({ id: 'carMotorV2.carWebInit' }),
                     blockType: BlockType.REPORTER
                 },
+                //控制小车向 前、后、左、右、左前、左后、右前、右后、顺时针、逆时针移动的速度
                 {
                     opcode: "carMove",
                     text: formatMessage({ id: 'carMotor.move' }),
@@ -60,11 +62,13 @@ class Scratch3CarMotor {
                         },
                     }
                 },
+                //控制小车停止移动
                 {
                     opcode: "carStop",
                     text: formatMessage({ id: 'carMotor.stop' }),
                     blockType: BlockType.COMMAND,
                 },
+                //设置小车模式 移动、led、喇叭、圆形巡线、8字形巡线、避障、跟随模式
                 {
                     opcode: "carMode",
                     text: formatMessage({ id: 'carMotor.mode.fun' }),
@@ -77,6 +81,7 @@ class Scratch3CarMotor {
                         }
                     }
                 },
+                //控制小车执行自定义模型 移动、led、喇叭、圆形巡线、8字形巡线、避障、跟随模式
                 {
                     opcode: "carExecute",
                     text: formatMessage({ id: 'carMotor.execute.mode' }),
@@ -89,6 +94,7 @@ class Scratch3CarMotor {
                         }
                     }
                 },
+                //控制小车执行默认模式 移动、led、喇叭、圆形巡线、8字形巡线、避障、跟随模式
                 {
                     opcode: "carRunMode",
                     text: formatMessage({ id: 'carMotor.mode.fun' }),
@@ -101,6 +107,7 @@ class Scratch3CarMotor {
                         }
                     }
                 },
+                //小车的APP\网页初始化 - 在写app或网页程序时必须先调用
                 {
                     opcode: "carInit",
                     text: formatMessage({ id: 'carMotor.carInit' }),
@@ -113,6 +120,7 @@ class Scratch3CarMotor {
                         }
                     }
                 },
+                //小车获取 app或网页的数据 前进(63)、后退(65)、左转(61)、右转(62)、顺时针(66)、逆时针(64)、左上(70)、左下(71)、右上(72)、右下(73)、速度(58)、停止(60)、开灯(82)、关灯(83)、喇叭1(84)、喇叭2(85)、喇叭3(86)、喇叭4(87)、圆形巡线(67)、8字形巡线(59)、避障(69)、跟随(68)、滑杆(81)、点阵屏图像(102)、点阵屏像素(103)、播放(106)、暂停(107)、上一首(104)、下一首(105)、音量(108)。 返回布尔值
                 {
                     opcode: "carGetInstruct",
                     text: formatMessage({ id: 'carMotor.carGetInstruct' }),
@@ -125,6 +133,7 @@ class Scratch3CarMotor {
                         }
                     }
                 },
+                //小车获取值 -速度、滑杆、点阵屏图像、点阵屏像素、mp3音量
                 {
                     opcode: "getCarAppCommandData",
                     text: formatMessage({ id: 'ROBOT_ARM_GET_COMMAND_DATA' }),
@@ -137,6 +146,7 @@ class Scratch3CarMotor {
                         }
                     }
                 },
+                //小车运行，除了初始化，所有的小车逻辑都必须在spiderExecute的包裹内
                 {
                     opcode: "spiderExecute",
                     text: formatMessage({ id: 'carMotor.run' }),
@@ -159,7 +169,7 @@ class Scratch3CarMotor {
                     text: formatMessage({ id: 'carMotor.car.armExpand' }),
                     blockType: BlockType.BUTTON
                 },
-                //机械臂
+                //设置机械臂的误差调整
                 {
                     opcode: "armError",
                     text: formatMessage({ id: 'ROBOT_ARM_ERROR' }),
@@ -179,6 +189,7 @@ class Scratch3CarMotor {
                         }
                     }
                 },
+                //机械臂初始化
                 {
                     opcode: "armInit",
                     text: formatMessage({ id: 'arm_car.arm.init' }),
@@ -211,6 +222,7 @@ class Scratch3CarMotor {
                         },
                     }
                 },
+                //设置机械臂关节角度
                 {
                     opcode: "setArmAngle",
                     text: formatMessage({ id: 'arm_car.arm.setAngle' }),
@@ -227,6 +239,7 @@ class Scratch3CarMotor {
                         }
                     }
                 },
+                //设置机械臂关节角度，并设置移动速度
                 {
                     opcode: "setArmAngleSpeed",
                     text: formatMessage({ id: 'carMotor.setArmAngleSpeed' }),
@@ -247,6 +260,7 @@ class Scratch3CarMotor {
                         },
                     }
                 },
+                //获取机械臂关节角度
                 {
                     opcode: "getArmAngle",
                     text: formatMessage({ id: 'ROBOT_ARM_GET_ARM_ANGLE' }),
@@ -259,6 +273,7 @@ class Scratch3CarMotor {
                         }
                     }
                 },
+                //设置机械臂的xyz坐标
                 {
                     opcode: "armCoord",
                     text: formatMessage({ id: 'ROBOT_ARM_COORD' }),
@@ -278,11 +293,13 @@ class Scratch3CarMotor {
                         }
                     }
                 },
+                //控制机械臂复位
                 {
                     opcode: "armReset",
                     text: formatMessage({ id: 'ROBOT_ARM_RESET' }),
                     blockType: BlockType.COMMAND,
                 },
+                //机械臂wifi记忆模型
                 {
                     opcode: "armMotion",
                     text: formatMessage({ id: 'ROBOT_ARM_MOTION' }),
@@ -295,6 +312,7 @@ class Scratch3CarMotor {
                         }
                     }
                 },
+                //机械臂小车获取APP、网页的信号 -返回布尔值
                 {
                     opcode: "getAppCommand",
                     text: formatMessage({ id: 'ROBOT_ARM_GET_COMMAND' }),
@@ -307,6 +325,7 @@ class Scratch3CarMotor {
                         }
                     }
                 },
+                //机械臂小车获取APP、网页的值
                 {
                     opcode: "getAppCommandData",
                     text: formatMessage({ id: 'ROBOT_ARM_GET_COMMAND_DATA' }),
@@ -324,6 +343,7 @@ class Scratch3CarMotor {
                     text: formatMessage({ id: 'carMotor.firing.expansion' }),
                     blockType: BlockType.BUTTON
                 },
+                //小车初始化射击模块
                 {
                     opcode: "firingModuleInit",
                     text: formatMessage({ id: 'carMotor.firing.module' }),
@@ -336,11 +356,13 @@ class Scratch3CarMotor {
                         },
                     }
                 },
+                //控制小车枪口单词射击
                 {
                     opcode: "firing",
                     text: formatMessage({ id: 'carMotor.firing' }),
                     blockType: BlockType.COMMAND,
                 },
+                //控制小车打开关闭连续射击
                 {
                     opcode: "continuous_firing",
                     text: formatMessage({ id: 'carMotor.continuous.firing' }),
@@ -353,6 +375,7 @@ class Scratch3CarMotor {
                         },
                     }
                 },
+                //设置小车射击舵机初始化
                 {
                     opcode: "firingServoInit",
                     text: formatMessage({ id: 'carMotor.firing.servoInit' }),
@@ -365,6 +388,7 @@ class Scratch3CarMotor {
                         },
                     }
                 },
+                //设置小车射击舵机角度
                 {
                     opcode: "firingServoSetAngle",
                     text: formatMessage({ id: 'carMotor.firing.servoSetAngle' }),
@@ -376,6 +400,7 @@ class Scratch3CarMotor {
                         },
                     }
                 },
+                //小车获取射击信号 返回布尔值
                 {
                     opcode: "firingGetCommand",
                     text: formatMessage({ id: 'ROBOT_ARM_GET_COMMAND' }),
@@ -405,6 +430,7 @@ class Scratch3CarMotor {
                     text: formatMessage({ id: 'carMotor.camera.module' }),
                     blockType: BlockType.BUTTON
                 },
+                //小车摄像头初始化，摄像头画面上下左右翻转，设置清晰度
                 {
                     opcode: "carCameraServerInit",
                     text: formatMessage({ id: 'carMotor.camera.serverInit' }),
@@ -427,6 +453,7 @@ class Scratch3CarMotor {
                         }
                     }
                 },
+                //开启小车摄像头画面\网页控制
                 {
                     opcode: "carCameraStartCamera",
                     text: formatMessage({ id: 'carMotor.camera.open' }),
@@ -439,6 +466,7 @@ class Scratch3CarMotor {
                         }
                     }
                 },
+                //小车摄像头APP控制，所有的摄像头小车App控制都必须包含在这里
                 {
                     opcode: "cameraServer",
                     text: formatMessage({ id: 'carMotor.camera.server' }),
@@ -451,11 +479,13 @@ class Scratch3CarMotor {
                         }
                     }
                 },
+                //摄像头小车 APP客户端是否接收到数据
                 {
                     opcode: "clientIsGetData",
                     text: formatMessage({ id: 'carMotor.camera.clientIsGetData' }),
                     blockType: BlockType.BOOLEAN,
                 },
+                //摄像头小车转发App数据
                 {
                     opcode: "dataForward",
                     text: formatMessage({ id: 'carMotor.camera.dataForward' }),
@@ -468,11 +498,13 @@ class Scratch3CarMotor {
                         }
                     }
                 },
+                //摄像头小车客户端控制，所有摄像头小车的客户端都必须包含在内
                 {
                     opcode: "cameraCarRun",
                     text: formatMessage({ id: 'carMotor.camera.carRun' }),
                     blockType: BlockType.CONDITIONAL,
                 },
+                //控制小车摄像头开关
                 {
                     opcode: "cameraLED",
                     text: formatMessage({ id: 'carMotor.camera.led' }),
@@ -485,6 +517,7 @@ class Scratch3CarMotor {
                     },
                     blockType: BlockType.COMMAND
                 },
+                //小车摄像头是否获取到开灯灯指令 --返回布尔值
                 {
                     opcode: "cameraGetCommant",
                     text: formatMessage({ id: 'carMotor.camera.Commant' }),
@@ -502,52 +535,9 @@ class Scratch3CarMotor {
                     text: formatMessage({ id: 'carMotor.aabutton.name' }),
                     blockType: BlockType.BUTTON
                 },
-                // {
-                //     opcode: "lcd_init",
-                //     text: formatMessage({ id: 'carMotor.visionModule.lcd_init'}),
-                //     blockType: BlockType.COMMAND,
-                // },
-                // {
-                //     opcode: "lcd_rotation",
-                //     text: formatMessage({ id: 'carMotor.visionModule.lcd_rotation'}),
-                //     blockType: BlockType.COMMAND,
-                //     arguments: {
-                //         ONE: {
-                //             type: ArgumentType.STRING,
-                //             menu: 'LED_DIRECTION',
-                //             defaultValue: '2'
-                //         }
-                //     }
-                // },
-                // {
-                //     opcode: "vision_camera_init",
-                //     text: formatMessage({ id: 'carMotor.visionModule.vision_camera_init'}),
-                //     blockType: BlockType.COMMAND,
-                // },
-                // {
-                //     opcode: "camera_resolution_ratio",
-                //     text: formatMessage({ id: 'carMotor.visionModule.camera_resolution_ratio'}),
-                //     blockType: BlockType.COMMAND,
-                //     arguments: {
-                //         ONE: {
-                //             type: ArgumentType.STRING,
-                //             menu: 'RESOLUTION_RATIO',
-                //             defaultValue: 'QVGA'
-                //         }
-                //     }
-                // },
-                // {
-                //     opcode: "vision_camera_switch",
-                //     text: formatMessage({ id: 'carMotor.visionModule.camera_resolution_ratio'}),
-                //     blockType: BlockType.COMMAND,
-                //     arguments: {
-                //         ONE: {
-                //             type: ArgumentType.STRING,
-                //             menu: 'CAMERA_SWITCH',
-                //             defaultValue: 'open'
-                //         }
-                //     }
-                // },
+
+                
+                //小车视觉模块初始化
                 {
                     opcode: "ai_mode_init",
                     text: formatMessage({ id: 'arm_car.ai_mode_init' }),
@@ -565,11 +555,13 @@ class Scratch3CarMotor {
                         }
                     }
                 },
+                //小车视觉模块返回主菜单
                 {
                     opcode: "ai_mode_return",
                     text: formatMessage({ id: 'arm_car.ai_mode_return' }),
                     blockType: BlockType.COMMAND
                 },
+                //小车视觉模块设置RGB
                 {
                     opcode: "ai_mode_set_color",
                     text: formatMessage({ id: 'arm_car.ai_mode_set_color' }),
@@ -589,6 +581,7 @@ class Scratch3CarMotor {
                         }
                     }
                 },
+                //小车视觉模块是否接执行模式 --返回布尔值
                 {
                     opcode: "ai_mode",
                     text: "[ONE]",
@@ -601,6 +594,7 @@ class Scratch3CarMotor {
                         }
                     }
                 },
+                //小车视觉模块颜色识别是否接收到APP颜色指令 --返回布尔值
                 {
                     opcode: "color_appoint_recognize",
                     text: formatMessage({ id: 'carMotor.visionModule.color_appoint_recognize' }),
@@ -613,6 +607,7 @@ class Scratch3CarMotor {
                         }
                     }
                 },
+                //小车视觉模块接收到的APP数据
                 {
                     opcode: "get_recognition_data",
                     text: formatMessage({ id: 'carMotor.visionModule.get_recognition_data' }),
@@ -625,6 +620,7 @@ class Scratch3CarMotor {
                         },
                     }
                 },
+                //小车视觉模块是否接到APP指令 --返回布尔值
                 {
                     opcode: "get_visionModule_command",
                     text: formatMessage({ id: 'carMotor.visionModule.get_visionModule_command' }),
@@ -637,6 +633,7 @@ class Scratch3CarMotor {
                         }
                     }
                 },
+                //小车视觉模块接收APP rgb值
                 {
                     opcode: "get_visionModule_command_data",
                     text: formatMessage({ id: 'carMotor.visionModule.get_visionModule_command_data' }),

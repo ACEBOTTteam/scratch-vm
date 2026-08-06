@@ -590,18 +590,18 @@ class Scratch3MicroBitBlocks {
             blockIconURI: blockIconURI,
             showStatusButton: true,
             blocks: [
-                {
-                    opcode: "showimage",
-                    blockType: "command",
-                    text: "显示图片 [IMAGE]",
-                    arguments: {
-                        IMAGE: {
-                            type: "number",
-                            menu: "#imageMenu#microbit",
-                            defaultValue: "HEART",
-                        },
-                    }
-                },
+                // {
+                //     opcode: "showimage",
+                //     blockType: "command",
+                //     text: "显示图片 [IMAGE]",
+                //     arguments: {
+                //         IMAGE: {
+                //             type: "number",
+                //             menu: "#imageMenu#microbit",
+                //             defaultValue: "HEART",
+                //         },
+                //     }
+                // },
                 {
                     opcode: 'whenButtonPressed',
                     text: formatMessage({

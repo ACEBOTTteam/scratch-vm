@@ -42,7 +42,14 @@ const ArgumentType = {
      * Inline image on block (as part of the label)
      */
     IMAGE: 'image',
-    MATH_SPEED: 'math_speed_number'
+
+    FIELD_ICON_DROPDOWN: 'field_icon_dropdown',
+
+    FIELD_SLIDER: 'field_slider',
+
+    SCREEN_X: 'screen_number_x',
+
+    SCREEN_Y: 'screen_number_y',
 };
 
 module.exports = ArgumentType;

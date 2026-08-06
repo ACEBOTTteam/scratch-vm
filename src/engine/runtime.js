@@ -110,6 +110,34 @@ const ArgumentTypeMap = (() => {
             fieldName: 'FIELD_VARIABLE'
         }
     };
+    map[ArgumentType.FIELD_ICON_DROPDOWN] = {
+        shadow: {
+            type: 'Chatbot_Show_Expression',
+            fieldName: 'ICON_DROPDOWN'
+        }
+    };
+
+    map[ArgumentType.FIELD_SLIDER] = {
+        shadow: {
+            type: 'rgb_number',
+            fieldName: 'NUM'
+        }
+    };
+
+    map[ArgumentType.SCREEN_X] = {
+        shadow: {
+            type: 'screen_number_x',
+            fieldName: 'NUM'
+        }
+    };
+
+    map[ArgumentType.SCREEN_Y] = {
+        shadow: {
+            type: 'screen_number_y',
+            fieldName: 'NUM'
+        }
+    };
+    
     return map;
 })();
 
