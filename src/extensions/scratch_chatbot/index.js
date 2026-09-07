@@ -7,13 +7,12 @@ const iconURI = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAMAAAC5z
 class Scratch3ChatBot {
     constructor(runtime) {
         this.runtime = runtime
-
     }
 
     getInfo() {
         return {
             id: "chatbot",
-            name: "ChatBot",
+            name: "LumiBot",
             blockIconURL: iconURI,
             showStatusButton: false,
             blocks: [
@@ -36,6 +35,33 @@ class Scratch3ChatBot {
                         }
                     },
                     blockType: BlockType.COMMAND
+                },
+                {
+                    opcode: "start_wifi",
+                    text: formatMessage({ id: 'chatbot.start_wifi' }),
+                    arguments: {
+                        ONE: {
+                            type: ArgumentType.STRING,
+                            defaultValue: 'ACEBOTT'
+                        },
+                        TWO: {
+                            type: ArgumentType.STRING,
+                            defaultValue: "12345678"
+                        }
+                    },
+                    blockType: BlockType.COMMAND
+                },
+                {
+                    opcode: "wifi_info",
+                    text: "WIFI[ONE]",
+                    arguments: {
+                        ONE: {
+                            type: ArgumentType.STRING,
+                            menu: "WIFI_INFO",
+                            defaultValue: 'info'
+                        },
+                    },
+                    blockType: BlockType.REPORTER
                 },
                 {
                     opcode: "init",
@@ -63,6 +89,44 @@ class Scratch3ChatBot {
                     blockType: BlockType.COMMAND
                 },
                 {
+                    opcode: "setAudioVolume",
+                    text: formatMessage({ id: 'chatbot.setAudioVolume' }),
+                    arguments: {
+                        ONE: {
+                            type: ArgumentType.MATH_HALF_VOLUME,
+                            defaultValue: '50'
+                        }
+                    },
+                    blockType: BlockType.COMMAND
+                },
+                {
+                    opcode: "showCameraAtScreen",
+                    text: formatMessage({ id: 'chartbot.showCameraAtScreen' }),
+                    blockType: BlockType.COMMAND
+                },
+                {
+                    opcode: "getAudioVolume",
+                    text: formatMessage({ id: 'chatbot.getAudioVolume' }),
+                    blockType: BlockType.REPORTER
+                },
+                {
+                    opcode: "playMusic",
+                    text: formatMessage({ id: 'chatbot.playMusic' }),
+                    arguments: {
+                        ONE: {
+                            type: ArgumentType.STRING,
+                            menu: "MUSICS",
+                            defaultValue: 'little_star'
+                        }
+                    },
+                    blockType: BlockType.COMMAND
+                },
+                {
+                    opcode: "getSurroundingVolume",
+                    text: formatMessage({ id: 'chatbot.getSurroundingVolume' }),
+                    blockType: BlockType.REPORTER
+                },
+                {
                     opcode: "move",
                     text: formatMessage({ id: 'chatbot.move' }),
                     blockType: BlockType.COMMAND,
@@ -80,7 +144,7 @@ class Scratch3ChatBot {
                 },
                 {
                     opcode: "wheel_speed",
-                    text: "chatbot left wheel speed[ONE] right wheel speed[TWO]",
+                    text: formatMessage({ id: 'chatbot.wheel_speed' }),
                     blockType: BlockType.COMMAND,
                     arguments: {
                         ONE: {
@@ -192,6 +256,11 @@ class Scratch3ChatBot {
                     blockType: BlockType.COMMAND
                 },
                 {
+                    opcode: "touchSensor",
+                    text: formatMessage({ id: 'chatbot.touchSensor' }),
+                    blockType: BlockType.BOOLEAN,
+                },
+                {
                     opcode: "openAi",
                     text: formatMessage({ id: 'chatbot.openAi' }),
                     arguments: {
@@ -217,7 +286,7 @@ class Scratch3ChatBot {
                 },
                 {
                     opcode: "getVisualResult",
-                    text: "get visual results [ONE]",
+                    text: formatMessage({ id: 'chatbot.getVisualResult' }),
                     arguments: {
                         ONE: {
                             type: ArgumentType.STRING,
@@ -251,8 +320,128 @@ class Scratch3ChatBot {
                         }
                     }
                 },
+                {
+                    opcode: "startConversation",
+                    text: formatMessage({ id: 'chatbot.startConversation' }),
+                    blockType: BlockType.COMMAND,
+                },
+                {
+                    opcode: "creatAction",
+                    text: formatMessage({ id: 'chatbot.creatAction' }),
+                    blockType: BlockType.HAT,
+                    arguments: {
+                        ONE: {
+                            type: ArgumentType.STRING,
+                            defaultValue: "led"
+                        },
+                    }
+                },
+                {
+                    opcode: "customizeActions",
+                    text: formatMessage({ id: 'chatbot.customizeActions' }),
+                    blockType: BlockType.CONDITIONAL,
+                    arguments: {
+                        ONE: {
+                            type: ArgumentType.STRING,
+                            defaultValue: 'callback'
+                        },
+                    }
+                },
+                ,
+                {
+                    opcode: "getConversation",
+                    text: formatMessage({ id: 'chatbot.getConversation' }),
+                    blockType: BlockType.REPORTER,
+                    arguments: {
+                        ONE: {
+                            type: ArgumentType.STRING,
+                            menu: "OBJECT",
+                            defaultValue: "LumiBot"
+                        }
+                    }
+                },
+                {
+                    opcode: "setMcpDescribe",
+                    text: formatMessage({ id: 'chatbot.setMcpDescribe' }),
+                    blockType: BlockType.COMMAND,
+                    arguments: {
+                        ONE: {
+                            type: ArgumentType.STRING,
+                            defaultValue: "switch the led light"
+                        }
+                    }
+                },
+                {
+                    opcode: "setMcpState",
+                    text: formatMessage({ id: 'chatbot.setMcpState' }),
+                    blockType: BlockType.COMMAND,
+                    arguments: {
+                        ONE: {
+                            type: ArgumentType.STRING,
+                            defaultValue: "state"
+                        },
+                        TWO: {
+                            type: ArgumentType.STRING,
+                            menu: "PARAMETER_TYPE",
+                            defaultValue: "int"
+                        },
+                        THREE: {
+                            type: ArgumentType.STRING,
+                            defaultValue: "0"
+                        }
+                    }
+                },
+                {
+                    opcode: "getMcpReturn",
+                    text: formatMessage({ id: 'chatbot.getMcpReturn' }),
+                    blockType: BlockType.REPORTER,
+                    arguments: {
+                        ONE: {
+                            type: ArgumentType.STRING,
+                            defaultValue: "state"
+                        }
+                    }
+                },
+                {
+                    opcode: "executeMcp",
+                    text: formatMessage({ id: 'chatbot.executeMcp' }),
+                    blockType: BlockType.COMMAND,
+                    arguments: {
+                        ONE: {
+                            type: ArgumentType.STRING,
+                            defaultValue: "name"
+                        }
+                    }
+                }
             ],
             menus: {
+                MUSICS: {
+                    items: [
+                        { text: "little star", value: "little_star" },
+                        { text: "happy birthday", value: "happy_birthday" },
+                        { text: "merry christmas", value: "merry_christmas" },
+                        { text: "old macdonald", value: "old_macdonald" },
+                    ]
+                },
+                OBJECT: {
+                    items: [
+                        { text: "TellyBot", value: "LumiBot" },
+                        { text: formatMessage({ id: 'chatbot.menu.User' }), value: "User" }
+                    ]
+                },
+                PARAMETER_TYPE: {
+                    items: [
+                        { text: "int", value: "int64_t" },
+                        { text: "string", value: "std::string" },
+                        { text: "boolean", value: "bool" },
+                    ]
+                },
+                WIFI_INFO: {
+                    items: [
+                        { text: formatMessage({ id: 'chatbot.menu.info' }), value: "info" },
+                        { text: formatMessage({ id: 'chatbot.menu.ip' }), value: "IP" }
+                    ]
+                },
                 FONT: {
                     items: [
                         { text: formatMessage({ id: 'chatbot.menu.classicFont' }), value: "1" },
@@ -302,7 +491,7 @@ class Scratch3ChatBot {
                         { text: formatMessage({ id: 'chatbot.menu.trueLeft' }), value: "3" },
                         { text: formatMessage({ id: 'chatbot.menu.trueRight' }), value: "4" },
                         { text: formatMessage({ id: 'chatbot.menu.stop' }), value: "0" },
-                        { text: formatMessage({ id: 'chatbot.menu.speed1' }), value: "2" },
+                        { text: formatMessage({ id: 'chatbot.menu.speed1' }), value: "5" },
                         { text: formatMessage({ id: 'chatbot.menu.speed3' }), value: "6" },
                         { text: formatMessage({ id: 'chatbot.menu.speed5' }), value: "7" },
                         { text: formatMessage({ id: 'chatbot.menu.frontRgb' }), value: "8" },
@@ -430,6 +619,8 @@ class Scratch3ChatBot {
             }
         }
     }
+
+    creatAction() { }
     getK1Button() {
 
     }

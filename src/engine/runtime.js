@@ -42,7 +42,8 @@ const defaultBlockPackages = {
     scratch3_sensing: require('../blocks/scratch3_sensing'),
     scratch3_data: require('../blocks/scratch3_data'),
     scratch3_procedures: require('../blocks/scratch3_procedures'),
-    Scratch3RobotBlocks:require('../blocks/scratch3_robot.js')
+    Scratch3RobotBlocks:require('../blocks/scratch3_robot.js'),
+    Scratch3R4Blocks:require('../blocks/scratch3_arduinoR4.js')
 };
 
 const defaultExtensionColors = ['#0FBD8C', '#0DA57A', '#0B8E69'];
@@ -134,6 +135,13 @@ const ArgumentTypeMap = (() => {
     map[ArgumentType.SCREEN_Y] = {
         shadow: {
             type: 'screen_number_y',
+            fieldName: 'NUM'
+        }
+    };
+
+    map[ArgumentType.MATH_HALF_VOLUME] = {
+        shadow: {
+            type: 'math_half_volume',
             fieldName: 'NUM'
         }
     };

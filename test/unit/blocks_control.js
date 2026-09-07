@@ -184,6 +184,20 @@ test('if / ifElse', t => {
     t.strictEqual(i, 2);
     c.ifElse({CONDITION: false}, util);
     t.strictEqual(i, 4);
+    c.elseIf({
+        CONDITION: false,
+        CONDITION1: false,
+        CONDITION2: true,
+        mutation: {elseif: '2'}
+    }, util);
+    t.strictEqual(i, 7);
+    c.elseIf({
+        CONDITION: false,
+        CONDITION1: false,
+        CONDITION2: false,
+        mutation: {elseif: '2'}
+    }, util);
+    t.strictEqual(i, 11);
     t.end();
 });
 

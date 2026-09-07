@@ -50,6 +50,8 @@ const ArgumentType = {
     SCREEN_X: 'screen_number_x',
 
     SCREEN_Y: 'screen_number_y',
+
+    MATH_HALF_VOLUME:'math_half_volume'
 };
 
 module.exports = ArgumentType;

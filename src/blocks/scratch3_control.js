@@ -32,6 +32,7 @@ class Scratch3ControlBlocks {
             control_wait_until: this.waitUntil,
             control_if: this.if,
             control_if_else: this.ifElse,
+            control_else_if: this.elseIf,
             control_stop: this.stop,
             control_create_clone_of: this.createClone,
             control_delete_this_clone: this.deleteClone,
@@ -135,6 +136,18 @@ class Scratch3ControlBlocks {
         } else {
             util.startBranch(2, false);
         }
+    }
+
+    elseIf (args, util) {
+        const elseIfCount = Number(args.mutation && args.mutation.elseif) || 0;
+        for (let branchIndex = 0; branchIndex <= elseIfCount; branchIndex++) {
+            const conditionName = branchIndex ? `CONDITION${branchIndex}` : 'CONDITION';
+            if (Cast.toBoolean(args[conditionName])) {
+                util.startBranch(branchIndex + 1, false);
+                return;
+            }
+        }
+        util.startBranch(elseIfCount + 2, false);
     }
 
     stop (args, util) {
