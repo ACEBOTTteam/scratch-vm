@@ -12,7 +12,7 @@ class Scratch3ChatBot {
     getInfo() {
         return {
             id: "chatbot",
-            name: "LumiBot",
+            name: "TellyBot",
             blockIconURL: iconURI,
             showStatusButton: false,
             blocks: [
@@ -64,6 +64,11 @@ class Scratch3ChatBot {
                     blockType: BlockType.REPORTER
                 },
                 {
+                    opcode: "matchingCode",
+                    text: formatMessage({ id: 'chatbot.matchingCode' }),
+                    blockType: BlockType.COMMAND
+                },
+                {
                     opcode: "init",
                     text: formatMessage({ id: 'chatbot.init' }),
                     blockType: BlockType.COMMAND
@@ -71,6 +76,13 @@ class Scratch3ChatBot {
                 {
                     opcode: "app_init",
                     text: formatMessage({ id: 'chatbot.app_init' }),
+                    arguments: {
+                        ONE: {
+                            type: ArgumentType.STRING,
+                            menu: "INIT_TYPE",
+                            defaultValue: 'app'
+                        },
+                    },
                     blockType: BlockType.COMMAND
                 },
                 {
@@ -297,6 +309,18 @@ class Scratch3ChatBot {
                     blockType: BlockType.REPORTER
                 },
                 {
+                    opcode:"getLineWalkingData",
+                    text: formatMessage({ id: 'chatbot.getLineWalkingData' }),
+                    arguments: {
+                        ONE: {
+                            type: ArgumentType.STRING,
+                            menu: "LINE_WALKING_DATA",
+                            defaultValue: 'vision'
+                        },
+                    },
+                    blockType: BlockType.REPORTER
+                },
+                {
                     opcode: "getAppComment",
                     text: formatMessage({ id: 'chatbot.getAppComment' }),
                     blockType: BlockType.BOOLEAN,
@@ -317,6 +341,18 @@ class Scratch3ChatBot {
                             type: ArgumentType.STRING,
                             menu: "GET_COMMENT",
                             defaultValue: "red"
+                        }
+                    }
+                },
+                {
+                    opcode: "getWebComment",
+                    text: formatMessage({ id: 'chatbot.getWebComment' }),
+                    blockType: BlockType.BOOLEAN,
+                    arguments: {
+                        ONE: {
+                            type: ArgumentType.STRING,
+                            menu: "WEB_COMMENT",
+                            defaultValue: "forward"
                         }
                     }
                 },
@@ -415,6 +451,28 @@ class Scratch3ChatBot {
                 }
             ],
             menus: {
+                WEB_COMMENT:{
+                    items:[
+                        { text: formatMessage({ id: 'chatbot.menu.advance' }), value: "forward" },
+                        { text: formatMessage({ id: 'chatbot.menu.retreat' }), value: "backward" },
+                        { text: formatMessage({ id: 'chatbot.menu.trueLeft' }), value: "left" },
+                        { text: formatMessage({ id: 'chatbot.menu.trueRight' }), value: "right" },
+                        { text: formatMessage({ id: 'chatbot.menu.stop' }), value: "stop" },
+                        { text: formatMessage({ id: 'carMotor.openLED' }), value: "light_on" },
+                        { text: formatMessage({ id: 'carMotor.closeLED' }), value: "light_off" }
+                    ]
+                },
+                LINE_WALKING_DATA:{
+                    items:[
+                        { text: formatMessage({ id: 'chatbot.menu.vision' }), value: "vision" }
+                    ]
+                },
+                INIT_TYPE:{
+                    items: [
+                        { text: "app", value: "app" },
+                        { text: "web", value: "web" }
+                    ]
+                },
                 MUSICS: {
                     items: [
                         { text: "little star", value: "little_star" },
@@ -553,8 +611,6 @@ class Scratch3ChatBot {
                         { text: formatMessage({ id: 'chatbot.menu.y' }), value: "y" },
                         { text: formatMessage({ id: 'chatbot.menu.w' }), value: "w" },
                         { text: formatMessage({ id: 'chatbot.menu.h' }), value: "h" },
-                        { text: formatMessage({ id: 'chatbot.menu.vision' }), value: "vision" },
-                        { text: 'moving direction', value: "move" },
                     ]
                 },
                 RESULT: {
@@ -572,7 +628,7 @@ class Scratch3ChatBot {
                         { text: formatMessage({ id: 'chatbot.menu.num' }), value: "num" },
                         { text: formatMessage({ id: 'chatbot.menu.color' }), value: "color" },
                         { text: formatMessage({ id: 'chatbot.menu.colorTracing' }), value: "colorTracing" },
-                        { text: "line tracking", value: "lineWalking" },
+                        { text: formatMessage({ id: 'chatbot.menu.lineTracking' }), value: "lineWalking" },
                     ]
                 },
 

@@ -646,6 +646,12 @@ class Scratch3CarMotor {
                         }
                     }
                 },
+                // {
+                //     func: "aabutton",
+                //     text: "GPS",
+                //     blockType: BlockType.BUTTON
+                // },
+
             ],
             menus: {
                 VISION_COMMAND_DATA: {

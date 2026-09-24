@@ -35,33 +35,33 @@ class Scratch3CarMotorV2 {
     getInfo() {
         return {
             id: "carMotorV2",
-            name: formatMessage({ id: 'carMotor.categoryName' })+'V2',
+            name: formatMessage({ id: 'carMotor.categoryName' }) + 'V2',
             blockIconURL: iconURI,
             showStatusButton: false,
             blocks: [
                 {
                     opcode: "carWebInit",
-                    text: formatMessage({ id: 'carMotorV2.carWebInit' }), 
+                    text: formatMessage({ id: 'carMotorV2.carWebInit' }),
                     blockType: BlockType.REPORTER
                 },
                 {
                     opcode: "initCar",
                     text: formatMessage({ id: 'carMotorV2.initCar' }),
-                    blockType:BlockType.COMMAND,
+                    blockType: BlockType.COMMAND,
                 },
                 {
-                    opcode:"motor",
-                    text:formatMessage({ id: 'carMotorV2.setMotorSpeed' }),
-                    blockType:BlockType.COMMAND,
-                    arguments:{
-                        ONE:{
-                            type:ArgumentType.STRING,
-                            menu:"MOTOR_PIN",
-                            defaultValue:"1"
+                    opcode: "motor",
+                    text: formatMessage({ id: 'carMotorV2.setMotorSpeed' }),
+                    blockType: BlockType.COMMAND,
+                    arguments: {
+                        ONE: {
+                            type: ArgumentType.STRING,
+                            menu: "MOTOR_PIN",
+                            defaultValue: "1"
                         },
-                        TWO:{
-                            type:ArgumentType.NUMBER,
-                            defaultValue:100
+                        TWO: {
+                            type: ArgumentType.NUMBER,
+                            defaultValue: 100
                         }
                     }
                 },
@@ -148,7 +148,7 @@ class Scratch3CarMotorV2 {
                 },
                 {
                     opcode: "getCarAppCommandData",
-                    text: formatMessage({ id: 'ROBOT_ARM_GET_COMMAND_DATA'}),
+                    text: formatMessage({ id: 'ROBOT_ARM_GET_COMMAND_DATA' }),
                     blockType: BlockType.REPORTER,
                     arguments: {
                         TWO: {
@@ -176,14 +176,14 @@ class Scratch3CarMotorV2 {
                 // },
 
                 {
-                    func:"aabutton",
-                    text:formatMessage({ id: 'carMotor.car.armExpand' }),
-                    blockType:BlockType.BUTTON
+                    func: "aabutton",
+                    text: formatMessage({ id: 'carMotor.car.armExpand' }),
+                    blockType: BlockType.BUTTON
                 },
                 //机械臂
                 {
                     opcode: "armError",
-                    text: formatMessage({ id: 'ROBOT_ARM_ERROR'}),
+                    text: formatMessage({ id: 'ROBOT_ARM_ERROR' }),
                     blockType: BlockType.COMMAND,
                     arguments: {
                         ONE: {
@@ -306,7 +306,7 @@ class Scratch3CarMotorV2 {
                 },
                 {
                     opcode: "armMotion",
-                    text: formatMessage({ id: 'ROBOT_ARM_MOTION'}),
+                    text: formatMessage({ id: 'ROBOT_ARM_MOTION' }),
                     blockType: BlockType.COMMAND,
                     arguments: {
                         ONE: {
@@ -330,7 +330,7 @@ class Scratch3CarMotorV2 {
                 },
                 {
                     opcode: "getAppCommandData",
-                    text: formatMessage({ id: 'ROBOT_ARM_GET_COMMAND_DATA'}),
+                    text: formatMessage({ id: 'ROBOT_ARM_GET_COMMAND_DATA' }),
                     blockType: BlockType.REPORTER,
                     arguments: {
                         TWO: {
@@ -341,14 +341,14 @@ class Scratch3CarMotorV2 {
                     }
                 },
                 {
-                    func:"aabutton",
-                    text:formatMessage({ id: 'carMotor.firing.expansion'}),
-                    blockType:BlockType.BUTTON
+                    func: "aabutton",
+                    text: formatMessage({ id: 'carMotor.firing.expansion' }),
+                    blockType: BlockType.BUTTON
                 },
                 {
-                    opcode:"firingModuleInit",
-                    text:formatMessage({ id: 'carMotor.firing.module'}),
-                    blockType:BlockType.COMMAND,
+                    opcode: "firingModuleInit",
+                    text: formatMessage({ id: 'carMotor.firing.module' }),
+                    blockType: BlockType.COMMAND,
                     arguments: {
                         ONE: {
                             type: ArgumentType.STRING,
@@ -358,14 +358,14 @@ class Scratch3CarMotorV2 {
                     }
                 },
                 {
-                    opcode:"firing",
-                    text:formatMessage({ id: 'carMotor.firing'}),
-                    blockType:BlockType.COMMAND,
+                    opcode: "firing",
+                    text: formatMessage({ id: 'carMotor.firing' }),
+                    blockType: BlockType.COMMAND,
                 },
                 {
-                    opcode:"continuous_firing",
-                    text:formatMessage({ id: 'carMotor.continuous.firing'}),
-                    blockType:BlockType.COMMAND,
+                    opcode: "continuous_firing",
+                    text: formatMessage({ id: 'carMotor.continuous.firing' }),
+                    blockType: BlockType.COMMAND,
                     arguments: {
                         ONE: {
                             type: ArgumentType.STRING,
@@ -375,9 +375,9 @@ class Scratch3CarMotorV2 {
                     }
                 },
                 {
-                    opcode:"firingServoInit",
-                    text:formatMessage({ id: 'carMotor.firing.servoInit'}),
-                    blockType:BlockType.COMMAND,
+                    opcode: "firingServoInit",
+                    text: formatMessage({ id: 'carMotor.firing.servoInit' }),
+                    blockType: BlockType.COMMAND,
                     arguments: {
                         ONE: {
                             type: ArgumentType.STRING,
@@ -387,9 +387,9 @@ class Scratch3CarMotorV2 {
                     }
                 },
                 {
-                    opcode:"firingServoSetAngle",
-                    text:formatMessage({ id: 'carMotor.firing.servoSetAngle'}),
-                    blockType:BlockType.COMMAND,
+                    opcode: "firingServoSetAngle",
+                    text: formatMessage({ id: 'carMotor.firing.servoSetAngle' }),
+                    blockType: BlockType.COMMAND,
                     arguments: {
                         ONE: {
                             type: ArgumentType.NUMBER,
@@ -422,13 +422,13 @@ class Scratch3CarMotorV2 {
                 //     }
                 // },
                 {
-                    func:"aabutton",
-                    text:formatMessage({ id: 'carMotor.camera.module'}),
-                    blockType:BlockType.BUTTON
+                    func: "aabutton",
+                    text: formatMessage({ id: 'carMotor.camera.module' }),
+                    blockType: BlockType.BUTTON
                 },
                 {
                     opcode: "carCameraServerInit",
-                    text:formatMessage({ id: 'carMotor.camera.serverInit'}),
+                    text: formatMessage({ id: 'carMotor.camera.serverInit' }),
                     blockType: BlockType.COMMAND,
                     arguments: {
                         ONE: {
@@ -441,7 +441,7 @@ class Scratch3CarMotorV2 {
                             menu: 'LEFT_RIGHT',
                             defaultValue: '1'
                         },
-                        THREE:{
+                        THREE: {
                             type: ArgumentType.STRING,
                             menu: 'DEFINITION',
                             defaultValue: '2'
@@ -450,7 +450,7 @@ class Scratch3CarMotorV2 {
                 },
                 {
                     opcode: "carCameraStartCamera",
-                    text:formatMessage({ id: 'carMotor.camera.open'}),
+                    text: formatMessage({ id: 'carMotor.camera.open' }),
                     blockType: BlockType.COMMAND,
                     arguments: {
                         ONE: {
@@ -462,7 +462,7 @@ class Scratch3CarMotorV2 {
                 },
                 {
                     opcode: "cameraServer",
-                    text:formatMessage({ id: 'carMotor.camera.server'}),
+                    text: formatMessage({ id: 'carMotor.camera.server' }),
                     blockType: BlockType.CONDITIONAL,
                     arguments: {
                         ONE: {
@@ -474,12 +474,12 @@ class Scratch3CarMotorV2 {
                 },
                 {
                     opcode: "clientIsGetData",
-                    text:formatMessage({ id: 'carMotor.camera.clientIsGetData'}),
+                    text: formatMessage({ id: 'carMotor.camera.clientIsGetData' }),
                     blockType: BlockType.BOOLEAN,
                 },
                 {
                     opcode: "dataForward",
-                    text:formatMessage({ id: 'carMotor.camera.dataForward'}),
+                    text: formatMessage({ id: 'carMotor.camera.dataForward' }),
                     blockType: BlockType.COMMAND,
                     arguments: {
                         ONE: {
@@ -491,24 +491,24 @@ class Scratch3CarMotorV2 {
                 },
                 {
                     opcode: "cameraCarRun",
-                    text:formatMessage({ id: 'carMotor.camera.carRun'}),
+                    text: formatMessage({ id: 'carMotor.camera.carRun' }),
                     blockType: BlockType.CONDITIONAL,
                 },
                 {
                     opcode: "cameraLED",
-                    text: formatMessage({ id: 'carMotor.camera.led'}),
-                    arguments:{
-                        ONE:{
-                            type:ArgumentType.STRING,
-                            menu:"CAMETA_LED",
-                            defaultValue:"1"
+                    text: formatMessage({ id: 'carMotor.camera.led' }),
+                    arguments: {
+                        ONE: {
+                            type: ArgumentType.STRING,
+                            menu: "CAMETA_LED",
+                            defaultValue: "1"
                         }
                     },
                     blockType: BlockType.COMMAND
                 },
                 {
                     opcode: "cameraGetCommant",
-                    text: formatMessage({ id: 'carMotor.camera.Commant'}),
+                    text: formatMessage({ id: 'carMotor.camera.Commant' }),
                     blockType: BlockType.BOOLEAN,
                     arguments: {
                         ONE: {
@@ -519,9 +519,9 @@ class Scratch3CarMotorV2 {
                     }
                 },
                 {
-                    func:"aabutton",
-                    text:formatMessage({ id: 'carMotor.aabutton.name'}),
-                    blockType:BlockType.BUTTON
+                    func: "aabutton",
+                    text: formatMessage({ id: 'carMotor.aabutton.name' }),
+                    blockType: BlockType.BUTTON
                 },
                 // {
                 //     opcode: "lcd_init",
@@ -571,7 +571,7 @@ class Scratch3CarMotorV2 {
                 // },
                 {
                     opcode: "ai_mode_init",
-                    text:formatMessage({ id: 'arm_car.ai_mode_init'}),
+                    text: formatMessage({ id: 'arm_car.ai_mode_init' }),
                     blockType: BlockType.COMMAND,
                     arguments: {
                         ONE: {
@@ -588,12 +588,12 @@ class Scratch3CarMotorV2 {
                 },
                 {
                     opcode: "ai_mode_return",
-                    text:formatMessage({ id: 'arm_car.ai_mode_return'}),
+                    text: formatMessage({ id: 'arm_car.ai_mode_return' }),
                     blockType: BlockType.COMMAND
                 },
                 {
                     opcode: "ai_mode_set_color",
-                    text:formatMessage({ id: 'arm_car.ai_mode_set_color'}),
+                    text: formatMessage({ id: 'arm_car.ai_mode_set_color' }),
                     blockType: BlockType.COMMAND,
                     arguments: {
                         ONE: {
@@ -624,7 +624,7 @@ class Scratch3CarMotorV2 {
                 },
                 {
                     opcode: "color_appoint_recognize",
-                    text: formatMessage({ id: 'carMotor.visionModule.color_appoint_recognize'}),
+                    text: formatMessage({ id: 'carMotor.visionModule.color_appoint_recognize' }),
                     blockType: BlockType.BOOLEAN,
                     arguments: {
                         ONE: {
@@ -636,7 +636,7 @@ class Scratch3CarMotorV2 {
                 },
                 {
                     opcode: "get_recognition_data",
-                    text: formatMessage({ id: 'carMotor.visionModule.get_recognition_data'}),
+                    text: formatMessage({ id: 'carMotor.visionModule.get_recognition_data' }),
                     blockType: BlockType.REPORTER,
                     arguments: {
                         ONE: {
@@ -648,7 +648,7 @@ class Scratch3CarMotorV2 {
                 },
                 {
                     opcode: "get_visionModule_command",
-                    text: formatMessage({ id: 'carMotor.visionModule.get_visionModule_command'}),
+                    text: formatMessage({ id: 'carMotor.visionModule.get_visionModule_command' }),
                     blockType: BlockType.BOOLEAN,
                     arguments: {
                         ONE: {
@@ -660,7 +660,7 @@ class Scratch3CarMotorV2 {
                 },
                 {
                     opcode: "get_visionModule_command_data",
-                    text: formatMessage({ id: 'carMotor.visionModule.get_visionModule_command_data'}),
+                    text: formatMessage({ id: 'carMotor.visionModule.get_visionModule_command_data' }),
                     blockType: BlockType.REPORTER,
                     arguments: {
                         ONE: {
@@ -670,100 +670,227 @@ class Scratch3CarMotorV2 {
                         }
                     }
                 },
+                {
+                    func: "aabutton",
+                    text: formatMessage({ id: 'carMotorV2.contest' }),
+                    blockType: BlockType.BUTTON
+                },
+                {
+                    opcode: "contestArmInit",
+                    text: formatMessage({ id: 'carMotorV2.contestArmInit' }),
+                    blockType: BlockType.COMMAND,
+                    arguments: {
+                        ONE: {
+                            type: ArgumentType.STRING,
+                            menu: "SERVO_PIN",
+                            defaultValue: "25"
+                        },
+                        TWO: {
+                            type: ArgumentType.STRING,
+                            menu: "SERVO_PIN",
+                            defaultValue: "26"
+                        },
+                        THREE: {
+                            type: ArgumentType.STRING,
+                            menu: "SERVO_PIN",
+                            defaultValue: "27"
+                        },
+                        FOUR: {
+                            type: ArgumentType.STRING,
+                            menu: "SERVO_PIN",
+                            defaultValue: "4"
+                        }
+                    }
+                },
+                {
+                    opcode: "contestSetArmAngle",
+                    text: formatMessage({ id: 'arm_car.arm.setAngle' }),
+                    blockType: BlockType.COMMAND,
+                    arguments: {
+                        ONE: {
+                            type: ArgumentType.STRING,
+                            menu: "AXLE",
+                            defaultValue: "Chassis"
+                        },
+                        TWO: {
+                            type: ArgumentType.NUMBER,
+                            defaultValue: 90
+                        }
+                    }
+                },
+                {
+                    opcode: "contestSetArmAngleSpeed",
+                    text: formatMessage({ id: 'carMotor.setArmAngleSpeed' }),
+                    blockType: BlockType.COMMAND,
+                    arguments: {
+                        ONE: {
+                            type: ArgumentType.STRING,
+                            menu: "AXLE",
+                            defaultValue: "Chassis"
+                        },
+                        TWO: {
+                            type: ArgumentType.NUMBER,
+                            defaultValue: 90
+                        },
+                        THREE: {
+                            type: ArgumentType.NUMBER,
+                            defaultValue: 50
+                        },
+                    }
+                },
+                {
+                    opcode: "contestGetArmAngle",
+                    text: formatMessage({ id: 'ROBOT_ARM_GET_ARM_ANGLE' }),
+                    blockType: BlockType.REPORTER,
+                    arguments: {
+                        ONE: {
+                            type: ArgumentType.STRING,
+                            menu: "AXLE",
+                            defaultValue: "Chassis"
+                        }
+                    }
+                },
+                {
+                    opcode: "contestTippingBucket",
+                    text: formatMessage({ id: 'sharnbot.tippingType' })+"°",
+                    blockType: BlockType.COMMAND,
+                    arguments: {
+                        ONE: {
+                            type: ArgumentType.NUMBER,
+                            defaultValue: 90
+                        }
+                    }
+                },
+                {
+                    opcode: "8-channelLineTracking",
+                    text: formatMessage({ id: 'carMotorV2.8-channelLineTracking' }),
+                    blockType: BlockType.COMMAND,
+                    arguments: {
+                        ONE: {
+                            type: ArgumentType.STRING,
+                            menu: "LOCATION",
+                            defaultValue: "0x31"
+                        },
+                        TWO: {
+                            type: ArgumentType.STRING,
+                            menu: "LOCATION",
+                            defaultValue: "0x30"
+                        },
+                    }
+                },
+                {
+                    opcode: "get8-channelLineTrackingData",
+                    text: formatMessage({ id: 'carMotorV2.get8-channelLineTrackingData' }),
+                    blockType: BlockType.REPORTER,
+                }
             ],
             menus: {
-                MOTOR_PIN:{
-                    items:[
-                        {text:"M1",value:"1"},
-                        {text:"M2",value:"2"},
-                        {text:"M3",value:"3"},
-                        {text:"M4",value:"4"},
+                LOCATION: {
+                    items: [
+                        { text: "0x30", value: "0x30" },
+                        { text: "0x31", value: "0x31" },
                     ]
                 },
-                VISION_COMMAND_DATA:{
-                    items:[
-                        {text:"R",value:"RGB_Red_Val"},
-                        {text:"G",value:"RGB_Green_Val"},
-                        {text:"B",value:"RGB_Blue_Val"},
+                AXLE: {
+                    items: [
+                        { text: 'chassis', value: 'Chassis' },
+                        { text: 'shoulder', value: 'Shoulder' },
+                        { text: 'elbow', value: 'Elbow' },
+                        { text: 'claws', value: 'Claws' },
                     ]
                 },
-                VISION_COMMAND:{
-                    items:[
-                        {text:formatMessage({ id: 'carMotor.menus.qrCode'}),value:"89"},
-                        {text:formatMessage({ id: 'carMotor.menus.barCode'}),value:"90"},
-                        {text:formatMessage({ id: 'carMotor.menus.num'}),value:"91"},
-                        {text:formatMessage({ id: 'carMotor.menus.color'}),value:"92"},
-                        {text:formatMessage({ id: 'carMotor.menus.image'}),value:"93"},
-                        {text:formatMessage({ id: 'carMotor.menus.color_red'}),value:"94"},
-                        {text:formatMessage({ id: 'carMotor.menus.color_blue'}),value:"95"},
-                        {text:formatMessage({ id: 'carMotor.menus.color_green'}),value:"96"},
-                        {text:formatMessage({ id: 'carMotor.menus.visionModuleLine'}),value:"97"},
-                        {text:formatMessage({ id: 'carMotor.menus.trafficIdentification'}),value:"98"},
-                        {text:formatMessage({ id: 'carMotor.menus.machineLearning'}),value:"99"},
-                        {text:formatMessage({ id: 'carMotor.menus.face'}),value:"100"},
-                        {text:formatMessage({ id: 'carMotor.menus.exit'}),value:"3"},
+                MOTOR_PIN: {
+                    items: [
+                        { text: "M1", value: "1" },
+                        { text: "M2", value: "2" },
+                        { text: "M3", value: "3" },
+                        { text: "M4", value: "4" },
                     ]
                 },
-                COLOR:{
-                    items:[
-                        {text:formatMessage({ id: 'carMotor.menus.anyColor'}),value:"0"},
-                        {text:formatMessage({ id: 'carMotor.menus.red'}),value:"1"},
-                        {text:formatMessage({ id: 'carMotor.menus.green'}),value:"2"},
-                        {text:formatMessage({ id: 'carMotor.menus.blue'}),value:"3"}
+                VISION_COMMAND_DATA: {
+                    items: [
+                        { text: "R", value: "RGB_Red_Val" },
+                        { text: "G", value: "RGB_Green_Val" },
+                        { text: "B", value: "RGB_Blue_Val" },
                     ]
                 },
-                DATA_NAME:{
-                    items:[
-                        {text:formatMessage({ id: 'carMotor.menus.x'}),value:"X"},
-                        {text:formatMessage({ id: 'carMotor.menus.y'}),value:"Y"},
-                        {text:formatMessage({ id: 'carMotor.menus.width'}),value:"W"},
-                        {text:formatMessage({ id: 'carMotor.menus.height'}),value:"H"},
-                        {text:formatMessage({ id: 'carMotor.menus.result'}),value:"Tag"},
-                        {text:formatMessage({ id: 'carMotor.menus.lineData'}),value:"Visual_data"},
+                VISION_COMMAND: {
+                    items: [
+                        { text: formatMessage({ id: 'carMotor.menus.qrCode' }), value: "89" },
+                        { text: formatMessage({ id: 'carMotor.menus.barCode' }), value: "90" },
+                        { text: formatMessage({ id: 'carMotor.menus.num' }), value: "91" },
+                        { text: formatMessage({ id: 'carMotor.menus.color' }), value: "92" },
+                        { text: formatMessage({ id: 'carMotor.menus.image' }), value: "93" },
+                        { text: formatMessage({ id: 'carMotor.menus.color_red' }), value: "94" },
+                        { text: formatMessage({ id: 'carMotor.menus.color_blue' }), value: "95" },
+                        { text: formatMessage({ id: 'carMotor.menus.color_green' }), value: "96" },
+                        { text: formatMessage({ id: 'carMotor.menus.visionModuleLine' }), value: "97" },
+                        { text: formatMessage({ id: 'carMotor.menus.trafficIdentification' }), value: "98" },
+                        { text: formatMessage({ id: 'carMotor.menus.machineLearning' }), value: "99" },
+                        { text: formatMessage({ id: 'carMotor.menus.face' }), value: "100" },
+                        { text: formatMessage({ id: 'carMotor.menus.exit' }), value: "3" },
+                    ]
+                },
+                COLOR: {
+                    items: [
+                        { text: formatMessage({ id: 'carMotor.menus.anyColor' }), value: "0" },
+                        { text: formatMessage({ id: 'carMotor.menus.red' }), value: "1" },
+                        { text: formatMessage({ id: 'carMotor.menus.green' }), value: "2" },
+                        { text: formatMessage({ id: 'carMotor.menus.blue' }), value: "3" }
+                    ]
+                },
+                DATA_NAME: {
+                    items: [
+                        { text: formatMessage({ id: 'carMotor.menus.x' }), value: "X" },
+                        { text: formatMessage({ id: 'carMotor.menus.y' }), value: "Y" },
+                        { text: formatMessage({ id: 'carMotor.menus.width' }), value: "W" },
+                        { text: formatMessage({ id: 'carMotor.menus.height' }), value: "H" },
+                        { text: formatMessage({ id: 'carMotor.menus.result' }), value: "Tag" },
+                        { text: formatMessage({ id: 'carMotor.menus.lineData' }), value: "Visual_data" },
                         // {text:"上权重",value:"Tag"},
                         // {text:"中权重",value:"Tag"},
                         // {text:"下权重",value:"Tag"},
                     ]
                 },
-                AI_MODE:{
-                    items:[
+                AI_MODE: {
+                    items: [
                         // {text:formatMessage({ id: 'carMotor.menus.color'}),value:"color_recognize"},
-                        {text:formatMessage({ id: 'carMotor.menus.qrCode'}),value:"qrcode_recognize"},
-                        {text:formatMessage({ id: 'carMotor.menus.barCode'}),value:"barcode_recognize"},
-                        {text:formatMessage({ id: 'carMotor.menus.face'}),value:"face_recognize"},
-                        {text:formatMessage({ id: 'carMotor.menus.image'}),value:"image_recognize"},
-                        {text:formatMessage({ id: 'carMotor.menus.num'}),value:"number_recognize"},
-                        {text:formatMessage({ id: 'carMotor.menus.Traffic_recognize_card'}),value:"Traffic_recognize_card"},
-                        {text:formatMessage({ id: 'carMotor.menus.Traffic_recognize_signPlate'}),value:"Traffic_recognize_signPlate"},
-                        {text:formatMessage({ id: 'carMotor.menus.visionModuleLine'}),value:"visual_patrol"},
+                        { text: formatMessage({ id: 'carMotor.menus.qrCode' }), value: "qrcode_recognize" },
+                        { text: formatMessage({ id: 'carMotor.menus.barCode' }), value: "barcode_recognize" },
+                        { text: formatMessage({ id: 'carMotor.menus.face' }), value: "face_recognize" },
+                        { text: formatMessage({ id: 'carMotor.menus.image' }), value: "image_recognize" },
+                        { text: formatMessage({ id: 'carMotor.menus.num' }), value: "number_recognize" },
+                        { text: formatMessage({ id: 'carMotor.menus.Traffic_recognize_card' }), value: "Traffic_recognize_card" },
+                        { text: formatMessage({ id: 'carMotor.menus.Traffic_recognize_signPlate' }), value: "Traffic_recognize_signPlate" },
+                        { text: formatMessage({ id: 'carMotor.menus.visionModuleLine' }), value: "visual_patrol" },
                         // {text:"颜色追踪",value:"color_appoint_recognize"},
-                        {text:formatMessage({ id: 'carMotor.menus.machineLearning'}),value:"machine_learning"},
+                        { text: formatMessage({ id: 'carMotor.menus.machineLearning' }), value: "machine_learning" },
                     ]
                 },
-                CAMERA_SWITCH:{
-                    items:[
-                        {text:formatMessage({ id: 'open'}),value:"open"},
-                        {text:formatMessage({ id: 'close'}),value:"close"}
+                CAMERA_SWITCH: {
+                    items: [
+                        { text: formatMessage({ id: 'open' }), value: "open" },
+                        { text: formatMessage({ id: 'close' }), value: "close" }
                     ]
                 },
-                RESOLUTION_RATIO:{
-                    items:[
-                        {text:formatMessage({ id: 'carMotor.menus.QVGA'}),value:"QVGA"},
-                        {text:formatMessage({ id: 'carMotor.menus.QQVGA'}),value:"QQVGA"}
+                RESOLUTION_RATIO: {
+                    items: [
+                        { text: formatMessage({ id: 'carMotor.menus.QVGA' }), value: "QVGA" },
+                        { text: formatMessage({ id: 'carMotor.menus.QQVGA' }), value: "QQVGA" }
                     ]
                 },
-                LED_DIRECTION:{
-                    items:[
-                        {text:formatMessage({ id: 'wedo2.tiltDirection.up'}),value:"2"},
-                        {text:formatMessage({ id: 'wedo2.tiltDirection.down'}),value:"0"},
-                        {text:formatMessage({ id: 'wedo2.tiltDirection.left'}),value:"3"},
-                        {text:formatMessage({ id: 'wedo2.tiltDirection.right'}),value:"1"},
+                LED_DIRECTION: {
+                    items: [
+                        { text: formatMessage({ id: 'wedo2.tiltDirection.up' }), value: "2" },
+                        { text: formatMessage({ id: 'wedo2.tiltDirection.down' }), value: "0" },
+                        { text: formatMessage({ id: 'wedo2.tiltDirection.left' }), value: "3" },
+                        { text: formatMessage({ id: 'wedo2.tiltDirection.right' }), value: "1" },
                     ]
                 },
-                SERVER:{
-                    items:[
-                        {text:formatMessage({ id: 'ROBOT_ARM_WEB_SERVER' }),value:"web"},
-                        {text:"app",value:"app"},
+                SERVER: {
+                    items: [
+                        { text: formatMessage({ id: 'ROBOT_ARM_WEB_SERVER' }), value: "web" },
+                        { text: "app", value: "app" },
                     ]
                 },
                 DIRECTION: {
@@ -785,19 +912,19 @@ class Scratch3CarMotorV2 {
                             value: "right"
                         },
                         {
-                            text: formatMessage({ id: 'carMotor.bluetoothController.leftUp'}),
+                            text: formatMessage({ id: 'carMotor.bluetoothController.leftUp' }),
                             value: "leftUp"
                         },
                         {
-                            text: formatMessage({ id: 'carMotor.bluetoothController.leftDown'}),
+                            text: formatMessage({ id: 'carMotor.bluetoothController.leftDown' }),
                             value: "leftDown"
                         },
                         {
-                            text: formatMessage({ id: 'carMotor.bluetoothController.rightUp'}),
+                            text: formatMessage({ id: 'carMotor.bluetoothController.rightUp' }),
                             value: "rightUp"
                         },
                         {
-                            text: formatMessage({ id: 'carMotor.bluetoothController.rightDown'}),
+                            text: formatMessage({ id: 'carMotor.bluetoothController.rightDown' }),
                             value: "rightDown"
                         },
                         // {
@@ -918,19 +1045,19 @@ class Scratch3CarMotorV2 {
                             value: "83"
                         },
                         {
-                            text: formatMessage({ id: 'carMotor.buzzer' })+'1',
+                            text: formatMessage({ id: 'carMotor.buzzer' }) + '1',
                             value: "84"
                         },
                         {
-                            text: formatMessage({ id: 'carMotor.buzzer' })+'2',
+                            text: formatMessage({ id: 'carMotor.buzzer' }) + '2',
                             value: "85"
                         },
                         {
-                            text: formatMessage({ id: 'carMotor.buzzer' })+'3',
+                            text: formatMessage({ id: 'carMotor.buzzer' }) + '3',
                             value: "86"
                         },
                         {
-                            text: formatMessage({ id: 'carMotor.buzzer' })+'4',
+                            text: formatMessage({ id: 'carMotor.buzzer' }) + '4',
                             value: "87"
                         },
                         { text: formatMessage({ id: 'carMotor.roundTrack' }), value: "67" },
@@ -960,15 +1087,15 @@ class Scratch3CarMotorV2 {
                 },
                 ARM_MOTION: {
                     items: [
-                        { text: formatMessage({ id: 'ROBOT_ARM_MODE1'}), value: "1" },
-                        { text: formatMessage({ id: 'ROBOT_ARM_MODE2'}), value: "2" },
-                        { text: formatMessage({ id: 'ROBOT_ARM_MODE3'}), value: "3" },
-                        { text: formatMessage({ id: 'ROBOT_ARM_MODE4'}), value: "4" },
-                        { text: formatMessage({ id: 'ROBOT_ARM_MODE5'}), value: "5" },
-                        { text: formatMessage({ id: 'ROBOT_ARM_MODE6'}), value: "6" },
-                        { text: formatMessage({ id: 'ROBOT_ARM_KEEP'}), value: "keep" },
-                        { text: formatMessage({ id: 'ROBOT_ARM_RUN'}), value: "run" },
-                        { text: formatMessage({ id: 'ROBOT_ARM_CLEAR'}), value: "clear" }
+                        { text: formatMessage({ id: 'ROBOT_ARM_MODE1' }), value: "1" },
+                        { text: formatMessage({ id: 'ROBOT_ARM_MODE2' }), value: "2" },
+                        { text: formatMessage({ id: 'ROBOT_ARM_MODE3' }), value: "3" },
+                        { text: formatMessage({ id: 'ROBOT_ARM_MODE4' }), value: "4" },
+                        { text: formatMessage({ id: 'ROBOT_ARM_MODE5' }), value: "5" },
+                        { text: formatMessage({ id: 'ROBOT_ARM_MODE6' }), value: "6" },
+                        { text: formatMessage({ id: 'ROBOT_ARM_KEEP' }), value: "keep" },
+                        { text: formatMessage({ id: 'ROBOT_ARM_RUN' }), value: "run" },
+                        { text: formatMessage({ id: 'ROBOT_ARM_CLEAR' }), value: "clear" }
                     ]
                 },
                 SERVO_PIN: {
@@ -976,14 +1103,14 @@ class Scratch3CarMotorV2 {
                 },
                 SIGNALDATA: {
                     items: [
-                        { text: formatMessage({ id: 'ROBOT_ARM_CLAWS'}), value: "Claws_Silde_Angle" },
-                        { text: formatMessage({ id: 'ROBOT_ARM_ELBOW'}), value: "Elbow_Silde_Angle" },
-                        { text: formatMessage({ id: 'ROBOT_ARM_SHOULDER'}), value: "Shoulder_Silde_Angle" },
-                        { text: formatMessage({ id: 'ROBOT_ARM_CHASSIS'}), value: "Chassis_Silde_Angle" },
-                        { text: formatMessage({ id: 'arm_car.arm.wrist'}), value: "Wrist_Silde_Angle" },
-                        { text: formatMessage({ id: 'ROBOT_ARM_X'}), value: "PTP_X" },
-                        { text: formatMessage({ id: 'ROBOT_ARM_Y'}), value: "PTP_Y" },
-                        { text: formatMessage({ id: 'ROBOT_ARM_Z'}), value: "PTP_Z" },
+                        { text: formatMessage({ id: 'ROBOT_ARM_CLAWS' }), value: "Claws_Silde_Angle" },
+                        { text: formatMessage({ id: 'ROBOT_ARM_ELBOW' }), value: "Elbow_Silde_Angle" },
+                        { text: formatMessage({ id: 'ROBOT_ARM_SHOULDER' }), value: "Shoulder_Silde_Angle" },
+                        { text: formatMessage({ id: 'ROBOT_ARM_CHASSIS' }), value: "Chassis_Silde_Angle" },
+                        { text: formatMessage({ id: 'arm_car.arm.wrist' }), value: "Wrist_Silde_Angle" },
+                        { text: formatMessage({ id: 'ROBOT_ARM_X' }), value: "PTP_X" },
+                        { text: formatMessage({ id: 'ROBOT_ARM_Y' }), value: "PTP_Y" },
+                        { text: formatMessage({ id: 'ROBOT_ARM_Z' }), value: "PTP_Z" },
                         // {text: "小车速度", value: "Car_Speed"}
                     ]
                 },
@@ -1025,82 +1152,82 @@ class Scratch3CarMotorV2 {
                         { text: formatMessage({ id: 'carMotor.item.firingAngle' }), value: "Camera_servo_angles" }
                     ]
                 },
-                CARSIGNALDATA:{
-                    items:[
-                        {text:formatMessage({ id: 'carMotor.speed' }),value:"Car_Speed"},
-                        {text:formatMessage({ id: 'carMotor.slider' }),value:"SliderAngle"},
+                CARSIGNALDATA: {
+                    items: [
+                        { text: formatMessage({ id: 'carMotor.speed' }), value: "Car_Speed" },
+                        { text: formatMessage({ id: 'carMotor.slider' }), value: "SliderAngle" },
                     ]
                 },
-                OVERTURN:{
-                    items:[
-                        {text: formatMessage({ id: 'carMotor.item.forwardDirection' }),value:"1"},
-                        {text: formatMessage({ id: 'carMotor.item.reverseDirection' }),value:"0"}
+                OVERTURN: {
+                    items: [
+                        { text: formatMessage({ id: 'carMotor.item.forwardDirection' }), value: "1" },
+                        { text: formatMessage({ id: 'carMotor.item.reverseDirection' }), value: "0" }
                     ]
                 },
-                LEFT_RIGHT:{
-                    items:[
-                        {text: formatMessage({ id: 'carMotor.item.flipToTheLeft' }),value:'1'},
-                        {text: formatMessage({ id: 'carMotor.item.flipToTheRight' }),value:'0'}
+                LEFT_RIGHT: {
+                    items: [
+                        { text: formatMessage({ id: 'carMotor.item.flipToTheLeft' }), value: '1' },
+                        { text: formatMessage({ id: 'carMotor.item.flipToTheRight' }), value: '0' }
                     ]
                 },
-                CAMERA_TYPE:{
-                    items:[
-                        {text:formatMessage({ id: 'carMotor.camera.frames' }),value:"camera"},
-                        {text:formatMessage({ id: 'carMotor.camera.webPageControl' }),value:"web"}
+                CAMERA_TYPE: {
+                    items: [
+                        { text: formatMessage({ id: 'carMotor.camera.frames' }), value: "camera" },
+                        { text: formatMessage({ id: 'carMotor.camera.webPageControl' }), value: "web" }
                     ]
                 },
-                DEFINITION:{
-                    items:[
-                        {text:formatMessage({ id: 'carMotor.camera.highDefinition' }),value:"3"},
-                        {text:formatMessage({ id: 'carMotor.camera.mediumQuality' }),value:"2"},
-                        {text:formatMessage({ id: 'carMotor.camera.lowQuality' }),value:"1"}
+                DEFINITION: {
+                    items: [
+                        { text: formatMessage({ id: 'carMotor.camera.highDefinition' }), value: "3" },
+                        { text: formatMessage({ id: 'carMotor.camera.mediumQuality' }), value: "2" },
+                        { text: formatMessage({ id: 'carMotor.camera.lowQuality' }), value: "1" }
                     ]
                 },
-                Buttons:{
-                    items:[
-                        {text: "L1",value:"l1"},
-                        {text: "L2",value:"l2"},
-                        {text: "R1",value:"r1"},
-                        {text: "R2",value:"r2"},
-                        {text: "UP",value:"up"},
-                        {text: "DOWN",value:"down"},
-                        {text: "LEFT",value:"left"},
-                        {text: "RIGHT",value:"right"},
-                        {text: "X",value:"square"},
-                        {text: "Y",value:"triangle"},
-                        {text: "A",value:"cross"},
-                        {text: "B",value:"circle"},
-                        {text: "SELECT",value:"select"},
-                        {text: "START",value:"start"},
-                        {text: "PS",value:"ps"}
+                Buttons: {
+                    items: [
+                        { text: "L1", value: "l1" },
+                        { text: "L2", value: "l2" },
+                        { text: "R1", value: "r1" },
+                        { text: "R2", value: "r2" },
+                        { text: "UP", value: "up" },
+                        { text: "DOWN", value: "down" },
+                        { text: "LEFT", value: "left" },
+                        { text: "RIGHT", value: "right" },
+                        { text: "X", value: "square" },
+                        { text: "Y", value: "triangle" },
+                        { text: "A", value: "cross" },
+                        { text: "B", value: "circle" },
+                        { text: "SELECT", value: "select" },
+                        { text: "START", value: "start" },
+                        { text: "PS", value: "ps" }
                     ]
                 },
-                ROCKER:{
-                    items:[
-                        {text: formatMessage({ id: 'ROBOT_ARM_LEFT_ROCKER' }),value:"left"},
-                        {text: formatMessage({ id: 'ROBOT_ARM_RIGHT_ROCKER' }),value:"right"}
+                ROCKER: {
+                    items: [
+                        { text: formatMessage({ id: 'ROBOT_ARM_LEFT_ROCKER' }), value: "left" },
+                        { text: formatMessage({ id: 'ROBOT_ARM_RIGHT_ROCKER' }), value: "right" }
                     ]
                 },
-                AXIS:{
-                    items:[
-                        {text: "x",value:"x"},
-                        {text: "y",value:"y"}
+                AXIS: {
+                    items: [
+                        { text: "x", value: "x" },
+                        { text: "y", value: "y" }
                     ]
                 },
-                Buttons_ACTION:{
-                    items:[
-                        {text:formatMessage({ id: 'carMotor.bluetoothController.pressDown' }),value:"down"},
-                        {text:formatMessage({ id: 'carMotor.bluetoothController.undo' }),value:"up"}
+                Buttons_ACTION: {
+                    items: [
+                        { text: formatMessage({ id: 'carMotor.bluetoothController.pressDown' }), value: "down" },
+                        { text: formatMessage({ id: 'carMotor.bluetoothController.undo' }), value: "up" }
                     ]
                 },
-                FIRING_TYPE:{
-                    items:[
-                        {text:formatMessage({ id: 'open' }),value:"open"},
-                        {text:formatMessage({ id: 'close' }),value:"close"}
+                FIRING_TYPE: {
+                    items: [
+                        { text: formatMessage({ id: 'open' }), value: "open" },
+                        { text: formatMessage({ id: 'close' }), value: "close" }
                     ]
                 },
-                CAMETA_LED:{
-                    items:[
+                CAMETA_LED: {
+                    items: [
                         {
                             text: formatMessage({ id: 'carMotor.openLED' }),
                             value: "1"
@@ -1127,9 +1254,9 @@ class Scratch3CarMotorV2 {
 
     carExecute() { }
 
-    aabutton(){}
+    aabutton() { }
 
-    aaaaa(){}
+    aaaaa() { }
 }
 
 module.exports = Scratch3CarMotorV2
