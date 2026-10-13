@@ -646,14 +646,88 @@ class Scratch3CarMotor {
                         }
                     }
                 },
-                // {
-                //     func: "aabutton",
-                //     text: "GPS",
-                //     blockType: BlockType.BUTTON
-                // },
-
+                {
+                    func: "aabutton",
+                    text: "GPS",
+                    blockType: BlockType.BUTTON
+                },
+                {
+                    opcode: "gps_init",
+                    text: "GPS初始化 RX:[ONE] TX:[TWO]",
+                    blockType: BlockType.COMMAND,
+                    arguments: {
+                        ONE: {
+                            type: ArgumentType.NUMBER,
+                            menu: "SERVO_PIN",
+                            defaultValue: 16
+                        },
+                        TWO: {
+                            type: ArgumentType.NUMBER,
+                            menu: "SERVO_PIN",
+                            defaultValue: 17
+                        }
+                    }
+                },
+                {
+                    opcode: "gps_set_time_zone",
+                    text: "GPS设置时区UTC+[ONE]",
+                    blockType: BlockType.COMMAND,
+                    arguments: {
+                        ONE: {
+                            type: ArgumentType.TIME_ZONE,
+                            defaultValue: '8'
+                        }
+                    }
+                },
+                {
+                    opcode: "gps_update",
+                    text: "更新GPS数据",
+                    blockType: BlockType.COMMAND
+                },
+                {
+                    opcode: "gps_isGetData",
+                    text: "是否接收到GPS数据",
+                    blockType: BlockType.BOOLEAN
+                },
+                {
+                    opcode: "getLatLng",
+                    text: "GPS获取[ONE]",
+                    blockType: BlockType.REPORTER,
+                    arguments: {
+                        ONE: {
+                            type: ArgumentType.STRING,
+                            menu: 'LAT_LNG',
+                            defaultValue: 'Longitude'
+                        }
+                    }
+                },
+                {
+                    opcode: "get_time",
+                    text: "GPS获取时间[ONE]",
+                    blockType: BlockType.REPORTER,
+                    arguments: {
+                        ONE: {
+                            type: ArgumentType.STRING,
+                            menu: 'GPS_TIME',
+                            defaultValue: 'Hour'
+                        }
+                    }
+                },
             ],
             menus: {
+                GPS_TIME:{
+                    items:[
+                        { text: "时", value: "Hour" },
+                        { text: "分", value: "Minute" },
+                        { text: "秒", value: "Second" },
+                    ]
+                },
+                LAT_LNG:{
+                    items:[
+                        { text: "经度", value: "Longitude" },
+                        { text: "纬度", value: "Latitude" },
+                    ]
+                },
                 VISION_COMMAND_DATA: {
                     items: [
                         { text: "R", value: "RGB_Red_Val" },

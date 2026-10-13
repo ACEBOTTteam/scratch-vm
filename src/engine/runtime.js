@@ -145,6 +145,13 @@ const ArgumentTypeMap = (() => {
             fieldName: 'NUM'
         }
     };
+
+    map[ArgumentType.TIME_ZONE] = {
+        shadow: {
+            type: 'math_time_zone',
+            fieldName: 'NUM'
+        }
+    };
     
     return map;
 })();

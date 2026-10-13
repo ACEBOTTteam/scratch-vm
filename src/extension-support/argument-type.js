@@ -51,7 +51,9 @@ const ArgumentType = {
 
     SCREEN_Y: 'screen_number_y',
 
-    MATH_HALF_VOLUME:'math_half_volume'
+    MATH_HALF_VOLUME:'math_half_volume',
+
+    TIME_ZONE:"math_time_zone"
 };
 
 module.exports = ArgumentType;
